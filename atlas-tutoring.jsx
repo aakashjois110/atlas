@@ -1,0 +1,601 @@
+import { useState, useEffect, useRef, useCallback } from "react";
+
+const COLORS = {
+  navy: "#0F1F3D",
+  navyLight: "#1a2d52",
+  gold: "#D4AF7A",
+  goldLight: "#e8d4b0",
+  bg: "#F8F9FB",
+  white: "#FFFFFF",
+  text: "#111827",
+  textMuted: "#6B7280",
+  border: "#E5E7EB",
+};
+
+const PAGES = ["Home", "Subjects", "Tutors", "How It Works", "Pricing", "About", "Apply", "Contact"];
+
+const SUBJECTS = [
+  { name: "Mathematics Methods", tutor: "Liam Chen", atar: "99.95", rank: "#1 in WA", icon: "∫" },
+  { name: "Mathematics Specialist", tutor: "Priya Sharma", atar: "99.90", rank: "#1 in WA", icon: "∑" },
+  { name: "Chemistry", tutor: "James Walker", atar: "99.95", rank: "#1 in WA", icon: "⚛" },
+  { name: "Physics", tutor: "Sophie Liu", atar: "99.85", rank: "#1 in WA", icon: "λ" },
+  { name: "Biology", tutor: "Emma Thompson", atar: "99.80", rank: "#2 in WA", icon: "🧬" },
+  { name: "Economics", tutor: "Aiden Patel", atar: "99.90", rank: "#1 in WA", icon: "📈" },
+  { name: "English", tutor: "Olivia Hart", atar: "99.85", rank: "#1 in WA", icon: "✦" },
+  { name: "Human Biology", tutor: "Nathan Kim", atar: "99.80", rank: "#1 in WA", icon: "❤" },
+];
+
+const TUTORS = [
+  { name: "James Walker", subject: "Chemistry", atar: "99.95", rank: "#1 in WA", uni: "Medicine at UWA", bio: "James achieved the highest Chemistry score in Western Australia and now teaches exam strategy and conceptual mastery to the next cohort of top performers.", initials: "JW", color: "#2563EB" },
+  { name: "Liam Chen", subject: "Mathematics Methods", atar: "99.95", rank: "#1 in WA", uni: "Engineering at UWA", bio: "Liam's approach to Methods combines deep conceptual understanding with efficient exam technique, helping students master every topic with clarity.", initials: "LC", color: "#7C3AED" },
+  { name: "Priya Sharma", subject: "Mathematics Specialist", atar: "99.90", rank: "#1 in WA", uni: "Computer Science at UWA", bio: "Priya breaks down the most complex Specialist topics into intuitive steps, drawing on her experience topping the state in this demanding subject.", initials: "PS", color: "#059669" },
+  { name: "Sophie Liu", subject: "Physics", atar: "99.85", rank: "#1 in WA", uni: "Physics at UWA", bio: "Sophie's Physics classes focus on building genuine understanding and applying it under exam conditions — the same approach that earned her the top rank.", initials: "SL", color: "#DC2626" },
+  { name: "Olivia Hart", subject: "English", atar: "99.85", rank: "#1 in WA", uni: "Law at UWA", bio: "Olivia teaches students how to craft compelling analytical responses and develop the critical thinking skills that examiners reward.", initials: "OH", color: "#D97706" },
+  { name: "Aiden Patel", subject: "Economics", atar: "99.90", rank: "#1 in WA", uni: "Commerce at UWA", bio: "Aiden's Economics classes combine rigorous theory with real-world applications, giving students the edge they need to achieve top marks.", initials: "AP", color: "#0891B2" },
+];
+
+const Logo = ({ size = 40, light = false }) => (
+  <svg width={size} height={size} viewBox="0 0 100 100" fill="none">
+    <polygon points="50,8 82,85 18,85" fill="none" stroke={light ? "#fff" : COLORS.navy} strokeWidth="5" strokeLinejoin="round" />
+    <polygon points="50,28 70,78 30,78" fill="none" stroke={COLORS.gold} strokeWidth="3.5" strokeLinejoin="round" />
+    <polygon points="50,2 52,8 48,8" fill={COLORS.gold} />
+    <circle cx="44" cy="7" r="1.2" fill={COLORS.gold} />
+    <circle cx="56" cy="7" r="1.2" fill={COLORS.gold} />
+    <circle cx="50" cy="0.5" r="1.2" fill={COLORS.gold} />
+  </svg>
+);
+
+const FadeIn = ({ children, delay = 0, className = "", style = {} }) => {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setVisible(true); }, { threshold: 0.15 });
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, []);
+  return (
+    <div ref={ref} className={className} style={{ ...style, opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(32px)", transition: `opacity 0.7s ease ${delay}s, transform 0.7s ease ${delay}s` }}>
+      {children}
+    </div>
+  );
+};
+
+const Nav = ({ page, setPage }) => {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() => {
+    const fn = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", fn);
+    return () => window.removeEventListener("scroll", fn);
+  }, []);
+  return (
+    <>
+      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000, background: scrolled ? "rgba(255,255,255,0.95)" : "transparent", backdropFilter: scrolled ? "blur(20px)" : "none", borderBottom: scrolled ? `1px solid ${COLORS.border}` : "1px solid transparent", transition: "all 0.4s ease", padding: "0 5%" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 72 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, cursor: "pointer" }} onClick={() => setPage("Home")}>
+            <Logo size={36} light={!scrolled && page === "Home"} />
+            <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontWeight: 700, color: (!scrolled && page === "Home") ? "#fff" : COLORS.navy, letterSpacing: 1.5, transition: "color 0.4s" }}>ATLAS</span>
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <div className="nav-links-desktop">
+              {PAGES.map(p => (
+                <button key={p} onClick={() => setPage(p)} style={{ background: "none", border: "none", cursor: "pointer", padding: "8px 14px", fontSize: 13, fontWeight: page === p ? 600 : 400, color: (!scrolled && page === "Home") ? (page === p ? COLORS.gold : "rgba(255,255,255,0.85)") : (page === p ? COLORS.navy : COLORS.textMuted), letterSpacing: 0.8, fontFamily: "'DM Sans', sans-serif", transition: "color 0.3s", borderBottom: page === p ? `2px solid ${COLORS.gold}` : "2px solid transparent" }}>
+                  {p}
+                </button>
+              ))}
+            </div>
+            <button className="nav-menu-btn" onClick={() => setMenuOpen(!menuOpen)} style={{ background: "none", border: "none", cursor: "pointer", padding: 8, display: "none" }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={(!scrolled && page === "Home") ? "#fff" : COLORS.navy} strokeWidth="2"><path d={menuOpen ? "M6 6l12 12M6 18L18 6" : "M4 7h16M4 12h16M4 17h16"} /></svg>
+            </button>
+          </div>
+        </div>
+      </nav>
+      {menuOpen && (
+        <div style={{ position: "fixed", top: 72, left: 0, right: 0, bottom: 0, background: "rgba(255,255,255,0.98)", zIndex: 999, display: "flex", flexDirection: "column", alignItems: "center", paddingTop: 40, gap: 8 }}>
+          {PAGES.map(p => (
+            <button key={p} onClick={() => { setPage(p); setMenuOpen(false); }} style={{ background: "none", border: "none", cursor: "pointer", padding: "14px 32px", fontSize: 17, fontWeight: page === p ? 700 : 400, color: page === p ? COLORS.navy : COLORS.textMuted, fontFamily: "'DM Sans', sans-serif", letterSpacing: 1 }}>
+              {p}
+            </button>
+          ))}
+        </div>
+      )}
+    </>
+  );
+};
+
+const GoldDivider = () => (
+  <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, padding: "60px 0" }}>
+    <div style={{ width: 40, height: 1, background: COLORS.gold }} />
+    <svg width="12" height="12" viewBox="0 0 12 12"><polygon points="6,0 12,6 6,12 0,6" fill={COLORS.gold} /></svg>
+    <div style={{ width: 40, height: 1, background: COLORS.gold }} />
+  </div>
+);
+
+const Btn = ({ children, variant = "primary", onClick, style: st = {} }) => {
+  const [hov, setHov] = useState(false);
+  const base = variant === "primary"
+    ? { background: hov ? COLORS.navyLight : COLORS.navy, color: "#fff", border: "none" }
+    : variant === "gold"
+    ? { background: hov ? "#c9a06a" : COLORS.gold, color: COLORS.navy, border: "none" }
+    : { background: hov ? COLORS.bg : "transparent", color: COLORS.navy, border: `1.5px solid ${COLORS.navy}` };
+  return (
+    <button onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)} onClick={onClick} style={{ ...base, padding: "14px 32px", fontSize: 14, fontWeight: 600, fontFamily: "'DM Sans', sans-serif", letterSpacing: 1.2, borderRadius: 6, cursor: "pointer", transition: "all 0.3s ease", transform: hov ? "translateY(-2px)" : "none", boxShadow: hov ? "0 8px 24px rgba(15,31,61,0.15)" : "none", ...st }}>
+      {children}
+    </button>
+  );
+};
+
+const SectionTitle = ({ label, title, subtitle }) => (
+  <FadeIn style={{ textAlign: "center", marginBottom: 56 }}>
+    {label && <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 600, letterSpacing: 3, color: COLORS.gold, textTransform: "uppercase", marginBottom: 16 }}>{label}</div>}
+    <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 700, color: COLORS.navy, margin: "0 0 16px", lineHeight: 1.2 }}>{title}</h2>
+    {subtitle && <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 17, color: COLORS.textMuted, maxWidth: 600, margin: "0 auto", lineHeight: 1.7 }}>{subtitle}</p>}
+  </FadeIn>
+);
+
+const HomePage = ({ setPage }) => (
+  <>
+    {/* Hero */}
+    <section style={{ minHeight: "100vh", background: `linear-gradient(135deg, ${COLORS.navy} 0%, #162a50 50%, #1d3461 100%)`, display: "flex", alignItems: "center", justifyContent: "center", position: "relative", overflow: "hidden" }}>
+      <div style={{ position: "absolute", inset: 0, opacity: 0.06 }}>
+        {Array.from({ length: 20 }).map((_, i) => (
+          <div key={i} style={{ position: "absolute", left: `${(i % 5) * 25}%`, top: `${Math.floor(i / 5) * 25}%`, width: 1, height: "100%", background: "linear-gradient(to bottom, transparent, rgba(212,175,122,0.3), transparent)" }} />
+        ))}
+        {Array.from({ length: 16 }).map((_, i) => (
+          <div key={`h${i}`} style={{ position: "absolute", top: `${(i % 4) * 25}%`, left: 0, width: "100%", height: 1, background: "linear-gradient(to right, transparent, rgba(212,175,122,0.2), transparent)" }} />
+        ))}
+      </div>
+      <div style={{ position: "absolute", top: "15%", right: "10%", opacity: 0.04 }}>
+        <Logo size={400} light />
+      </div>
+      <div style={{ textAlign: "center", position: "relative", zIndex: 2, padding: "0 24px", maxWidth: 800 }}>
+        <div style={{ opacity: 0, animation: "fadeUp 0.8s ease 0.2s forwards" }}>
+          <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 600, letterSpacing: 4, color: COLORS.gold, textTransform: "uppercase", marginBottom: 24 }}>Western Australia's Premier Tutoring</div>
+        </div>
+        <div style={{ opacity: 0, animation: "fadeUp 0.8s ease 0.4s forwards" }}>
+          <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(36px, 6vw, 72px)", fontWeight: 700, color: "#fff", margin: "0 0 24px", lineHeight: 1.1, letterSpacing: -0.5 }}>
+            Learn from WA's<br /><span style={{ color: COLORS.gold }}>#1 Students</span>
+          </h1>
+        </div>
+        <div style={{ opacity: 0, animation: "fadeUp 0.8s ease 0.6s forwards" }}>
+          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "clamp(15px, 2vw, 18px)", color: "rgba(255,255,255,0.75)", maxWidth: 580, margin: "0 auto 40px", lineHeight: 1.75 }}>
+            Atlas Tutoring connects students with the top-ranked graduate in each subject in Western Australia, delivering elite online tutoring designed for top academic performance.
+          </p>
+        </div>
+        <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap", opacity: 0, animation: "fadeUp 0.8s ease 0.8s forwards" }}>
+          <Btn variant="gold" onClick={() => setPage("Subjects")}>View Subjects</Btn>
+          <Btn variant="outline" onClick={() => setPage("Tutors")} style={{ color: "#fff", borderColor: "rgba(255,255,255,0.4)" }}>Meet the Tutors</Btn>
+        </div>
+      </div>
+      <div style={{ position: "absolute", bottom: 40, left: "50%", transform: "translateX(-50%)", animation: "bounce 2s infinite" }}>
+        <svg width="20" height="32" viewBox="0 0 20 32" fill="none"><rect x="1" y="1" width="18" height="30" rx="9" stroke="rgba(255,255,255,0.3)" strokeWidth="2" /><circle cx="10" cy="10" r="3" fill={COLORS.gold}><animate attributeName="cy" values="10;20;10" dur="2s" repeatCount="indefinite" /></circle></svg>
+      </div>
+    </section>
+
+    {/* Stats */}
+    <section style={{ background: COLORS.white, padding: "80px 5%" }}>
+      <div style={{ maxWidth: 1080, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 40, textAlign: "center" }}>
+        {[
+          { num: "99.95", label: "Highest ATAR" },
+          { num: "#1", label: "State Ranked Tutors" },
+          { num: "8+", label: "ATAR Subjects" },
+          { num: "100%", label: "WA Focused" },
+        ].map((s, i) => (
+          <FadeIn key={i} delay={i * 0.1}>
+            <div style={{ fontSize: "clamp(32px, 4vw, 48px)", fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, color: COLORS.navy }}>{s.num}</div>
+            <div style={{ fontSize: 13, fontFamily: "'DM Sans', sans-serif", letterSpacing: 2, color: COLORS.textMuted, textTransform: "uppercase", marginTop: 8 }}>{s.label}</div>
+          </FadeIn>
+        ))}
+      </div>
+    </section>
+
+    {/* Social Proof */}
+    <section style={{ background: COLORS.bg, padding: "100px 5%" }}>
+      <div style={{ maxWidth: 1120, margin: "0 auto" }}>
+        <SectionTitle label="Our Tutors" title="Tutors Who Achieved the Top Rank" subtitle="Each Atlas tutor is the top ATAR performer in their subject — recently graduated and ready to share the exact strategies that earned them the highest marks in WA." />
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24 }}>
+          {TUTORS.slice(0, 3).map((t, i) => (
+            <FadeIn key={i} delay={i * 0.12}>
+              <TutorCard tutor={t} onClick={() => setPage("Tutors")} />
+            </FadeIn>
+          ))}
+        </div>
+        <FadeIn style={{ textAlign: "center", marginTop: 48 }}>
+          <Btn variant="secondary" onClick={() => setPage("Tutors")}>View All Tutors →</Btn>
+        </FadeIn>
+      </div>
+    </section>
+
+    <GoldDivider />
+
+    {/* How it works preview */}
+    <section style={{ background: COLORS.white, padding: "80px 5%" }}>
+      <div style={{ maxWidth: 960, margin: "0 auto" }}>
+        <SectionTitle label="The Atlas Model" title="How It Works" subtitle="A simple, powerful approach to elite tutoring." />
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: 40 }}>
+          {[
+            { step: "01", title: "Choose Your Subject", desc: "Browse our ATAR subjects and select the areas where you want to achieve top marks." },
+            { step: "02", title: "Join a Small Group Class", desc: "Enter a focused online class of 10–15 students, taught live by WA's #1 ranked student in that subject." },
+            { step: "03", title: "Master the Course", desc: "Learn exam strategies, key concepts, and techniques directly from someone who mastered the course at the highest level." },
+          ].map((s, i) => (
+            <FadeIn key={i} delay={i * 0.12}>
+              <div style={{ padding: 32, borderRadius: 12, border: `1px solid ${COLORS.border}`, background: COLORS.white, transition: "all 0.3s", position: "relative" }}>
+                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 48, fontWeight: 700, color: COLORS.gold, opacity: 0.3, position: "absolute", top: 16, right: 24 }}>{s.step}</div>
+                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 700, letterSpacing: 3, color: COLORS.gold, marginBottom: 12 }}>STEP {s.step}</div>
+                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 700, color: COLORS.navy, margin: "0 0 12px" }}>{s.title}</h3>
+                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 15, color: COLORS.textMuted, lineHeight: 1.7, margin: 0 }}>{s.desc}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* CTA */}
+    <section style={{ background: `linear-gradient(135deg, ${COLORS.navy}, #1d3461)`, padding: "100px 5%", textAlign: "center" }}>
+      <FadeIn>
+        <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 700, color: "#fff", margin: "0 0 16px" }}>Ready to Learn from the Best?</h2>
+        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 17, color: "rgba(255,255,255,0.7)", maxWidth: 500, margin: "0 auto 40px", lineHeight: 1.7 }}>Join the students who are learning from WA's highest achievers.</p>
+        <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
+          <Btn variant="gold" onClick={() => setPage("Subjects")}>Explore Subjects</Btn>
+          <Btn variant="outline" onClick={() => setPage("Contact")} style={{ color: "#fff", borderColor: "rgba(255,255,255,0.4)" }}>Get in Touch</Btn>
+        </div>
+      </FadeIn>
+    </section>
+  </>
+);
+
+const TutorCard = ({ tutor, onClick }) => {
+  const [hov, setHov] = useState(false);
+  return (
+    <div onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)} onClick={onClick} style={{ background: COLORS.white, borderRadius: 12, padding: 32, border: `1px solid ${hov ? COLORS.gold : COLORS.border}`, cursor: "pointer", transition: "all 0.35s ease", transform: hov ? "translateY(-4px)" : "none", boxShadow: hov ? "0 16px 48px rgba(15,31,61,0.1)" : "0 2px 8px rgba(0,0,0,0.04)" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 20 }}>
+        <div style={{ width: 56, height: 56, borderRadius: "50%", background: `linear-gradient(135deg, ${tutor.color}, ${tutor.color}aa)`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, fontWeight: 700, color: "#fff", fontFamily: "'DM Sans', sans-serif" }}>{tutor.initials}</div>
+        <div>
+          <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontWeight: 700, color: COLORS.navy }}>{tutor.name}</div>
+          <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: COLORS.gold, fontWeight: 600 }}>{tutor.subject}</div>
+        </div>
+      </div>
+      <div style={{ display: "flex", gap: 16, marginBottom: 16 }}>
+        <div style={{ background: COLORS.bg, borderRadius: 8, padding: "8px 14px", textAlign: "center" }}>
+          <div style={{ fontSize: 11, fontFamily: "'DM Sans', sans-serif", color: COLORS.textMuted, letterSpacing: 1 }}>ATAR</div>
+          <div style={{ fontSize: 18, fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, color: COLORS.navy }}>{tutor.atar}</div>
+        </div>
+        <div style={{ background: COLORS.bg, borderRadius: 8, padding: "8px 14px", textAlign: "center" }}>
+          <div style={{ fontSize: 11, fontFamily: "'DM Sans', sans-serif", color: COLORS.textMuted, letterSpacing: 1 }}>RANK</div>
+          <div style={{ fontSize: 18, fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, color: COLORS.navy }}>{tutor.rank}</div>
+        </div>
+      </div>
+      <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: COLORS.textMuted, lineHeight: 1.7, margin: 0 }}>{tutor.bio}</p>
+    </div>
+  );
+};
+
+const SubjectsPage = ({ setPage }) => (
+  <section style={{ paddingTop: 120, paddingBottom: 100, background: COLORS.bg, minHeight: "100vh" }}>
+    <div style={{ maxWidth: 1120, margin: "0 auto", padding: "0 5%" }}>
+      <SectionTitle label="ATAR Subjects" title="Choose Your Subject" subtitle="Each subject is taught exclusively by the highest-ranked student in Western Australia." />
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20 }}>
+        {SUBJECTS.map((s, i) => {
+          const [hov, setHov] = useState(false);
+          return (
+            <FadeIn key={i} delay={i * 0.06}>
+              <div onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)} style={{ background: COLORS.white, borderRadius: 12, padding: 28, border: `1px solid ${hov ? COLORS.gold : COLORS.border}`, transition: "all 0.35s", transform: hov ? "translateY(-3px)" : "none", boxShadow: hov ? "0 12px 36px rgba(15,31,61,0.08)" : "none", cursor: "pointer" }}>
+                <div style={{ fontSize: 28, marginBottom: 12 }}>{s.icon}</div>
+                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontWeight: 700, color: COLORS.navy, margin: "0 0 8px" }}>{s.name}</h3>
+                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: COLORS.textMuted, marginBottom: 4 }}>Tutor: <span style={{ color: COLORS.navy, fontWeight: 600 }}>{s.tutor}</span></div>
+                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: COLORS.textMuted, marginBottom: 16 }}>ATAR {s.atar} · {s.rank}</div>
+                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 600, color: COLORS.gold, letterSpacing: 0.5 }}>View Class →</div>
+              </div>
+            </FadeIn>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+);
+
+const TutorsPage = () => (
+  <section style={{ paddingTop: 120, paddingBottom: 100, background: COLORS.bg, minHeight: "100vh" }}>
+    <div style={{ maxWidth: 1120, margin: "0 auto", padding: "0 5%" }}>
+      <SectionTitle label="Our Team" title="Meet the Tutors" subtitle="Every Atlas tutor achieved the top rank in their subject. They don't just teach — they've lived the course at the highest level." />
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: 24 }}>
+        {TUTORS.map((t, i) => (
+          <FadeIn key={i} delay={i * 0.08}>
+            <div style={{ background: COLORS.white, borderRadius: 16, overflow: "hidden", border: `1px solid ${COLORS.border}` }}>
+              <div style={{ height: 6, background: `linear-gradient(90deg, ${COLORS.navy}, ${COLORS.gold})` }} />
+              <div style={{ padding: 32 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 20 }}>
+                  <div style={{ width: 64, height: 64, borderRadius: "50%", background: `linear-gradient(135deg, ${t.color}, ${t.color}88)`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, fontWeight: 700, color: "#fff", fontFamily: "'DM Sans', sans-serif" }}>{t.initials}</div>
+                  <div>
+                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 700, color: COLORS.navy }}>{t.name}</div>
+                    <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: COLORS.gold, fontWeight: 600 }}>{t.subject}</div>
+                    <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: COLORS.textMuted }}>{t.uni}</div>
+                  </div>
+                </div>
+                <div style={{ display: "flex", gap: 12, marginBottom: 20 }}>
+                  <div style={{ flex: 1, background: COLORS.bg, borderRadius: 8, padding: "10px 14px", textAlign: "center" }}>
+                    <div style={{ fontSize: 10, fontFamily: "'DM Sans', sans-serif", color: COLORS.textMuted, letterSpacing: 1.5, marginBottom: 4 }}>ATAR</div>
+                    <div style={{ fontSize: 22, fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, color: COLORS.navy }}>{t.atar}</div>
+                  </div>
+                  <div style={{ flex: 1, background: COLORS.bg, borderRadius: 8, padding: "10px 14px", textAlign: "center" }}>
+                    <div style={{ fontSize: 10, fontFamily: "'DM Sans', sans-serif", color: COLORS.textMuted, letterSpacing: 1.5, marginBottom: 4 }}>RANK</div>
+                    <div style={{ fontSize: 22, fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, color: COLORS.navy }}>{t.rank}</div>
+                  </div>
+                </div>
+                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: COLORS.textMuted, lineHeight: 1.75, margin: 0 }}>{t.bio}</p>
+              </div>
+            </div>
+          </FadeIn>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const HowItWorksPage = () => (
+  <section style={{ paddingTop: 120, paddingBottom: 100, background: COLORS.white, minHeight: "100vh" }}>
+    <div style={{ maxWidth: 800, margin: "0 auto", padding: "0 5%" }}>
+      <SectionTitle label="The Process" title="How Atlas Tutoring Works" subtitle="A straightforward path to academic excellence." />
+      {[
+        { step: "01", title: "Choose Your Subject", desc: "Browse our range of ATAR subjects. Each one is taught by the student who achieved the highest score in Western Australia.", detail: "We currently offer 8 core ATAR subjects, with more being added each term." },
+        { step: "02", title: "Join a Small-Group Online Class", desc: "Classes are capped at 10–15 students to ensure every student gets personalised attention and can ask questions in real time.", detail: "All classes are delivered live via Zoom with interactive whiteboards, shared resources, and recorded replays." },
+        { step: "03", title: "Learn Exam Strategies from the Best", desc: "Your tutor doesn't just know the content — they've mastered it at the highest level. Learn the exact techniques, study methods, and exam strategies that earned them the top rank.", detail: "Sessions focus on conceptual clarity, worked examples, past paper strategy, and common mistakes to avoid." },
+      ].map((s, i) => (
+        <FadeIn key={i} delay={i * 0.15}>
+          <div style={{ display: "flex", gap: 32, marginBottom: 56, alignItems: "flex-start" }}>
+            <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 56, fontWeight: 700, color: COLORS.gold, opacity: 0.4, lineHeight: 1, minWidth: 70, textAlign: "right" }}>{s.step}</div>
+            <div>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 700, color: COLORS.navy, margin: "0 0 12px" }}>{s.title}</h3>
+              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 16, color: COLORS.text, lineHeight: 1.75, margin: "0 0 8px" }}>{s.desc}</p>
+              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: COLORS.textMuted, lineHeight: 1.7, margin: 0 }}>{s.detail}</p>
+            </div>
+          </div>
+        </FadeIn>
+      ))}
+      <GoldDivider />
+      <FadeIn>
+        <div style={{ textAlign: "center" }}>
+          <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 700, color: COLORS.navy, marginBottom: 12 }}>What Makes Atlas Different</h3>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 24, marginTop: 40 }}>
+            {["Small Group Classes", "Elite Tutors Only", "Exam-Focused Learning", "Live & Interactive"].map((f, i) => (
+              <div key={i} style={{ background: COLORS.bg, borderRadius: 12, padding: 24, textAlign: "center" }}>
+                <div style={{ width: 8, height: 8, borderRadius: "50%", background: COLORS.gold, margin: "0 auto 16px" }} />
+                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 600, color: COLORS.navy, letterSpacing: 0.5 }}>{f}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </FadeIn>
+    </div>
+  </section>
+);
+
+const PricingPage = ({ setPage }) => (
+  <section style={{ paddingTop: 120, paddingBottom: 100, background: COLORS.bg, minHeight: "100vh" }}>
+    <div style={{ maxWidth: 900, margin: "0 auto", padding: "0 5%" }}>
+      <SectionTitle label="Pricing" title="Invest in Excellence" subtitle="Transparent pricing for premium tutoring from WA's top-ranked students." />
+      <FadeIn>
+        <div style={{ background: COLORS.white, borderRadius: 20, border: `1px solid ${COLORS.border}`, overflow: "hidden", maxWidth: 480, margin: "0 auto" }}>
+          <div style={{ background: `linear-gradient(135deg, ${COLORS.navy}, #1d3461)`, padding: "40px 40px 32px", textAlign: "center" }}>
+            <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 600, letterSpacing: 3, color: COLORS.gold, textTransform: "uppercase", marginBottom: 8 }}>Weekly Online Classes</div>
+            <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 56, fontWeight: 700, color: "#fff" }}>$50<span style={{ fontSize: 20, fontWeight: 400, color: "rgba(255,255,255,0.6)" }}>/session</span></div>
+            <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: "rgba(255,255,255,0.6)", marginTop: 4 }}>Small group classes · 10–15 students</div>
+          </div>
+          <div style={{ padding: "32px 40px 40px" }}>
+            {["Live weekly classes with WA's #1 ranked tutor", "Interactive Q&A every session", "Exam strategy & past paper walkthroughs", "Recorded replays for revision", "Course materials & study resources", "Direct access to your tutor"].map((f, i) => (
+              <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 12, padding: "10px 0", borderBottom: i < 5 ? `1px solid ${COLORS.border}` : "none" }}>
+                <svg width="18" height="18" viewBox="0 0 18 18" style={{ marginTop: 2, flexShrink: 0 }}><circle cx="9" cy="9" r="9" fill={COLORS.gold} opacity="0.15" /><path d="M5.5 9.5l2 2 5-5" stroke={COLORS.gold} strokeWidth="2" fill="none" strokeLinecap="round" /></svg>
+                <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: COLORS.text, lineHeight: 1.5 }}>{f}</span>
+              </div>
+            ))}
+            <Btn variant="primary" onClick={() => setPage("Contact")} style={{ width: "100%", marginTop: 28 }}>Get Started</Btn>
+          </div>
+        </div>
+      </FadeIn>
+      <FadeIn delay={0.2} style={{ textAlign: "center", marginTop: 48 }}>
+        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: COLORS.textMuted }}>Pricing may vary by subject. Contact us for details on specific classes and term schedules.</p>
+      </FadeIn>
+    </div>
+  </section>
+);
+
+const AboutPage = () => (
+  <section style={{ paddingTop: 120, paddingBottom: 100, background: COLORS.white, minHeight: "100vh" }}>
+    <div style={{ maxWidth: 760, margin: "0 auto", padding: "0 5%" }}>
+      <SectionTitle label="Our Mission" title="About Atlas Tutoring" />
+      <FadeIn>
+        <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 16, color: COLORS.text, lineHeight: 1.85 }}>
+          <p style={{ fontSize: 20, fontFamily: "'Cormorant Garamond', serif", color: COLORS.navy, fontWeight: 600, lineHeight: 1.6, marginBottom: 32 }}>
+            Atlas Tutoring was founded to solve a simple problem: the students who understand the course best are the ones who just completed it at the highest level.
+          </p>
+          <p>Traditional tutoring relies on teachers who may be years removed from the exam. Atlas takes a different approach. We recruit exclusively from the top-ranked students in Western Australia — the students who achieved the highest ATAR scores in each subject — and connect them with the next generation of high achievers.</p>
+          <p>By learning directly from the top performers in each subject, students gain insight into exam strategy, study techniques, common mistakes, and how to achieve top marks — all from someone who demonstrated mastery just months ago.</p>
+          <p>Our tutors don't just know the content. They know what it takes to be number one.</p>
+        </div>
+      </FadeIn>
+      <GoldDivider />
+      <FadeIn>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 24, textAlign: "center" }}>
+          {[
+            { title: "Exam Strategy", desc: "Learn the exact approach that earned top marks on every assessment." },
+            { title: "Study Techniques", desc: "Discover the methods the best students actually use to prepare." },
+            { title: "Common Mistakes", desc: "Avoid the pitfalls that cost other students critical marks." },
+            { title: "Top-Mark Mindset", desc: "Develop the discipline and confidence of a top-ranked student." },
+          ].map((b, i) => (
+            <div key={i} style={{ background: COLORS.bg, borderRadius: 12, padding: 28 }}>
+              <div style={{ width: 4, height: 24, background: COLORS.gold, borderRadius: 2, margin: "0 auto 16px" }} />
+              <h4 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 18, fontWeight: 700, color: COLORS.navy, margin: "0 0 8px" }}>{b.title}</h4>
+              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: COLORS.textMuted, lineHeight: 1.65, margin: 0 }}>{b.desc}</p>
+            </div>
+          ))}
+        </div>
+      </FadeIn>
+    </div>
+  </section>
+);
+
+const ApplyPage = () => {
+  const [submitted, setSubmitted] = useState(false);
+  return (
+    <section style={{ paddingTop: 120, paddingBottom: 100, background: COLORS.bg, minHeight: "100vh" }}>
+      <div style={{ maxWidth: 600, margin: "0 auto", padding: "0 5%" }}>
+        <SectionTitle label="Join the Team" title="Are You the Top Student in Your Subject?" subtitle="Atlas only hires the highest performing students in Western Australia. If you achieved an elite ATAR rank, we want to hear from you." />
+        {submitted ? (
+          <FadeIn>
+            <div style={{ textAlign: "center", padding: 48, background: COLORS.white, borderRadius: 16, border: `1px solid ${COLORS.border}` }}>
+              <svg width="56" height="56" viewBox="0 0 56 56"><circle cx="28" cy="28" r="28" fill={COLORS.gold} opacity="0.15" /><path d="M18 28l7 7 13-13" stroke={COLORS.gold} strokeWidth="3" fill="none" strokeLinecap="round" /></svg>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 24, color: COLORS.navy, marginTop: 20 }}>Application Submitted</h3>
+              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 15, color: COLORS.textMuted, marginTop: 8 }}>Thank you for your interest. We'll be in touch shortly.</p>
+            </div>
+          </FadeIn>
+        ) : (
+          <FadeIn>
+            <div style={{ background: COLORS.white, borderRadius: 16, padding: "40px 36px", border: `1px solid ${COLORS.border}` }}>
+              {[
+                { label: "Full Name", type: "text", placeholder: "Your name" },
+                { label: "ATAR Score", type: "text", placeholder: "e.g. 99.95" },
+                { label: "Top Subject(s)", type: "text", placeholder: "e.g. Chemistry, Physics" },
+                { label: "Email", type: "email", placeholder: "your@email.com" },
+              ].map((f, i) => (
+                <div key={i} style={{ marginBottom: 20 }}>
+                  <label style={{ display: "block", fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 600, letterSpacing: 1.5, color: COLORS.textMuted, textTransform: "uppercase", marginBottom: 8 }}>{f.label}</label>
+                  <input type={f.type} placeholder={f.placeholder} style={{ width: "100%", padding: "12px 16px", border: `1px solid ${COLORS.border}`, borderRadius: 8, fontFamily: "'DM Sans', sans-serif", fontSize: 15, color: COLORS.text, outline: "none", boxSizing: "border-box", transition: "border 0.3s" }} onFocus={e => e.target.style.borderColor = COLORS.gold} onBlur={e => e.target.style.borderColor = COLORS.border} />
+                </div>
+              ))}
+              <div style={{ marginBottom: 24 }}>
+                <label style={{ display: "block", fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 600, letterSpacing: 1.5, color: COLORS.textMuted, textTransform: "uppercase", marginBottom: 8 }}>Why Do You Want to Tutor?</label>
+                <textarea rows={4} placeholder="Tell us about your experience and teaching approach..." style={{ width: "100%", padding: "12px 16px", border: `1px solid ${COLORS.border}`, borderRadius: 8, fontFamily: "'DM Sans', sans-serif", fontSize: 15, color: COLORS.text, outline: "none", resize: "vertical", boxSizing: "border-box", transition: "border 0.3s" }} onFocus={e => e.target.style.borderColor = COLORS.gold} onBlur={e => e.target.style.borderColor = COLORS.border} />
+              </div>
+              <Btn variant="primary" onClick={() => setSubmitted(true)} style={{ width: "100%" }}>Submit Application</Btn>
+            </div>
+          </FadeIn>
+        )}
+      </div>
+    </section>
+  );
+};
+
+const ContactPage = () => {
+  const [sent, setSent] = useState(false);
+  return (
+    <section style={{ paddingTop: 120, paddingBottom: 100, background: COLORS.white, minHeight: "100vh" }}>
+      <div style={{ maxWidth: 600, margin: "0 auto", padding: "0 5%" }}>
+        <SectionTitle label="Get in Touch" title="Contact Atlas Tutoring" subtitle="Have questions about our classes, pricing, or how Atlas works? We'd love to hear from you." />
+        {sent ? (
+          <FadeIn>
+            <div style={{ textAlign: "center", padding: 48, background: COLORS.bg, borderRadius: 16, border: `1px solid ${COLORS.border}` }}>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 24, color: COLORS.navy }}>Message Sent</h3>
+              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 15, color: COLORS.textMuted, marginTop: 8 }}>We'll get back to you within 24 hours.</p>
+            </div>
+          </FadeIn>
+        ) : (
+          <FadeIn>
+            <div style={{ background: COLORS.bg, borderRadius: 16, padding: "40px 36px", border: `1px solid ${COLORS.border}` }}>
+              {[
+                { label: "Name", type: "text", placeholder: "Your name" },
+                { label: "Email", type: "email", placeholder: "your@email.com" },
+                { label: "I am a...", type: "text", placeholder: "Student / Parent / Other" },
+              ].map((f, i) => (
+                <div key={i} style={{ marginBottom: 20 }}>
+                  <label style={{ display: "block", fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 600, letterSpacing: 1.5, color: COLORS.textMuted, textTransform: "uppercase", marginBottom: 8 }}>{f.label}</label>
+                  <input type={f.type} placeholder={f.placeholder} style={{ width: "100%", padding: "12px 16px", border: `1px solid ${COLORS.border}`, borderRadius: 8, fontFamily: "'DM Sans', sans-serif", fontSize: 15, color: COLORS.text, outline: "none", boxSizing: "border-box", transition: "border 0.3s" }} onFocus={e => e.target.style.borderColor = COLORS.gold} onBlur={e => e.target.style.borderColor = COLORS.border} />
+                </div>
+              ))}
+              <div style={{ marginBottom: 24 }}>
+                <label style={{ display: "block", fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 600, letterSpacing: 1.5, color: COLORS.textMuted, textTransform: "uppercase", marginBottom: 8 }}>Message</label>
+                <textarea rows={4} placeholder="How can we help?" style={{ width: "100%", padding: "12px 16px", border: `1px solid ${COLORS.border}`, borderRadius: 8, fontFamily: "'DM Sans', sans-serif", fontSize: 15, color: COLORS.text, outline: "none", resize: "vertical", boxSizing: "border-box", transition: "border 0.3s" }} onFocus={e => e.target.style.borderColor = COLORS.gold} onBlur={e => e.target.style.borderColor = COLORS.border} />
+              </div>
+              <Btn variant="primary" onClick={() => setSent(true)} style={{ width: "100%" }}>Send Message</Btn>
+            </div>
+          </FadeIn>
+        )}
+        <FadeIn delay={0.2} style={{ textAlign: "center", marginTop: 48 }}>
+          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: COLORS.textMuted }}>
+            You can also reach us at <span style={{ color: COLORS.navy, fontWeight: 600 }}>hello@atlastutoring.com.au</span>
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+  );
+};
+
+const Footer = ({ setPage }) => (
+  <footer style={{ background: COLORS.navy, padding: "64px 5% 40px" }}>
+    <div style={{ maxWidth: 1120, margin: "0 auto" }}>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 48, marginBottom: 48 }}>
+        <div style={{ minWidth: 200 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
+            <Logo size={28} light />
+            <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 18, fontWeight: 700, color: "#fff", letterSpacing: 1.5 }}>ATLAS</span>
+          </div>
+          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.5)", lineHeight: 1.7, maxWidth: 260 }}>Elite tutoring from WA's top-ranked students. Where the best students teach the next generation.</p>
+        </div>
+        <div>
+          <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 600, letterSpacing: 2, color: COLORS.gold, marginBottom: 16 }}>PAGES</div>
+          {PAGES.map(p => (
+            <div key={p} onClick={() => setPage(p)} style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.6)", cursor: "pointer", padding: "4px 0", transition: "color 0.3s" }} onMouseEnter={e => e.target.style.color = "#fff"} onMouseLeave={e => e.target.style.color = "rgba(255,255,255,0.6)"}>{p}</div>
+          ))}
+        </div>
+        <div>
+          <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 600, letterSpacing: 2, color: COLORS.gold, marginBottom: 16 }}>CONTACT</div>
+          <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "rgba(255,255,255,0.6)", lineHeight: 2 }}>
+            hello@atlastutoring.com.au<br />
+            Perth, Western Australia
+          </div>
+        </div>
+      </div>
+      <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: 24, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
+        <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: "rgba(255,255,255,0.35)" }}>© 2026 Atlas Tutoring. All rights reserved.</div>
+        <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: "rgba(255,255,255,0.35)" }}>Tutoring by WA's #1 Ranked Students</div>
+      </div>
+    </div>
+  </footer>
+);
+
+export default function AtlasTutoring() {
+  const [page, setPage] = useState("Home");
+
+  const navigate = useCallback((p) => {
+    setPage(p);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
+  const renderPage = () => {
+    switch (page) {
+      case "Subjects": return <SubjectsPage setPage={navigate} />;
+      case "Tutors": return <TutorsPage />;
+      case "How It Works": return <HowItWorksPage />;
+      case "Pricing": return <PricingPage setPage={navigate} />;
+      case "About": return <AboutPage />;
+      case "Apply": return <ApplyPage />;
+      case "Contact": return <ContactPage />;
+      default: return <HomePage setPage={navigate} />;
+    }
+  };
+
+  return (
+    <div style={{ minHeight: "100vh", background: COLORS.bg }}>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+        ::selection { background: ${COLORS.gold}33; color: ${COLORS.navy}; }
+        input:focus, textarea:focus { border-color: ${COLORS.gold} !important; box-shadow: 0 0 0 3px ${COLORS.gold}22; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+        @media (max-width: 768px) {
+          .nav-links-desktop { display: none !important; }
+          .nav-menu-btn { display: block !important; }
+        }
+        @media (min-width: 769px) {
+          .nav-menu-btn { display: none !important; }
+        }
+      `}</style>
+      <Nav page={page} setPage={navigate} />
+      {renderPage()}
+      <Footer setPage={navigate} />
+    </div>
+  );
+}
