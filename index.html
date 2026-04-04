@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Atlas Tutoring — Learn from WA's #1 Students</title>
 <meta name="description" content="Atlas Tutoring connects students with...">
-<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cG9seWdvbiBwb2ludHM9IjUwLDUgODgsOTIgMTIsOTIiIGZpbGw9IiMwRjFGM0QiLz48cG9seWdvbiBwb2ludHM9IjUwLDMyIDcyLDg1IDI4LDg1IiBmaWxsPSIjRDRBRjdBIi8+PC9zdmc+">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAEm0lEQVR4nNWWTW9TRxSGnzNzrx1DsB2TOOSDEFEkqgALGgWFJMIIBKRfKlAZFmXVqitE1H1b0VKpyy77GypF9F900YWXdNFWSGXbbgiOnXs9M6cLJwGH2HFAVOqRZnGluWee886ZVwf+zzE6euXg0OT8GUDgvnmVHK/0E5VKBEiSWb8cbPwjoPCb/HcA5bICGsR8ITa7NDS1tAirnmrVvnmAatWyuuqL00sVMbaiwXkP3zMzk9l3rlcC2IwQ9FtBDOqNIPODLpdnddUD+7qK/QFsVp8/unBVTFzR4DyKExtZs5G7C8DsbPTmAB4/bu8XuyzGKEhAiDR4KyIr+cn5ErVai32osB8AoVZr5SfnSwJ31DsQIlUE1ZbYuKRiV6Bq96NC/wBbSU10T6J4BFUnIJEVFCL1DiNyd2bmkaVWc/SpQr8Az6sXWSE4TVyIJkYGuFUZp950Yg0eE+WfrBXmAahW+8rdH8DsbARVq2JXxMYlI7gk9fLe3Cgr199i7PAAqfMYkYwx0QNA+yysLwChVnMzM4+sEblLcCStEE0M5/hocYxSPub9c2XqDW8N3ouxlfzRhaus9mdMewNsSvlkrTCPifJG8Enq5dbFcSaHc6w1HOfeLpHNGLxqEGMUscvA81fzWgDtUGPMAxHJOB8oDMbcWBxnIw00E8+lsyMsnCpRb7jIqEfgTr9PsjfAi7Zr44qo88002NPThxgpZGm5sMXHp8vHyGaMhBCcRPEIJroH7GlMfSnQtl1U22fx2fI0AxlDUMWI0Ew8Z6bzjBSypD5EBIeIrAyeWBrZ60l2B9hhu6I+rG94e+nsMAunSqytO6wRRMB5pTgYc2NpjDQNItASG5ck0U/2UqE7wA7bFZHQagXmTha3q99OIkKSBm4ujVMYjPEhGDSAyLuAcvx46HJKV4AO2yU4UheiyXKO5blRnjXa1W9vFkhdoFzMcnr6EI3EW8F7a+OrxenzF3o9yd0BdtiuEdx600n1wjjHygdIWgHZcatBlWxk+Py9abKRIQQA1RDsd71mhd2aQwDNT86XxMZ/iMiQ84HDh2L56cs5ioMxzutLAKpgDLSccv3+r/z9NNU4EjTQ8gONifrvtX+2cvdWYBfbrTecXJsbZaqc27V6oKMZry+O0dhwYkT2nBV2AnTYrgaHolE2Yzh3cojE7X74djIRNlLP7coEU+UcqQsR2ntW6AR4yXbV1xteFk6VuHR2mHrDdzTfbipspIGpco5rc6PUG06M0HNW2K0Jt21Xtd1cdy4fxXul5QPOa88VgtJIPO+cKNCeFTTS0H1WeA7wgu2aTdutN7398PwRbiyOkY0No0NZhguZnqtczJKNLbcvTvLB+SM8azgxol1nhZeaQgNfYWgheCOEZuL54eGfrG94eqjfEUHh4IClmXiMCKp4kMga+zVwpePaXqy+cGzxpokOPNTQVskYWG96ktQjRvqeMgTQoGQzloM5u+UJiIkIrvHx079++XnrzA4FAjRF/Td4F1SwLQcHslDMWbp6aZcwQBoCrTRgDIjiVcQEaO4z1ZuNHbdatczuPcW8VtSOB1j1W5//AsChKDLxBT1dAAAAAElFTkSuQmCC">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -502,7 +502,7 @@ function renderHome() {
   var gridV = '', gridH = '';
   for (var i = 0; i < 20; i++) gridV += '<div class="hero-grid-v" style="left:'+(i%5)*25+'%;top:'+Math.floor(i/5)*25+'%"></div>';
   for (var i = 0; i < 16; i++) gridH += '<div class="hero-grid-h" style="top:'+(i%4)*25+'%"></div>';
-  var stats = [{n:'99.95',l:'Highest ATAR'},{n:'#1',l:'State Ranked Tutors'},{n:'8+',l:'ATAR Subjects'},{n:'100%',l:'WA Focused'}];
+  var stats = [{n:'99.95',l:'Median Tutor ATAR'},{n:'#1',l:'State Ranked Tutors'},{n:'8+',l:'ATAR Subjects'},{n:'100%',l:'WA Focused'}];
   var statsH = '';
   for (var i = 0; i < stats.length; i++) statsH += '<div class="fade-in" style="transition-delay:'+i*0.1+'s"><div class="stat-number">'+stats[i].n+'</div><div class="stat-label">'+stats[i].l+'</div></div>';
   var tc = '';
