@@ -4,582 +4,71 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Atlas Tutoring — Learn from WA's #1 Students</title>
-<meta name="description" content="Atlas Tutoring connects students with...">
+<meta name="description" content="Atlas Tutoring connects students with the top-ranked graduate in each subject in Western Australia.">
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAEm0lEQVR4nNWWTW9TRxSGnzNzrx1DsB2TOOSDEFEkqgALGgWFJMIIBKRfKlAZFmXVqitE1H1b0VKpyy77GypF9F900YWXdNFWSGXbbgiOnXs9M6cLJwGH2HFAVOqRZnGluWee886ZVwf+zzE6euXg0OT8GUDgvnmVHK/0E5VKBEiSWb8cbPwjoPCb/HcA5bICGsR8ITa7NDS1tAirnmrVvnmAatWyuuqL00sVMbaiwXkP3zMzk9l3rlcC2IwQ9FtBDOqNIPODLpdnddUD+7qK/QFsVp8/unBVTFzR4DyKExtZs5G7C8DsbPTmAB4/bu8XuyzGKEhAiDR4KyIr+cn5ErVai32osB8AoVZr5SfnSwJ31DsQIlUE1ZbYuKRiV6Bq96NC/wBbSU10T6J4BFUnIJEVFCL1DiNyd2bmkaVWc/SpQr8Az6sXWSE4TVyIJkYGuFUZp950Yg0eE+WfrBXmAahW+8rdH8DsbARVq2JXxMYlI7gk9fLe3Cgr199i7PAAqfMYkYwx0QNA+yysLwChVnMzM4+sEblLcCStEE0M5/hocYxSPub9c2XqDW8N3ouxlfzRhaus9mdMewNsSvlkrTCPifJG8Enq5dbFcSaHc6w1HOfeLpHNGLxqEGMUscvA81fzWgDtUGPMAxHJOB8oDMbcWBxnIw00E8+lsyMsnCpRb7jIqEfgTr9PsjfAi7Zr44qo88002NPThxgpZGm5sMXHp8vHyGaMhBCcRPEIJroH7GlMfSnQtl1U22fx2fI0AxlDUMWI0Ew8Z6bzjBSypD5EBIeIrAyeWBrZ60l2B9hhu6I+rG94e+nsMAunSqytO6wRRMB5pTgYc2NpjDQNItASG5ck0U/2UqE7wA7bFZHQagXmTha3q99OIkKSBm4ujVMYjPEhGDSAyLuAcvx46HJKV4AO2yU4UheiyXKO5blRnjXa1W9vFkhdoFzMcnr6EI3EW8F7a+OrxenzF3o9yd0BdtiuEdx600n1wjjHygdIWgHZcatBlWxk+Py9abKRIQQA1RDsd71mhd2aQwDNT86XxMZ/iMiQ84HDh2L56cs5ioMxzutLAKpgDLSccv3+r/z9NNU4EjTQ8gONifrvtX+2cvdWYBfbrTecXJsbZaqc27V6oKMZry+O0dhwYkT2nBV2AnTYrgaHolE2Yzh3cojE7X74djIRNlLP7coEU+UcqQsR2ntW6AR4yXbV1xteFk6VuHR2mHrDdzTfbipspIGpco5rc6PUG06M0HNW2K0Jt21Xtd1cdy4fxXul5QPOa88VgtJIPO+cKNCeFTTS0H1WeA7wgu2aTdutN7398PwRbiyOkY0No0NZhguZnqtczJKNLbcvTvLB+SM8azgxol1nhZeaQgNfYWgheCOEZuL54eGfrG94eqjfEUHh4IClmXiMCKp4kMga+zVwpePaXqy+cGzxpokOPNTQVskYWG96ktQjRvqeMgTQoGQzloM5u+UJiIkIrvHx079++XnrzA4FAjRF/Td4F1SwLQcHslDMWbp6aZcwQBoCrTRgDIjiVcQEaO4z1ZuNHbdatczuPcW8VtSOB1j1W5//AsChKDLxBT1dAAAAAElFTkSuQmCC">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --navy: #0F1F3D;
-  --navy-light: #1a2d52;
-  --navy-dark: #1d3461;
-  --gold: #D4AF7A;
-  --gold-hover: #c9a06a;
-  --bg: #F8F9FB;
-  --white: #FFFFFF;
-  --text: #111827;
-  --text-muted: #6B7280;
-  --border: #E5E7EB;
-}
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'DM Sans', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: var(--bg);
-  color: var(--text);
-  overflow-x: hidden;
-}
-::selection { background: rgba(212,175,122,0.2); color: var(--navy); }
-img { max-width: 100%; }
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(32px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes bounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(8px); }
-}
-
-.fade-in {
-  opacity: 0; transform: translateY(32px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-
-/* NAV */
-.nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  background: transparent; backdrop-filter: none;
-  border-bottom: 1px solid transparent;
-  transition: all 0.4s ease; padding: 0 5%;
-}
-.nav.scrolled {
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(20px);
-  border-bottom-color: var(--border);
-}
-.nav-inner {
-  max-width: 1280px; margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between; height: 72px;
-}
-.nav-logo {
-  display: flex; align-items: center; gap: 12px; cursor: pointer; text-decoration: none;
-}
-.nav-logo-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 20px; font-weight: 700; letter-spacing: 1.5px;
-  color: #fff; transition: color 0.4s;
-}
-.nav.scrolled .nav-logo-text,
-.nav.on-subpage .nav-logo-text { color: var(--navy); }
-.nav-logo svg .logo-outer { fill: #fff; transition: fill 0.4s; }
-.nav.scrolled .nav-logo svg .logo-outer,
-.nav.on-subpage .nav-logo svg .logo-outer { fill: var(--navy); }
-
-.nav-links { display: flex; align-items: center; gap: 4px; }
-.nav-link {
-  background: none; border: none; cursor: pointer;
-  padding: 8px 14px; font-size: 13px; font-weight: 400;
-  color: rgba(255,255,255,0.85);
-  letter-spacing: 0.8px; font-family: 'DM Sans', sans-serif;
-  transition: color 0.3s; border-bottom: 2px solid transparent;
-}
-.nav-link:hover { color: #fff; }
-.nav-link.active { font-weight: 600; color: var(--gold); border-bottom-color: var(--gold); }
-.nav.scrolled .nav-link,
-.nav.on-subpage .nav-link { color: var(--text-muted); }
-.nav.scrolled .nav-link:hover,
-.nav.on-subpage .nav-link:hover { color: var(--navy); }
-.nav.scrolled .nav-link.active,
-.nav.on-subpage .nav-link.active { color: var(--navy); font-weight: 600; border-bottom-color: var(--gold); }
-
-.nav-hamburger {
-  display: none; background: none; border: none; cursor: pointer; padding: 8px;
-}
-.nav-hamburger svg { stroke: #fff; transition: stroke 0.4s; }
-.nav.scrolled .nav-hamburger svg,
-.nav.on-subpage .nav-hamburger svg { stroke: var(--navy); }
-
-.mobile-menu {
-  display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0;
-  background: rgba(255,255,255,0.98); z-index: 999;
-  flex-direction: column; align-items: center; padding-top: 40px; gap: 8px;
-}
-.mobile-menu.open { display: flex; }
-.mobile-menu-link {
-  background: none; border: none; cursor: pointer;
-  padding: 14px 32px; font-size: 17px; font-weight: 400;
-  color: var(--text-muted); font-family: 'DM Sans', sans-serif; letter-spacing: 1px;
-}
-.mobile-menu-link.active { font-weight: 700; color: var(--navy); }
-
-@media (max-width: 768px) {
-  .nav-links { display: none !important; }
-  .nav-hamburger { display: block !important; }
-}
-
-/* BUTTONS */
-.btn {
-  padding: 14px 32px; font-size: 14px; font-weight: 600;
-  font-family: 'DM Sans', sans-serif; letter-spacing: 1.2px;
-  border-radius: 6px; cursor: pointer; transition: all 0.3s ease;
-  border: none; display: inline-block; text-align: center;
-}
-.btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(15,31,61,0.15); }
-.btn-primary { background: var(--navy); color: #fff; }
-.btn-primary:hover { background: var(--navy-light); }
-.btn-gold { background: var(--gold); color: var(--navy); }
-.btn-gold:hover { background: var(--gold-hover); }
-.btn-outline { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.4); }
-.btn-outline:hover { background: rgba(255,255,255,0.1); }
-.btn-outline-dark { background: transparent; color: var(--navy); border: 1.5px solid var(--navy); }
-.btn-outline-dark:hover { background: var(--bg); }
-.btn-full { width: 100%; }
-
-/* SECTIONS */
-.section { padding: 100px 5%; }
-.section-inner { max-width: 1120px; margin: 0 auto; }
-.section-narrow { max-width: 800px; margin: 0 auto; }
-.section-title { text-align: center; margin-bottom: 56px; }
-.section-label {
-  font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600;
-  letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 16px;
-}
-.section-heading {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(28px, 4vw, 44px); font-weight: 700;
-  color: var(--navy); margin: 0 0 16px; line-height: 1.2;
-}
-.section-subtitle {
-  font-family: 'DM Sans', sans-serif; font-size: 17px;
-  color: var(--text-muted); max-width: 600px; margin: 0 auto; line-height: 1.7;
-}
-
-.gold-divider {
-  display: flex; align-items: center; justify-content: center; gap: 12px; padding: 60px 0;
-}
-.gold-divider-line { width: 40px; height: 1px; background: var(--gold); }
-
-/* GRIDS */
-.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-.grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; }
-
-/* HERO */
-.hero {
-  min-height: 100vh;
-  background: linear-gradient(135deg, var(--navy) 0%, #162a50 50%, var(--navy-dark) 100%);
-  display: flex; align-items: center; justify-content: center;
-  position: relative; overflow: hidden;
-}
-.hero-grid { position: absolute; inset: 0; opacity: 0.06; }
-.hero-grid-v {
-  position: absolute; width: 1px; height: 100%;
-  background: linear-gradient(to bottom, transparent, rgba(212,175,122,0.3), transparent);
-}
-.hero-grid-h {
-  position: absolute; left: 0; width: 100%; height: 1px;
-  background: linear-gradient(to right, transparent, rgba(212,175,122,0.2), transparent);
-}
-.hero-watermark { position: absolute; top: 15%; right: 10%; opacity: 0.04; }
-.hero-content {
-  text-align: center; position: relative; z-index: 2; padding: 0 24px; max-width: 800px;
-}
-.hero-label {
-  font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600;
-  letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 24px;
-  opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards;
-}
-.hero-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(36px, 6vw, 72px); font-weight: 700;
-  color: #fff; margin: 0 0 24px; line-height: 1.1; letter-spacing: -0.5px;
-  opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards;
-}
-.hero-title span { color: var(--gold); }
-.hero-subtitle {
-  font-family: 'DM Sans', sans-serif;
-  font-size: clamp(15px, 2vw, 18px); color: rgba(255,255,255,0.75);
-  max-width: 580px; margin: 0 auto 40px; line-height: 1.75;
-  opacity: 0; animation: fadeUp 0.8s ease 0.6s forwards;
-}
-.hero-buttons {
-  display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
-  opacity: 0; animation: fadeUp 0.8s ease 0.8s forwards;
-}
-.hero-scroll { position: absolute; bottom: 40px; left: 50%; animation: bounce 2s infinite; }
-
-/* STATS */
-.stats { background: var(--white); padding: 80px 5%; }
-.stats-grid {
-  max-width: 1080px; margin: 0 auto;
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 40px; text-align: center;
-}
-.stat-number { font-size: clamp(32px, 4vw, 48px); font-family: 'Cormorant Garamond', serif; font-weight: 700; color: var(--navy); }
-.stat-label { font-size: 13px; font-family: 'DM Sans', sans-serif; letter-spacing: 2px; color: var(--text-muted); text-transform: uppercase; margin-top: 8px; }
-
-/* TUTOR CARDS */
-.tutor-card { background: var(--white); border-radius: 12px; padding: 32px; border: 1px solid var(--border); transition: all 0.35s ease; cursor: pointer; }
-.tutor-card:hover { border-color: var(--gold); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(15,31,61,0.1); }
-.tutor-card-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
-.tutor-avatar { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: #fff; font-family: 'DM Sans', sans-serif; }
-.tutor-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: var(--navy); }
-.tutor-subject { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--gold); font-weight: 600; }
-.tutor-stats { display: flex; gap: 16px; margin-bottom: 16px; }
-.tutor-stat-box { background: var(--bg); border-radius: 8px; padding: 8px 14px; text-align: center; }
-.tutor-stat-label { font-size: 11px; font-family: 'DM Sans', sans-serif; color: var(--text-muted); letter-spacing: 1px; }
-.tutor-stat-value { font-size: 18px; font-family: 'Cormorant Garamond', serif; font-weight: 700; color: var(--navy); }
-.tutor-bio { font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text-muted); line-height: 1.7; margin: 0; }
-
-/* TUTOR FULL */
-.tutor-full-card { background: var(--white); border-radius: 16px; overflow: hidden; border: 1px solid var(--border); }
-.tutor-full-bar { height: 6px; background: linear-gradient(90deg, var(--navy), var(--gold)); }
-.tutor-full-content { padding: 32px; }
-.tutor-full-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
-.tutor-full-avatar { width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700; color: #fff; font-family: 'DM Sans', sans-serif; }
-.tutor-full-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--navy); }
-.tutor-full-uni { font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--text-muted); }
-.tutor-full-stats { display: flex; gap: 12px; margin-bottom: 20px; }
-.tutor-full-stat-box { flex: 1; background: var(--bg); border-radius: 8px; padding: 10px 14px; text-align: center; }
-.tutor-full-stat-label { font-size: 10px; font-family: 'DM Sans', sans-serif; color: var(--text-muted); letter-spacing: 1.5px; margin-bottom: 4px; }
-.tutor-full-stat-value { font-size: 22px; font-family: 'Cormorant Garamond', serif; font-weight: 700; color: var(--navy); }
-
-/* STEPS */
-.step-row { display: flex; gap: 32px; margin-bottom: 56px; align-items: flex-start; }
-.step-number { font-family: 'Cormorant Garamond', serif; font-size: 56px; font-weight: 700; color: var(--gold); opacity: 0.4; line-height: 1; min-width: 70px; text-align: right; }
-.step-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 700; color: var(--navy); margin: 0 0 12px; }
-.step-desc { font-family: 'DM Sans', sans-serif; font-size: 16px; color: var(--text); line-height: 1.75; margin: 0 0 8px; }
-.step-detail { font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text-muted); line-height: 1.7; margin: 0; }
-@media (max-width: 600px) { .step-row { flex-direction: column; gap: 8px; } .step-number { text-align: left; font-size: 40px; } }
-
-.steps-card { padding: 32px; border-radius: 12px; border: 1px solid var(--border); background: var(--white); position: relative; }
-.steps-card-number { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 700; color: var(--gold); opacity: 0.3; position: absolute; top: 16px; right: 24px; }
-.steps-card-label { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--gold); margin-bottom: 12px; }
-.steps-card-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--navy); margin: 0 0 12px; }
-.steps-card-desc { font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--text-muted); line-height: 1.7; margin: 0; }
-
-/* PRICING */
-.pricing-card { background: var(--white); border-radius: 20px; border: 1px solid var(--border); overflow: hidden; max-width: 480px; margin: 0 auto; }
-.pricing-header { background: linear-gradient(135deg, var(--navy), var(--navy-dark)); padding: 40px 40px 32px; text-align: center; }
-.pricing-label { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
-.pricing-amount { font-family: 'Cormorant Garamond', serif; font-size: 56px; font-weight: 700; color: #fff; }
-.pricing-amount span { font-size: 20px; font-weight: 400; color: rgba(255,255,255,0.6); }
-.pricing-subtitle { font-family: 'DM Sans', sans-serif; font-size: 14px; color: rgba(255,255,255,0.6); margin-top: 4px; }
-.pricing-body { padding: 32px 40px 40px; }
-.pricing-feature { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
-.pricing-feature:last-of-type { border-bottom: none; }
-.pricing-feature span { font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text); line-height: 1.5; }
-
-/* SUBJECT CARDS */
-.subject-card { background: var(--white); border-radius: 12px; padding: 28px; border: 1px solid var(--border); transition: all 0.35s; cursor: pointer; }
-.subject-card:hover { border-color: var(--gold); transform: translateY(-3px); box-shadow: 0 12px 36px rgba(15,31,61,0.08); }
-.subject-icon { font-size: 28px; margin-bottom: 12px; }
-.subject-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: var(--navy); margin: 0 0 8px; }
-.subject-info { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--text-muted); margin-bottom: 4px; }
-.subject-info strong { color: var(--navy); font-weight: 600; }
-.subject-link { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; color: var(--gold); letter-spacing: 0.5px; margin-top: 16px; display: block; }
-
-/* FORMS */
-.form-group { margin-bottom: 20px; }
-.form-label { display: block; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; }
-.form-input, .form-textarea { width: 100%; padding: 12px 16px; border: 1px solid var(--border); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--text); outline: none; transition: border 0.3s, box-shadow 0.3s; background: var(--white); }
-.form-textarea { resize: vertical; }
-.form-input:focus, .form-textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(212,175,122,0.13); }
-
-/* ABOUT */
-.about-text { font-family: 'DM Sans', sans-serif; font-size: 16px; color: var(--text); line-height: 1.85; }
-.about-text p { margin-bottom: 20px; }
-.about-lead { font-size: 20px; font-family: 'Cormorant Garamond', serif; color: var(--navy); font-weight: 600; line-height: 1.6; margin-bottom: 32px; }
-.about-benefit { background: var(--bg); border-radius: 12px; padding: 28px; text-align: center; }
-.about-benefit-bar { width: 4px; height: 24px; background: var(--gold); border-radius: 2px; margin: 0 auto 16px; }
-.about-benefit h4 { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 700; color: var(--navy); margin: 0 0 8px; }
-.about-benefit p { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--text-muted); line-height: 1.65; margin: 0; }
-
-.diff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-top: 40px; }
-.diff-pill { background: var(--bg); border-radius: 12px; padding: 24px; text-align: center; }
-.diff-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); margin: 0 auto 16px; }
-.diff-label { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; color: var(--navy); letter-spacing: 0.5px; }
-
-/* CTA */
-.cta-section { background: linear-gradient(135deg, var(--navy), var(--navy-dark)); padding: 100px 5%; text-align: center; }
-.cta-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 44px); font-weight: 700; color: #fff; margin: 0 0 16px; }
-.cta-subtitle { font-family: 'DM Sans', sans-serif; font-size: 17px; color: rgba(255,255,255,0.7); max-width: 500px; margin: 0 auto 40px; line-height: 1.7; }
-.cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-
-.success-box { text-align: center; padding: 48px; background: var(--white); border-radius: 16px; border: 1px solid var(--border); }
-.success-box h3 { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--navy); margin-top: 20px; }
-.success-box p { font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--text-muted); margin-top: 8px; }
-
-/* FOOTER */
-.footer { background: var(--navy); padding: 64px 5% 40px; }
-.footer-inner { max-width: 1120px; margin: 0 auto; }
-.footer-grid { display: flex; flex-wrap: wrap; gap: 48px; margin-bottom: 48px; }
-.footer-brand p { font-family: 'DM Sans', sans-serif; font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; max-width: 260px; }
-.footer-col-title { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2px; color: var(--gold); margin-bottom: 16px; }
-.footer-link { font-family: 'DM Sans', sans-serif; font-size: 13px; color: rgba(255,255,255,0.6); cursor: pointer; padding: 4px 0; transition: color 0.3s; display: block; background: none; border: none; text-align: left; }
-.footer-link:hover { color: #fff; }
-.footer-contact { font-family: 'DM Sans', sans-serif; font-size: 13px; color: rgba(255,255,255,0.6); line-height: 2; }
-.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-.footer-bottom span { font-family: 'DM Sans', sans-serif; font-size: 12px; color: rgba(255,255,255,0.35); }
-
-.subpage-section { padding-top: 120px; padding-bottom: 100px; min-height: 100vh; }
-.form-container { background: var(--white); border-radius: 16px; padding: 40px 36px; border: 1px solid var(--border); }
-.form-container.alt-bg { background: var(--bg); }
-.check-icon { margin-top: 2px; flex-shrink: 0; }
+:root{--navy:#0F1F3D;--navy-light:#1a2d52;--navy-dark:#1d3461;--gold:#D4AF7A;--gold-hover:#c9a06a;--bg:#F8F9FB;--white:#FFFFFF;--text:#111827;--text-muted:#6B7280;--border:#E5E7EB}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;background:var(--bg);color:var(--text);overflow-x:hidden}::selection{background:rgba(212,175,122,0.2);color:var(--navy)}img{max-width:100%}@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}.fade-in{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}.fade-in.visible{opacity:1;transform:translateY(0)}.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:transparent;backdrop-filter:none;border-bottom:1px solid transparent;transition:all .4s ease;padding:0 5%}.nav.scrolled{background:rgba(255,255,255,.95);backdrop-filter:blur(20px);border-bottom-color:var(--border)}.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px}.nav-logo{display:flex;align-items:center;gap:12px;cursor:pointer;text-decoration:none}.nav-logo-text{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;letter-spacing:1.5px;color:#fff;transition:color .4s}.nav.scrolled .nav-logo-text,.nav.on-subpage .nav-logo-text{color:var(--navy)}.nav-logo svg .logo-outer{fill:#fff;transition:fill .4s}.nav.scrolled .nav-logo svg .logo-outer,.nav.on-subpage .nav-logo svg .logo-outer{fill:var(--navy)}.nav-links{display:flex;align-items:center;gap:4px}.nav-link{background:none;border:none;cursor:pointer;padding:8px 14px;font-size:13px;font-weight:400;color:rgba(255,255,255,.85);letter-spacing:.8px;font-family:'DM Sans',sans-serif;transition:color .3s;border-bottom:2px solid transparent}.nav-link:hover{color:#fff}.nav-link.active{font-weight:600;color:var(--gold);border-bottom-color:var(--gold)}.nav.scrolled .nav-link,.nav.on-subpage .nav-link{color:var(--text-muted)}.nav.scrolled .nav-link:hover,.nav.on-subpage .nav-link:hover{color:var(--navy)}.nav.scrolled .nav-link.active,.nav.on-subpage .nav-link.active{color:var(--navy);font-weight:600;border-bottom-color:var(--gold)}.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px}.nav-hamburger svg{stroke:#fff;transition:stroke .4s}.nav.scrolled .nav-hamburger svg,.nav.on-subpage .nav-hamburger svg{stroke:var(--navy)}.mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;bottom:0;background:rgba(255,255,255,.98);z-index:999;flex-direction:column;align-items:center;padding-top:40px;gap:8px}.mobile-menu.open{display:flex}.mobile-menu-link{background:none;border:none;cursor:pointer;padding:14px 32px;font-size:17px;font-weight:400;color:var(--text-muted);font-family:'DM Sans',sans-serif;letter-spacing:1px}.mobile-menu-link.active{font-weight:700;color:var(--navy)}@media(max-width:768px){.nav-links{display:none!important}.nav-hamburger{display:block!important}}.btn{padding:14px 32px;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;letter-spacing:1.2px;border-radius:6px;cursor:pointer;transition:all .3s ease;border:none;display:inline-block;text-align:center}.btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(15,31,61,.15)}.btn-primary{background:var(--navy);color:#fff}.btn-primary:hover{background:var(--navy-light)}.btn-gold{background:var(--gold);color:var(--navy)}.btn-gold:hover{background:var(--gold-hover)}.btn-outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}.btn-outline:hover{background:rgba(255,255,255,.1)}.btn-outline-dark{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}.btn-outline-dark:hover{background:var(--bg)}.btn-full{width:100%}.section{padding:100px 5%}.section-inner{max-width:1120px;margin:0 auto}.section-narrow{max-width:800px;margin:0 auto}.section-title{text-align:center;margin-bottom:56px}.section-label{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:16px}.section-heading{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,44px);font-weight:700;color:var(--navy);margin:0 0 16px;line-height:1.2}.section-subtitle{font-family:'DM Sans',sans-serif;font-size:17px;color:var(--text-muted);max-width:600px;margin:0 auto;line-height:1.7}.gold-divider{display:flex;align-items:center;justify-content:center;gap:12px;padding:60px 0}.gold-divider-line{width:40px;height:1px;background:var(--gold)}.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}.grid-4{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px}.hero{min-height:100vh;background:linear-gradient(135deg,var(--navy) 0%,#162a50 50%,var(--navy-dark) 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}.hero-grid{position:absolute;inset:0;opacity:.06}.hero-grid-v{position:absolute;width:1px;height:100%;background:linear-gradient(to bottom,transparent,rgba(212,175,122,.3),transparent)}.hero-grid-h{position:absolute;left:0;width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(212,175,122,.2),transparent)}.hero-watermark{position:absolute;top:15%;right:10%;opacity:.04}.hero-content{text-align:center;position:relative;z-index:2;padding:0 24px;max-width:800px}.hero-label{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:24px;opacity:0;animation:fadeUp .8s ease .2s forwards}.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,6vw,72px);font-weight:700;color:#fff;margin:0 0 24px;line-height:1.1;letter-spacing:-.5px;opacity:0;animation:fadeUp .8s ease .4s forwards}.hero-title span{color:var(--gold)}.hero-subtitle{font-family:'DM Sans',sans-serif;font-size:clamp(15px,2vw,18px);color:rgba(255,255,255,.75);max-width:580px;margin:0 auto 40px;line-height:1.75;opacity:0;animation:fadeUp .8s ease .6s forwards}.hero-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp .8s ease .8s forwards}.hero-scroll{position:absolute;bottom:40px;left:50%;animation:bounce 2s infinite}.stats{background:var(--white);padding:80px 5%}.stats-grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;text-align:center}.stat-number{font-size:clamp(32px,4vw,48px);font-family:'Cormorant Garamond',serif;font-weight:700;color:var(--navy)}.stat-label{font-size:13px;font-family:'DM Sans',sans-serif;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;margin-top:8px}.tutor-card{background:var(--white);border-radius:12px;padding:32px;border:1px solid var(--border);transition:all .35s ease;cursor:pointer}.tutor-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 16px 48px rgba(15,31,61,.1)}.tutor-card-header{display:flex;align-items:center;gap:16px;margin-bottom:20px}.tutor-avatar{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:#fff;font-family:'DM Sans',sans-serif}.tutor-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--navy)}.tutor-subject{font-family:'DM Sans',sans-serif;font-size:13px;color:var(--gold);font-weight:600}.tutor-stats{display:flex;gap:16px;margin-bottom:16px}.tutor-stat-box{background:var(--bg);border-radius:8px;padding:8px 14px;text-align:center}.tutor-stat-label{font-size:11px;font-family:'DM Sans',sans-serif;color:var(--text-muted);letter-spacing:1px}.tutor-stat-value{font-size:18px;font-family:'Cormorant Garamond',serif;font-weight:700;color:var(--navy)}.tutor-bio{font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text-muted);line-height:1.7;margin:0}.tutor-full-card{background:var(--white);border-radius:16px;overflow:hidden;border:1px solid var(--border)}.tutor-full-bar{height:6px;background:linear-gradient(90deg,var(--navy),var(--gold))}.tutor-full-content{padding:32px}.tutor-full-header{display:flex;align-items:center;gap:16px;margin-bottom:20px}.tutor-full-avatar{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;color:#fff;font-family:'DM Sans',sans-serif}.tutor-full-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--navy)}.tutor-full-stats{display:flex;gap:12px;margin-bottom:20px}.tutor-full-stat-box{flex:1;background:var(--bg);border-radius:8px;padding:10px 14px;text-align:center}.tutor-full-stat-label{font-size:10px;font-family:'DM Sans',sans-serif;color:var(--text-muted);letter-spacing:1.5px;margin-bottom:4px}.tutor-full-stat-value{font-size:22px;font-family:'Cormorant Garamond',serif;font-weight:700;color:var(--navy)}.step-row{display:flex;gap:32px;margin-bottom:56px;align-items:flex-start}.step-number{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:700;color:var(--gold);opacity:.4;line-height:1;min-width:70px;text-align:right}.step-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:var(--navy);margin:0 0 12px}.step-desc{font-family:'DM Sans',sans-serif;font-size:16px;color:var(--text);line-height:1.75;margin:0 0 8px}.step-detail{font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text-muted);line-height:1.7;margin:0}@media(max-width:600px){.step-row{flex-direction:column;gap:8px}.step-number{text-align:left;font-size:40px}}.steps-card{padding:32px;border-radius:12px;border:1px solid var(--border);background:var(--white);position:relative}.steps-card-number{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;color:var(--gold);opacity:.3;position:absolute;top:16px;right:24px}.steps-card-label{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;color:var(--gold);margin-bottom:12px}.steps-card-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--navy);margin:0 0 12px}.steps-card-desc{font-family:'DM Sans',sans-serif;font-size:15px;color:var(--text-muted);line-height:1.7;margin:0}.pricing-card{background:var(--white);border-radius:20px;border:1px solid var(--border);overflow:hidden;max-width:480px;margin:0 auto}.pricing-header{background:linear-gradient(135deg,var(--navy),var(--navy-dark));padding:40px 40px 32px;text-align:center}.pricing-label{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:8px}.pricing-amount{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:700;color:#fff}.pricing-amount span{font-size:20px;font-weight:400;color:rgba(255,255,255,.6)}.pricing-subtitle{font-family:'DM Sans',sans-serif;font-size:14px;color:rgba(255,255,255,.6);margin-top:4px}.pricing-body{padding:32px 40px 40px}.pricing-feature{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)}.pricing-feature:last-of-type{border-bottom:none}.pricing-feature span{font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);line-height:1.5}.subject-card{background:var(--white);border-radius:12px;padding:28px;border:1px solid var(--border);transition:all .35s}.subject-card:hover{border-color:var(--gold);box-shadow:0 12px 36px rgba(15,31,61,.08)}.subject-icon{font-size:28px;margin-bottom:12px}.subject-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--navy);margin:0 0 8px}.subject-info{font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text-muted);margin-bottom:4px}.subject-info strong{color:var(--navy);font-weight:600}.form-group{margin-bottom:20px}.form-label{display:block;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1.5px;color:var(--text-muted);text-transform:uppercase;margin-bottom:8px}.form-input,.form-textarea{width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--text);outline:none;transition:border .3s,box-shadow .3s;background:var(--white)}.form-textarea{resize:vertical}.form-input:focus,.form-textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,175,122,.13)}.about-text{font-family:'DM Sans',sans-serif;font-size:16px;color:var(--text);line-height:1.85}.about-text p{margin-bottom:20px}.about-lead{font-size:20px;font-family:'Cormorant Garamond',serif;color:var(--navy);font-weight:600;line-height:1.6;margin-bottom:32px}.about-benefit{background:var(--bg);border-radius:12px;padding:28px;text-align:center}.about-benefit-bar{width:4px;height:24px;background:var(--gold);border-radius:2px;margin:0 auto 16px}.about-benefit h4{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:var(--navy);margin:0 0 8px}.about-benefit p{font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text-muted);line-height:1.65;margin:0}.diff-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:40px}.diff-pill{background:var(--bg);border-radius:12px;padding:24px;text-align:center}.diff-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);margin:0 auto 16px}.diff-label{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:var(--navy);letter-spacing:.5px}.cta-section{background:linear-gradient(135deg,var(--navy),var(--navy-dark));padding:100px 5%;text-align:center}.cta-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,44px);font-weight:700;color:#fff;margin:0 0 16px}.cta-subtitle{font-family:'DM Sans',sans-serif;font-size:17px;color:rgba(255,255,255,.7);max-width:500px;margin:0 auto 40px;line-height:1.7}.cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}.success-box{text-align:center;padding:48px;background:var(--white);border-radius:16px;border:1px solid var(--border)}.success-box h3{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--navy);margin-top:20px}.success-box p{font-family:'DM Sans',sans-serif;font-size:15px;color:var(--text-muted);margin-top:8px}.footer{background:var(--navy);padding:64px 5% 40px}.footer-inner{max-width:1120px;margin:0 auto}.footer-grid{display:flex;flex-wrap:wrap;gap:48px;margin-bottom:48px}.footer-brand p{font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(255,255,255,.5);line-height:1.7;max-width:260px}.footer-col-title{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;color:var(--gold);margin-bottom:16px}.footer-link{font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(255,255,255,.6);cursor:pointer;padding:4px 0;transition:color .3s;display:block;background:none;border:none;text-align:left}.footer-link:hover{color:#fff}.footer-contact{font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(255,255,255,.6);line-height:2}.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}.footer-bottom span{font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(255,255,255,.35)}.subpage-section{padding-top:120px;padding-bottom:100px;min-height:100vh}.form-container{background:var(--white);border-radius:16px;padding:40px 36px;border:1px solid var(--border)}.form-container.alt-bg{background:var(--bg)}.check-icon{margin-top:2px;flex-shrink:0}
+.timetable{width:100%;border-collapse:collapse;margin-top:20px;font-family:'DM Sans',sans-serif;font-size:14px}.timetable th{background:var(--navy);color:#fff;padding:12px 16px;font-weight:600;font-size:13px;letter-spacing:1px;text-align:center}.timetable td{padding:10px 16px;border-bottom:1px solid var(--border);color:var(--text);text-align:center}.timetable tr:last-child td{border-bottom:none}.timetable .time-col{font-weight:600;color:var(--navy);white-space:nowrap;text-align:left}.timetable .subject-cell{font-weight:500}.timetable .subject-cell span{display:block;font-size:12px;color:var(--text-muted);font-weight:400}.timetable .empty-cell{color:#ccc}
 </style>
 </head>
 <body>
-
-<!-- NAV -->
-<nav class="nav" id="mainNav">
-  <div class="nav-inner">
-    <a class="nav-logo" onclick="navigate('home')">
-      <svg width="36" height="36" viewBox="0 0 100 100" fill="none">
-        <polygon class="logo-outer" points="50,5 88,92 12,92" fill="#fff"/>
-        <polygon points="50,32 72,85 28,85" fill="#D4AF7A"/>
-      </svg>
-      <span class="nav-logo-text">ATLAS</span>
-    </a>
-    <div class="nav-links" id="navLinks"></div>
-    <button class="nav-hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
-        <path id="hamburgerIcon" d="M4 7h16M4 12h16M4 17h16"/>
-      </svg>
-    </button>
-  </div>
-</nav>
+<nav class="nav" id="mainNav"><div class="nav-inner"><a class="nav-logo" onclick="navigate('home')"><svg width="36" height="36" viewBox="0 0 100 100" fill="none"><polygon class="logo-outer" points="50,5 88,92 12,92" fill="#fff"/><polygon points="50,32 72,85 28,85" fill="#D4AF7A"/></svg><span class="nav-logo-text">ATLAS</span></a><div class="nav-links" id="navLinks"></div><button class="nav-hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path id="hamburgerIcon" d="M4 7h16M4 12h16M4 17h16"/></svg></button></div></nav>
 <div class="mobile-menu" id="mobileMenu"></div>
-
-<!-- PAGES -->
 <main id="app"></main>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <div class="footer-brand" style="min-width:200px">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
-          <svg width="28" height="28" viewBox="0 0 100 100" fill="none">
-            <polygon points="50,5 88,92 12,92" fill="#fff"/>
-            <polygon points="50,32 72,85 28,85" fill="#D4AF7A"/>
-          </svg>
-          <span style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:#fff;letter-spacing:1.5px">ATLAS</span>
-        </div>
-        <p>Elite tutoring from WA's top-ranked students. Where the best students teach the next generation.</p>
-      </div>
-      <div>
-        <div class="footer-col-title">PAGES</div>
-        <div id="footerLinks"></div>
-      </div>
-      <div>
-        <div class="footer-col-title">CONTACT</div>
-        <div class="footer-contact" id="footerContact"></div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 Atlas Tutoring. All rights reserved.</span>
-      <span>Tutoring by WA's #1 Ranked Students</span>
-    </div>
-  </div>
-</footer>
+<footer class="footer"><div class="footer-inner"><div class="footer-grid"><div class="footer-brand" style="min-width:200px"><div style="display:flex;align-items:center;gap:10px;margin-bottom:16px"><svg width="28" height="28" viewBox="0 0 100 100" fill="none"><polygon points="50,5 88,92 12,92" fill="#fff"/><polygon points="50,32 72,85 28,85" fill="#D4AF7A"/></svg><span style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:#fff;letter-spacing:1.5px">ATLAS</span></div><p>Elite tutoring from WA's top-ranked students. Where the best students teach the next generation.</p></div><div><div class="footer-col-title">PAGES</div><div id="footerLinks"></div></div><div><div class="footer-col-title">CONTACT</div><div class="footer-contact" id="footerContact"></div></div></div><div class="footer-bottom"><span>&copy; 2026 Atlas Tutoring. All rights reserved.</span><span>Tutoring by WA's #1 Ranked Students</span></div></div></footer>
 
 <script>
-// Build email dynamically so Cloudflare email obfuscation cannot break the JS
-var CONTACT_EMAIL = 'hell' + 'o' + String.fromCharCode(64) + 'atlastutoring.com.au';
-
-var PAGE_LABELS = {'Home':'home','Subjects':'subjects','Tutors':'tutors','How It Works':'how-it-works','Pricing':'pricing','About':'about','Apply':'apply','Contact':'contact'};
-
-var SUBJECTS = [
+var CONTACT_EMAIL='contact.atlastutoring'+String.fromCharCode(64)+'gmail.com';
+var PAGE_LABELS={'Home':'home','Subjects':'subjects','Tutors':'tutors','How It Works':'how-it-works','Schedule':'schedule','Pricing':'pricing','About':'about','Contact':'contact'};
+var SUBJECTS=[
   {name:'Mathematics Methods',tutor:'Ethan Kelly',atar:'99.95',rank:'#1 in WA',icon:'\u222B'},
   {name:'Mathematics Specialist',tutor:'Ethan Kelly',atar:'99.95',rank:'#1 in WA',icon:'\u2211'},
   {name:'Chemistry',tutor:'Aidan Lim',atar:'99.95',rank:'#1 in WA',icon:'\u269B'},
   {name:'Physics',tutor:'Cameron Baker',atar:'99.90',rank:'#1 in WA',icon:'\u03BB'},
-  {name:'Biology',tutor:'-',atar:'-',rank:'-',icon:'\uD83E\uDDEC'},
-  {name:'Economics',tutor:'Aakash Jois',atar:'99.95',rank:'#1 in WA',icon:'\uD83D\uDCC8'},
-  {name:'English',tutor:'Parie Barzanji',atar:'98.90',rank:'#1 in WA',icon:'\u2726'},
-  {name:'Literature',tutor:'Hannah Wang',atar:'99.95',rank:'#1 in WA',icon:'\u2764'}
+  {name:'Economics',tutor:'Aakash Jois',atar:'99.95',rank:'#1 in WA',icon:'\uD83D\uDCC8'}
 ];
-
-var TUTORS = [
-  {name:'Aakash Jois',subject:'Economics',atar:'99.95',rank:'#1 in WA',bio:'Aakash achieved the highest Economics score in Western Australia, earning the Subject Exhibition in Economics. He was also the 2025 Dux of Perth Modern School and 2nd in the State, receiving course awards in Economics, Maths Methods, Chemistry and Japanese. Aakash now teaches students the exam strategy, economic reasoning, and structured writing needed to achieve top results in ATAR Economics.',initials:'AJ',color:'#2563EB'},
-  {name:'Ethan Kelly',subject:'Mathematics Specialist & Methods',atar:'99.95',rank:'#1 in WA',bio:'Ethan was the top student in Western Australia for both Mathematics Methods and Mathematics Specialist, achieving Subject Exhibition in Methods and Specialist and graduating as Runner-Up Dux of Perth Modern School with a 99.95 ATAR. Now studying Pure Mathematics at the University of Melbourne as a Chancellor’s Scholar, Ethan’s teaching combines deep conceptual understanding with efficient exam technique to help students master even the most challenging problems.',initials:'EK',color:'#7C3AED'},
-  {name:'Aidan Lim',subject:'Chemistry',atar:'99.95',rank:'#1 in WA',bio:'Aidan was the top Chemistry student in Western Australia, earning Subject Exhibition in Chemistry, and was also the Dux of Christ Church Grammar School. He achieved a perfect score in the Australian Chemistry Olympiad and was selected for the Australian National Chemistry Summer School. Aidan’s teaching focuses on developing deep conceptual understanding and the problem-solving skills needed for top ATAR Chemistry results.',initials:'AL',color:'#059669'},
-  {name:'Cameron Baker',subject:'Physics',atar:'99.90',rank:'#1 in WA',bio:'Cameron achieved the highest Physics result in Western Australia, scoring 99.5% in the WACE Physics exam and earning Subject Exhibition. He also placed in the top 0.5% of the state in Mathematics Specialist, demonstrating exceptional analytical ability. Cameron focuses on helping students build strong physical intuition and problem-solving skills for success in ATAR Physics.',initials:'CB',color:'#DC2626'},
-  {name:'Parie Barzanji',subject:'English',atar:'98.90',rank:'#1 in WA',bio:'Parie achieved Subject Exhibition in English, ranking first in Western Australia, and graduated as top of Perth Modern School in English. She scored 98% in the WACE English exam, demonstrating exceptional clarity and control in analytical and persuasive writing. Parie focuses on helping students refine their argument, structure, and exam technique to consistently achieve high-scoring responses.',initials:'PB',color:'#D97706'},
-  {name:'Hannah Wang',subject:'Literature',atar:'99.95',rank:'#1 in WA',bio:'Hannah achieved Subject Exhibition in Literature with a perfect final score of 100%, ranking first in Western Australia. She graduated as Dux of Methodist Ladies’ College with a 99.95 ATAR and was also top of her school in Literature. Hannah now helps students develop the analytical thinking, essay structure, and textual insight needed to achieve top marks in ATAR Literature.',initials:'HW',color:'#0891B2'}
+var TUTORS=[
+  {name:'Aakash Jois',subject:'Economics',atar:'99.95',rank:'#1 in WA',bio:'Aakash achieved the highest Economics score in Western Australia, earning Subject Exhibition in Economics. He was also the 2025 Dux of Perth Modern School and 2nd in the State, receiving course awards in Economics, Maths Methods, Chemistry and Japanese. Aakash now teaches students the exam strategy, economic reasoning, and structured writing needed to achieve top results in ATAR Economics.',initials:'AJ',color:'#2563EB'},
+  {name:'Ethan Kelly',subject:'Maths Methods & Specialist',atar:'99.95',rank:'#1 in WA',bio:'Ethan was the top student in Western Australia for both Mathematics Methods and Mathematics Specialist, achieving Subject Exhibition in both and graduating as Runner-Up Dux of Perth Modern School with a 99.95 ATAR. Now studying Pure Mathematics at the University of Melbourne as a Chancellor\'s Scholar, Ethan\'s teaching combines deep conceptual understanding with efficient exam technique to help students master even the most challenging problems.',initials:'EK',color:'#7C3AED'},
+  {name:'Aidan Lim',subject:'Chemistry',atar:'99.95',rank:'#1 in WA',bio:'Aidan was the top Chemistry student in Western Australia, earning Subject Exhibition in Chemistry, and was also the Dux of Christ Church Grammar School. He achieved a perfect score in the Australian Chemistry Olympiad and was selected for the Australian National Chemistry Summer School. Aidan\'s teaching focuses on developing deep conceptual understanding and the problem-solving skills needed for top ATAR Chemistry results.',initials:'AL',color:'#059669'},
+  {name:'Cameron Baker',subject:'Physics',atar:'99.90',rank:'#1 in WA',bio:'Cameron achieved the highest Physics result in Western Australia, scoring 99.5% in the WACE Physics exam and earning Subject Exhibition. He also placed in the top 0.5% of the state in Mathematics Specialist, demonstrating exceptional analytical ability. Cameron focuses on helping students build strong physical intuition and problem-solving skills for success in ATAR Physics.',initials:'CB',color:'#DC2626'}
 ];
+var currentPage='home';
+document.getElementById('footerContact').innerHTML=CONTACT_EMAIL+'<br>Perth, Western Australia';
+function buildNav(){var n=document.getElementById('navLinks'),m=document.getElementById('mobileMenu'),f=document.getElementById('footerLinks');n.innerHTML='';m.innerHTML='';f.innerHTML='';var labels=Object.keys(PAGE_LABELS);for(var i=0;i<labels.length;i++){var label=labels[i],slug=PAGE_LABELS[label];var btn=document.createElement('button');btn.className='nav-link'+(currentPage===slug?' active':'');btn.textContent=label;btn.setAttribute('data-slug',slug);btn.onclick=function(){navigate(this.getAttribute('data-slug'))};n.appendChild(btn);var mb=document.createElement('button');mb.className='mobile-menu-link'+(currentPage===slug?' active':'');mb.textContent=label;mb.setAttribute('data-slug',slug);mb.onclick=function(){navigate(this.getAttribute('data-slug'));closeMobileMenu()};m.appendChild(mb);var fl=document.createElement('button');fl.className='footer-link';fl.textContent=label;fl.setAttribute('data-slug',slug);fl.onclick=function(){navigate(this.getAttribute('data-slug'))};f.appendChild(fl)}}
+function toggleMobileMenu(){var m=document.getElementById('mobileMenu'),icon=document.getElementById('hamburgerIcon');m.classList.toggle('open');icon.setAttribute('d',m.classList.contains('open')?'M6 6l12 12M6 18L18 6':'M4 7h16M4 12h16M4 17h16')}
+function closeMobileMenu(){document.getElementById('mobileMenu').classList.remove('open');document.getElementById('hamburgerIcon').setAttribute('d','M4 7h16M4 12h16M4 17h16')}
+function updateNavStyle(){var nav=document.getElementById('mainNav');if(currentPage!=='home'){nav.classList.add('on-subpage')}else{nav.classList.remove('on-subpage')}}
+window.addEventListener('scroll',function(){document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>40)});
+function navigate(slug){currentPage=slug;window.scrollTo({top:0,behavior:'smooth'});render();closeMobileMenu()}
+function observeFadeIns(){var els=document.querySelectorAll('.fade-in:not(.visible)');var obs=new IntersectionObserver(function(entries){for(var i=0;i<entries.length;i++){if(entries[i].isIntersecting){entries[i].target.classList.add('visible');obs.unobserve(entries[i].target)}}},{threshold:.15});for(var i=0;i<els.length;i++){obs.observe(els[i])}}
+function goldDivider(){return'<div class="gold-divider"><div class="gold-divider-line"></div><svg width="12" height="12" viewBox="0 0 12 12"><polygon points="6,0 12,6 6,12 0,6" fill="#D4AF7A"/></svg><div class="gold-divider-line"></div></div>'}
+function sectionTitle(l,t,s){return'<div class="section-title fade-in">'+(l?'<div class="section-label">'+l+'</div>':'')+'<h2 class="section-heading">'+t+'</h2>'+(s?'<p class="section-subtitle">'+s+'</p>':'')+'</div>'}
+function tutorCardSmall(t,d){return'<div class="tutor-card fade-in" style="transition-delay:'+d+'s" onclick="navigate(\'tutors\')"><div class="tutor-card-header"><div class="tutor-avatar" style="background:linear-gradient(135deg,'+t.color+','+t.color+'aa)">'+t.initials+'</div><div><div class="tutor-name">'+t.name+'</div><div class="tutor-subject">'+t.subject+'</div></div></div><div class="tutor-stats"><div class="tutor-stat-box"><div class="tutor-stat-label">ATAR</div><div class="tutor-stat-value">'+t.atar+'</div></div><div class="tutor-stat-box"><div class="tutor-stat-label">RANK</div><div class="tutor-stat-value">'+t.rank+'</div></div></div><p class="tutor-bio">'+t.bio+'</p></div>'}
+function checkSvg(){return'<svg class="check-icon" width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#D4AF7A" opacity="0.15"/><path d="M5.5 9.5l2 2 5-5" stroke="#D4AF7A" stroke-width="2" fill="none" stroke-linecap="round"/></svg>'}
+function timetableHTML(){return'<table class="timetable"><tr><th></th><th colspan="2">Saturday</th><th colspan="2">Sunday</th></tr><tr><td class="time-col">10 \u2013 11</td><td class="subject-cell">11 Specialist<span>Ethan K.</span></td><td class="subject-cell">12 Chemistry<span>Aidan L.</span></td><td class="subject-cell">11 Methods<span>Ethan K.</span></td><td class="subject-cell">12 Physics<span>Cameron B.</span></td></tr><tr><td class="time-col">11 \u2013 12</td><td class="subject-cell">12 Specialist<span>Ethan K.</span></td><td class="subject-cell">11 Chemistry<span>Aidan L.</span></td><td class="subject-cell">12 Methods<span>Ethan K.</span></td><td class="subject-cell">11 Physics<span>Cameron B.</span></td></tr><tr><td class="time-col">1 \u2013 2</td><td class="subject-cell">11 Economics<span>Aakash J.</span></td><td class="empty-cell">\u2014</td><td class="empty-cell">\u2014</td><td class="empty-cell">\u2014</td></tr><tr><td class="time-col">2 \u2013 3</td><td class="subject-cell">12 Economics<span>Aakash J.</span></td><td class="empty-cell">\u2014</td><td class="empty-cell">\u2014</td><td class="empty-cell">\u2014</td></tr></table><p style="font-family:\'DM Sans\',sans-serif;font-size:13px;color:var(--text-muted);margin-top:16px;font-style:italic">All times AWST (Perth time). Classes held online via live video. Timetable subject to change \u2014 students will be notified of any updates.</p>'}
 
-var currentPage = 'home';
+function renderHome(){var gV='',gH='';for(var i=0;i<20;i++)gV+='<div class="hero-grid-v" style="left:'+(i%5)*25+'%;top:'+Math.floor(i/5)*25+'%"></div>';for(var i=0;i<16;i++)gH+='<div class="hero-grid-h" style="top:'+(i%4)*25+'%"></div>';var stats=[{n:'99.95',l:'Median Tutor ATAR'},{n:'#1',l:'State Ranked Tutors'},{n:'5',l:'ATAR Subjects'},{n:'100%',l:'WA Focused'}];var sH='';for(var i=0;i<stats.length;i++)sH+='<div class="fade-in" style="transition-delay:'+i*.1+'s"><div class="stat-number">'+stats[i].n+'</div><div class="stat-label">'+stats[i].l+'</div></div>';var tc='';for(var i=0;i<3;i++)tc+=tutorCardSmall(TUTORS[i],i*.12);var sd=[{s:'01',t:'Choose Your Subject',d:'Browse our ATAR subjects and select the areas where you want to achieve top marks.'},{s:'02',t:'Join a Small Group Class',d:'Enter a focused online class taught live by WA\'s #1 ranked student in that subject.'},{s:'03',t:'Master the Course',d:'Learn exam strategies, key concepts, and techniques directly from someone who mastered the course at the highest level.'}];var sh='';for(var i=0;i<sd.length;i++)sh+='<div class="fade-in" style="transition-delay:'+i*.12+'s"><div class="steps-card"><div class="steps-card-number">'+sd[i].s+'</div><div class="steps-card-label">STEP '+sd[i].s+'</div><h3 class="steps-card-title">'+sd[i].t+'</h3><p class="steps-card-desc">'+sd[i].d+'</p></div></div>';return'<section class="hero"><div class="hero-grid">'+gV+gH+'</div><div class="hero-watermark"><svg width="400" height="400" viewBox="0 0 100 100" fill="none"><polygon points="50,5 88,92 12,92" fill="#fff"/><polygon points="50,32 72,85 28,85" fill="#D4AF7A"/></svg></div><div class="hero-content"><div class="hero-label">Western Australia\'s Premier Tutoring</div><h1 class="hero-title">Learn from WA\'s<br><span>#1 Students</span></h1><p class="hero-subtitle">Atlas Tutoring connects students with the top-ranked graduate in each subject in Western Australia, delivering elite online tutoring designed for top academic performance.</p><div class="hero-buttons"><button class="btn btn-gold" onclick="navigate(\'subjects\')">View Subjects</button><button class="btn btn-outline" onclick="navigate(\'tutors\')">Meet the Tutors</button></div></div><div class="hero-scroll"><svg width="20" height="32" viewBox="0 0 20 32" fill="none"><rect x="1" y="1" width="18" height="30" rx="9" stroke="rgba(255,255,255,0.3)" stroke-width="2"/><circle cx="10" cy="10" r="3" fill="#D4AF7A"><animate attributeName="cy" values="10;20;10" dur="2s" repeatCount="indefinite"/></circle></svg></div></section><section class="stats"><div class="stats-grid">'+sH+'</div></section><section class="section" style="background:var(--bg)"><div class="section-inner">'+sectionTitle('Our Tutors','Tutors Who Achieved the Top Rank','Each Atlas tutor is the top ATAR performer in their subject \u2014 recently graduated and ready to share the exact strategies that earned them the highest marks in WA.')+'<div class="grid-3">'+tc+'</div><div class="fade-in" style="text-align:center;margin-top:48px"><button class="btn btn-outline-dark" onclick="navigate(\'tutors\')">View All Tutors \u2192</button></div></div></section>'+goldDivider()+'<section class="section" style="background:var(--white)"><div style="max-width:960px;margin:0 auto">'+sectionTitle('The Atlas Model','How It Works','A simple, powerful approach to elite tutoring.')+'<div class="grid-3" style="grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:40px">'+sh+'</div></div></section><section class="cta-section"><div class="fade-in"><h2 class="cta-title">Ready to Learn from the Best?</h2><p class="cta-subtitle">Join the students who are learning from WA\'s highest achievers.</p><div class="cta-buttons"><button class="btn btn-gold" onclick="navigate(\'subjects\')">Explore Subjects</button><button class="btn btn-outline" onclick="navigate(\'contact\')">Get in Touch</button></div></div></section>'}
 
-document.getElementById('footerContact').innerHTML = CONTACT_EMAIL + '<br>Perth, Western Australia';
+function renderSubjects(){var c='';for(var i=0;i<SUBJECTS.length;i++){var s=SUBJECTS[i];c+='<div class="subject-card fade-in" style="transition-delay:'+i*.06+'s"><div class="subject-icon">'+s.icon+'</div><h3 class="subject-name">'+s.name+'</h3><div class="subject-info">Tutor: <strong>'+s.tutor+'</strong></div><div class="subject-info">ATAR '+s.atar+' \u00B7 '+s.rank+'</div></div>'}return'<section class="subpage-section" style="background:var(--bg)"><div class="section-inner" style="padding:0 5%">'+sectionTitle('ATAR Subjects','Choose Your Subject','Each subject is taught exclusively by the highest-ranked student in Western Australia.')+'<div class="grid-4">'+c+'</div></div></section>'}
 
-function buildNav() {
-  var navLinks = document.getElementById('navLinks');
-  var mobileMenu = document.getElementById('mobileMenu');
-  var footerLinks = document.getElementById('footerLinks');
-  navLinks.innerHTML = '';
-  mobileMenu.innerHTML = '';
-  footerLinks.innerHTML = '';
-  var labels = Object.keys(PAGE_LABELS);
-  for (var i = 0; i < labels.length; i++) {
-    var label = labels[i];
-    var slug = PAGE_LABELS[label];
-    var btn = document.createElement('button');
-    btn.className = 'nav-link' + (currentPage === slug ? ' active' : '');
-    btn.textContent = label;
-    btn.setAttribute('data-slug', slug);
-    btn.onclick = function() { navigate(this.getAttribute('data-slug')); };
-    navLinks.appendChild(btn);
-    var mbtn = document.createElement('button');
-    mbtn.className = 'mobile-menu-link' + (currentPage === slug ? ' active' : '');
-    mbtn.textContent = label;
-    mbtn.setAttribute('data-slug', slug);
-    mbtn.onclick = function() { navigate(this.getAttribute('data-slug')); closeMobileMenu(); };
-    mobileMenu.appendChild(mbtn);
-    var flink = document.createElement('button');
-    flink.className = 'footer-link';
-    flink.textContent = label;
-    flink.setAttribute('data-slug', slug);
-    flink.onclick = function() { navigate(this.getAttribute('data-slug')); };
-    footerLinks.appendChild(flink);
-  }
-}
+function renderTutors(){var c='';for(var i=0;i<TUTORS.length;i++){var t=TUTORS[i];c+='<div class="tutor-full-card fade-in" style="transition-delay:'+i*.08+'s"><div class="tutor-full-bar"></div><div class="tutor-full-content"><div class="tutor-full-header"><div class="tutor-full-avatar" style="background:linear-gradient(135deg,'+t.color+','+t.color+'88)">'+t.initials+'</div><div><div class="tutor-full-name">'+t.name+'</div><div class="tutor-subject">'+t.subject+'</div></div></div><div class="tutor-full-stats"><div class="tutor-full-stat-box"><div class="tutor-full-stat-label">ATAR</div><div class="tutor-full-stat-value">'+t.atar+'</div></div><div class="tutor-full-stat-box"><div class="tutor-full-stat-label">RANK</div><div class="tutor-full-stat-value">'+t.rank+'</div></div></div><p class="tutor-bio" style="font-size:14px;line-height:1.75">'+t.bio+'</p></div></div>'}return'<section class="subpage-section" style="background:var(--bg)"><div class="section-inner" style="padding:0 5%">'+sectionTitle('Our Team','Meet the Tutors','Every Atlas tutor achieved the top rank in their subject. They don\'t just teach \u2014 they\'ve lived the course at the highest level.')+'<div class="grid-2">'+c+'</div></div></section>'}
 
-function toggleMobileMenu() {
-  var m = document.getElementById('mobileMenu');
-  var icon = document.getElementById('hamburgerIcon');
-  m.classList.toggle('open');
-  icon.setAttribute('d', m.classList.contains('open') ? 'M6 6l12 12M6 18L18 6' : 'M4 7h16M4 12h16M4 17h16');
-}
-function closeMobileMenu() {
-  document.getElementById('mobileMenu').classList.remove('open');
-  document.getElementById('hamburgerIcon').setAttribute('d','M4 7h16M4 12h16M4 17h16');
-}
-function updateNavStyle() {
-  var nav = document.getElementById('mainNav');
-  if (currentPage !== 'home') { nav.classList.add('on-subpage'); } else { nav.classList.remove('on-subpage'); }
-}
-window.addEventListener('scroll', function() {
-  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 40);
-});
+function renderHowItWorks(){var steps=[{s:'01',t:'Choose Your Subject',d:'Browse our range of ATAR subjects. Each one is taught by the student who achieved the highest score in Western Australia.',dt:'We currently offer 5 core ATAR subjects, with more being added each term.'},{s:'02',t:'Join a Small-Group Online Class',d:'Your child enters a focused online class where they can ask questions and interact in real time.',dt:'All classes are delivered live via Zoom with interactive whiteboards, shared resources, and recorded replays.'},{s:'03',t:'Learn Exam Strategies from the Best',d:'Your tutor doesn\'t just know the content \u2014 they\'ve mastered it at the highest level. Learn the exact techniques, study methods, and exam strategies that earned them the top rank.',dt:'Sessions focus on conceptual clarity, worked examples, past paper strategy, and common mistakes to avoid.'}];var sh='';for(var i=0;i<steps.length;i++){var s=steps[i];sh+='<div class="step-row fade-in" style="transition-delay:'+i*.15+'s"><div class="step-number">'+s.s+'</div><div><h3 class="step-title">'+s.t+'</h3><p class="step-desc">'+s.d+'</p><p class="step-detail">'+s.dt+'</p></div></div>'}var diffs=['Elite Tutors Only','Exam-Focused Learning','Live &amp; Interactive'];var dh='';for(var i=0;i<diffs.length;i++)dh+='<div class="diff-pill"><div class="diff-dot"></div><div class="diff-label">'+diffs[i]+'</div></div>';return'<section class="subpage-section" style="background:var(--white)"><div class="section-narrow" style="padding:0 5%">'+sectionTitle('The Process','How Atlas Tutoring Works','A straightforward path to academic excellence.')+sh+goldDivider()+'<div class="fade-in" style="text-align:center"><h3 style="font-family:\'Cormorant Garamond\',serif;font-size:28px;font-weight:700;color:var(--navy);margin-bottom:12px">What Makes Atlas Different</h3><div class="diff-grid">'+dh+'</div></div></div></section>'}
 
-function navigate(slug) {
-  currentPage = slug;
-  window.scrollTo({top:0, behavior:'smooth'});
-  render();
-  closeMobileMenu();
-}
+function renderSchedule(){return'<section class="subpage-section" style="background:var(--bg)"><div style="max-width:900px;margin:0 auto;padding:0 5%">'+sectionTitle('Schedule','Weekly Class Timetable','All classes are held on weekends. Year 11 and Year 12 classes run separately.')+'<div class="fade-in">'+timetableHTML()+'</div></div></section>'}
 
-function observeFadeIns() {
-  var els = document.querySelectorAll('.fade-in:not(.visible)');
-  var obs = new IntersectionObserver(function(entries) {
-    for (var i = 0; i < entries.length; i++) {
-      if (entries[i].isIntersecting) { entries[i].target.classList.add('visible'); obs.unobserve(entries[i].target); }
-    }
-  }, {threshold: 0.15});
-  for (var i = 0; i < els.length; i++) { obs.observe(els[i]); }
-}
+function renderPricing(){var features=['Live weekly classes with WA\'s #1 ranked tutor','Interactive Q&amp;A every session','Exam strategy &amp; past paper walkthroughs','Recorded replays for revision','Course materials &amp; study resources'];var fh='';for(var i=0;i<features.length;i++)fh+='<div class="pricing-feature">'+checkSvg()+'<span>'+features[i]+'</span></div>';return'<section class="subpage-section" style="background:var(--bg)"><div style="max-width:900px;margin:0 auto;padding:0 5%">'+sectionTitle('Pricing','Invest in Excellence','Transparent pricing for premium tutoring from WA\'s top-ranked students.')+'<div class="fade-in"><div class="pricing-card"><div class="pricing-header"><div class="pricing-label">Weekly Online Classes</div><div class="pricing-amount">$30<span>/session</span></div><div class="pricing-subtitle">Small group classes</div></div><div class="pricing-body">'+fh+'<button class="btn btn-primary btn-full" style="margin-top:28px" onclick="navigate(\'contact\')">Get Started</button></div></div></div><div class="fade-in" style="text-align:center;margin-top:48px;transition-delay:0.2s"><p style="font-family:\'DM Sans\',sans-serif;font-size:14px;color:var(--text-muted)">$300 per subject per term. Contact us for details on specific classes and term schedules.</p></div></div></section>'}
 
-function goldDivider() {
-  return '<div class="gold-divider"><div class="gold-divider-line"></div><svg width="12" height="12" viewBox="0 0 12 12"><polygon points="6,0 12,6 6,12 0,6" fill="#D4AF7A"/></svg><div class="gold-divider-line"></div></div>';
-}
-function sectionTitle(label, title, subtitle) {
-  return '<div class="section-title fade-in">' + (label ? '<div class="section-label">' + label + '</div>' : '') + '<h2 class="section-heading">' + title + '</h2>' + (subtitle ? '<p class="section-subtitle">' + subtitle + '</p>' : '') + '</div>';
-}
-function tutorCardSmall(t, delay) {
-  return '<div class="tutor-card fade-in" style="transition-delay:'+delay+'s" onclick="navigate(\'tutors\')"><div class="tutor-card-header"><div class="tutor-avatar" style="background:linear-gradient(135deg,'+t.color+','+t.color+'aa)">'+t.initials+'</div><div><div class="tutor-name">'+t.name+'</div><div class="tutor-subject">'+t.subject+'</div></div></div><div class="tutor-stats"><div class="tutor-stat-box"><div class="tutor-stat-label">ATAR</div><div class="tutor-stat-value">'+t.atar+'</div></div><div class="tutor-stat-box"><div class="tutor-stat-label">RANK</div><div class="tutor-stat-value">'+t.rank+'</div></div></div><p class="tutor-bio">'+t.bio+'</p></div>';
-}
-function checkSvg() {
-  return '<svg class="check-icon" width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#D4AF7A" opacity="0.15"/><path d="M5.5 9.5l2 2 5-5" stroke="#D4AF7A" stroke-width="2" fill="none" stroke-linecap="round"/></svg>';
-}
+function renderAbout(){var b=[{t:'Exam Strategy',d:'The exact approaches and techniques that earned the top marks in every assessment.'},{t:'Study Methods',d:'How the best students actually study \u2014 not theory, but the real methods they used.'},{t:'Common Mistakes',d:'The pitfalls that cost other students marks, and how to avoid every one of them.'},{t:'The Confidence to Perform',d:'Walk into the exam room knowing you\'ve been taught by someone who already conquered it.'}];var bh='';for(var i=0;i<b.length;i++)bh+='<div class="about-benefit"><div class="about-benefit-bar"></div><h4>'+b[i].t+'</h4><p>'+b[i].d+'</p></div>';return'<section class="subpage-section" style="background:var(--white)"><div style="max-width:760px;margin:0 auto;padding:0 5%">'+sectionTitle('Our Mission','About Atlas Tutoring','')+'<div class="fade-in about-text"><p class="about-lead">The difference between a good ATAR and a great one isn\'t intelligence \u2014 it\'s access. Access to the right strategies, the right techniques, and the right person to learn them from.</p><p>Most tutoring companies hire students who did well. Atlas is different. We only hire the student who did the best \u2014 the one who achieved Subject Exhibition, the #1 rank in their subject in all of Western Australia.</p><p>These tutors sat the exact same exams your child is about to sit. They didn\'t just study the content \u2014 they mastered it at a level no other student in the state could match. And now they\'re passing on everything they know: how to study efficiently, how to structure answers that markers reward, which mistakes to avoid, and how to walk into the exam room with genuine confidence.</p><p>That\'s what Atlas gives your child. Not just a tutor \u2014 a blueprint for how to be the best.</p></div>'+goldDivider()+'<div class="fade-in"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;text-align:center">'+bh+'</div></div></div></section>'}
 
-function renderHome() {
-  var gridV = '', gridH = '';
-  for (var i = 0; i < 20; i++) gridV += '<div class="hero-grid-v" style="left:'+(i%5)*25+'%;top:'+Math.floor(i/5)*25+'%"></div>';
-  for (var i = 0; i < 16; i++) gridH += '<div class="hero-grid-h" style="top:'+(i%4)*25+'%"></div>';
-  var stats = [{n:'99.95',l:'Median Tutor ATAR'},{n:'#1',l:'State Ranked Tutors'},{n:'8+',l:'ATAR Subjects'},{n:'100%',l:'WA Focused'}];
-  var statsH = '';
-  for (var i = 0; i < stats.length; i++) statsH += '<div class="fade-in" style="transition-delay:'+i*0.1+'s"><div class="stat-number">'+stats[i].n+'</div><div class="stat-label">'+stats[i].l+'</div></div>';
-  var tc = '';
-  for (var i = 0; i < 3; i++) tc += tutorCardSmall(TUTORS[i], i*0.12);
-  var sd = [{s:'01',t:'Choose Your Subject',d:'Browse our ATAR subjects and select the areas where you want to achieve top marks.'},{s:'02',t:'Join a Small Group Class',d:'Enter a focused online class of 10\u201315 students, taught live by WA\'s #1 ranked student in that subject.'},{s:'03',t:'Master the Course',d:'Learn exam strategies, key concepts, and techniques directly from someone who mastered the course at the highest level.'}];
-  var sh = '';
-  for (var i = 0; i < sd.length; i++) sh += '<div class="fade-in" style="transition-delay:'+i*0.12+'s"><div class="steps-card"><div class="steps-card-number">'+sd[i].s+'</div><div class="steps-card-label">STEP '+sd[i].s+'</div><h3 class="steps-card-title">'+sd[i].t+'</h3><p class="steps-card-desc">'+sd[i].d+'</p></div></div>';
+function renderContact(){return'<section class="subpage-section" style="background:var(--white)"><div style="max-width:600px;margin:0 auto;padding:0 5%">'+sectionTitle('Get in Touch','Contact Atlas Tutoring','Have questions about our classes, pricing, or how Atlas works? We\'d love to hear from you.')+'<div class="fade-in" id="contactFormWrapper"><div class="form-container alt-bg"><div class="form-group"><label class="form-label">Name</label><input class="form-input" type="text" placeholder="Your name"></div><div class="form-group"><label class="form-label">Email</label><input class="form-input" type="text" placeholder="your email address"></div><div class="form-group"><label class="form-label">I am a...</label><input class="form-input" type="text" placeholder="Student / Parent / Other"></div><div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" rows="4" placeholder="How can we help?"></textarea></div><button class="btn btn-primary btn-full" onclick="showContactSuccess()">Send Message</button></div></div><div class="fade-in" style="text-align:center;margin-top:48px;transition-delay:0.2s"><p style="font-family:\'DM Sans\',sans-serif;font-size:14px;color:var(--text-muted)">You can also reach us at <span style="color:var(--navy);font-weight:600">'+CONTACT_EMAIL+'</span></p></div></div></section>'}
+function showContactSuccess(){document.getElementById('contactFormWrapper').innerHTML='<div class="success-box" style="background:var(--bg)"><h3>Message Sent</h3><p>We\'ll get back to you within 24 hours.</p></div>'}
 
-  return '<section class="hero"><div class="hero-grid">'+gridV+gridH+'</div><div class="hero-watermark"><svg width="400" height="400" viewBox="0 0 100 100" fill="none"><polygon points="50,5 88,92 12,92" fill="#fff"/><polygon points="50,32 72,85 28,85" fill="#D4AF7A"/></svg></div><div class="hero-content"><div class="hero-label">Western Australia\'s Premier Tutoring</div><h1 class="hero-title">Learn from WA\'s<br><span>#1 Students</span></h1><p class="hero-subtitle">Atlas Tutoring connects students with the top-ranked graduate in each subject in Western Australia, delivering elite online tutoring designed for top academic performance.</p><div class="hero-buttons"><button class="btn btn-gold" onclick="navigate(\'subjects\')">View Subjects</button><button class="btn btn-outline" onclick="navigate(\'tutors\')">Meet the Tutors</button></div></div><div class="hero-scroll"><svg width="20" height="32" viewBox="0 0 20 32" fill="none"><rect x="1" y="1" width="18" height="30" rx="9" stroke="rgba(255,255,255,0.3)" stroke-width="2"/><circle cx="10" cy="10" r="3" fill="#D4AF7A"><animate attributeName="cy" values="10;20;10" dur="2s" repeatCount="indefinite"/></circle></svg></div></section>' +
-  '<section class="stats"><div class="stats-grid">'+statsH+'</div></section>' +
-  '<section class="section" style="background:var(--bg)"><div class="section-inner">'+sectionTitle('Our Tutors','Tutors Who Achieved the Top Rank','Each Atlas tutor is the top ATAR performer in their subject \u2014 recently graduated and ready to share the exact strategies that earned them the highest marks in WA.')+'<div class="grid-3">'+tc+'</div><div class="fade-in" style="text-align:center;margin-top:48px"><button class="btn btn-outline-dark" onclick="navigate(\'tutors\')">View All Tutors \u2192</button></div></div></section>' +
-  goldDivider() +
-  '<section class="section" style="background:var(--white)"><div style="max-width:960px;margin:0 auto">'+sectionTitle('The Atlas Model','How It Works','A simple, powerful approach to elite tutoring.')+'<div class="grid-3" style="grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:40px">'+sh+'</div></div></section>' +
-  '<section class="cta-section"><div class="fade-in"><h2 class="cta-title">Ready to Learn from the Best?</h2><p class="cta-subtitle">Join the students who are learning from WA\'s highest achievers.</p><div class="cta-buttons"><button class="btn btn-gold" onclick="navigate(\'subjects\')">Explore Subjects</button><button class="btn btn-outline" onclick="navigate(\'contact\')">Get in Touch</button></div></div></section>';
-}
-
-function renderSubjects() {
-  var c = '';
-  for (var i = 0; i < SUBJECTS.length; i++) { var s = SUBJECTS[i]; c += '<div class="subject-card fade-in" style="transition-delay:'+i*0.06+'s"><div class="subject-icon">'+s.icon+'</div><h3 class="subject-name">'+s.name+'</h3><div class="subject-info">Tutor: <strong>'+s.tutor+'</strong></div><div class="subject-info">ATAR '+s.atar+' \u00B7 '+s.rank+'</div><span class="subject-link">View Class \u2192</span></div>'; }
-  return '<section class="subpage-section" style="background:var(--bg)"><div class="section-inner" style="padding:0 5%">'+sectionTitle('ATAR Subjects','Choose Your Subject','Each subject is taught exclusively by the highest-ranked student in Western Australia.')+'<div class="grid-4">'+c+'</div></div></section>';
-}
-
-function renderTutors() {
-  var c = '';
-  for (var i = 0; i < TUTORS.length; i++) { var t = TUTORS[i]; c += '<div class="tutor-full-card fade-in" style="transition-delay:'+i*0.08+'s"><div class="tutor-full-bar"></div><div class="tutor-full-content"><div class="tutor-full-header"><div class="tutor-full-avatar" style="background:linear-gradient(135deg,'+t.color+','+t.color+'88)">'+t.initials+'</div><div><div class="tutor-full-name">'+t.name+'</div><div class="tutor-subject">'+t.subject+'</div><div class="tutor-full-uni">'+t.uni+'</div></div></div><div class="tutor-full-stats"><div class="tutor-full-stat-box"><div class="tutor-full-stat-label">ATAR</div><div class="tutor-full-stat-value">'+t.atar+'</div></div><div class="tutor-full-stat-box"><div class="tutor-full-stat-label">RANK</div><div class="tutor-full-stat-value">'+t.rank+'</div></div></div><p class="tutor-bio" style="font-size:14px;line-height:1.75">'+t.bio+'</p></div></div>'; }
-  return '<section class="subpage-section" style="background:var(--bg)"><div class="section-inner" style="padding:0 5%">'+sectionTitle('Our Team','Meet the Tutors','Every Atlas tutor achieved the top rank in their subject. They don\'t just teach \u2014 they\'ve lived the course at the highest level.')+'<div class="grid-2">'+c+'</div></div></section>';
-}
-
-function renderHowItWorks() {
-  var steps = [{s:'01',t:'Choose Your Subject',d:'Browse our range of ATAR subjects. Each one is taught by the student who achieved the highest score in Western Australia.',dt:'We currently offer 8 core ATAR subjects, with more being added each term.'},{s:'02',t:'Join a Small-Group Online Class',d:'Classes are capped at 10\u201315 students to ensure every student gets personalised attention and can ask questions in real time.',dt:'All classes are delivered live via Zoom with interactive whiteboards, shared resources, and recorded replays.'},{s:'03',t:'Learn Exam Strategies from the Best',d:'Your tutor doesn\'t just know the content \u2014 they\'ve mastered it at the highest level. Learn the exact techniques, study methods, and exam strategies that earned them the top rank.',dt:'Sessions focus on conceptual clarity, worked examples, past paper strategy, and common mistakes to avoid.'}];
-  var sh = '';
-  for (var i = 0; i < steps.length; i++) { var s = steps[i]; sh += '<div class="step-row fade-in" style="transition-delay:'+i*0.15+'s"><div class="step-number">'+s.s+'</div><div><h3 class="step-title">'+s.t+'</h3><p class="step-desc">'+s.d+'</p><p class="step-detail">'+s.dt+'</p></div></div>'; }
-  var diffs = ['Small Group Classes','Elite Tutors Only','Exam-Focused Learning','Live &amp; Interactive'];
-  var dh = '';
-  for (var i = 0; i < diffs.length; i++) dh += '<div class="diff-pill"><div class="diff-dot"></div><div class="diff-label">'+diffs[i]+'</div></div>';
-  return '<section class="subpage-section" style="background:var(--white)"><div class="section-narrow" style="padding:0 5%">'+sectionTitle('The Process','How Atlas Tutoring Works','A straightforward path to academic excellence.')+sh+goldDivider()+'<div class="fade-in" style="text-align:center"><h3 style="font-family:\'Cormorant Garamond\',serif;font-size:28px;font-weight:700;color:var(--navy);margin-bottom:12px">What Makes Atlas Different</h3><div class="diff-grid">'+dh+'</div></div></div></section>';
-}
-
-function renderPricing() {
-  var features = ['Live weekly classes with WA\'s #1 ranked tutor','Interactive Q&amp;A every session','Exam strategy &amp; past paper walkthroughs','Recorded replays for revision','Course materials &amp; study resources','Direct access to your tutor'];
-  var fh = '';
-  for (var i = 0; i < features.length; i++) fh += '<div class="pricing-feature">'+checkSvg()+'<span>'+features[i]+'</span></div>';
-  return '<section class="subpage-section" style="background:var(--bg)"><div style="max-width:900px;margin:0 auto;padding:0 5%">'+sectionTitle('Pricing','Invest in Excellence','Transparent pricing for premium tutoring from WA\'s top-ranked students.')+'<div class="fade-in"><div class="pricing-card"><div class="pricing-header"><div class="pricing-label">Weekly Online Classes</div><div class="pricing-amount">$50<span>/session</span></div><div class="pricing-subtitle">Small group classes \u00B7 10\u201315 students</div></div><div class="pricing-body">'+fh+'<button class="btn btn-primary btn-full" style="margin-top:28px" onclick="navigate(\'contact\')">Get Started</button></div></div></div><div class="fade-in" style="text-align:center;margin-top:48px;transition-delay:0.2s"><p style="font-family:\'DM Sans\',sans-serif;font-size:14px;color:var(--text-muted)">Pricing may vary by subject. Contact us for details on specific classes and term schedules.</p></div></div></section>';
-}
-
-function renderAbout() {
-  var b = [{t:'Exam Strategy',d:'Learn the exact approach that earned top marks on every assessment.'},{t:'Study Techniques',d:'Discover the methods the best students actually use to prepare.'},{t:'Common Mistakes',d:'Avoid the pitfalls that cost other students critical marks.'},{t:'Top-Mark Mindset',d:'Develop the discipline and confidence of a top-ranked student.'}];
-  var bh = '';
-  for (var i = 0; i < b.length; i++) bh += '<div class="about-benefit"><div class="about-benefit-bar"></div><h4>'+b[i].t+'</h4><p>'+b[i].d+'</p></div>';
-  return '<section class="subpage-section" style="background:var(--white)"><div style="max-width:760px;margin:0 auto;padding:0 5%">'+sectionTitle('Our Mission','About Atlas Tutoring','')+
-  '<div class="fade-in about-text"><p class="about-lead">Atlas Tutoring was founded to solve a simple problem: the students who understand the course best are the ones who just completed it at the highest level.</p><p>Traditional tutoring relies on teachers who may be years removed from the exam. Atlas takes a different approach. We recruit exclusively from the top-ranked students in Western Australia \u2014 the students who achieved the highest ATAR scores in each subject \u2014 and connect them with the next generation of high achievers.</p><p>By learning directly from the top performers in each subject, students gain insight into exam strategy, study techniques, common mistakes, and how to achieve top marks \u2014 all from someone who demonstrated mastery just months ago.</p><p>Our tutors don\'t just know the content. They know what it takes to be number one.</p></div>'+goldDivider()+'<div class="fade-in"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;text-align:center">'+bh+'</div></div></div></section>';
-}
-
-function renderApply() {
-  return '<section class="subpage-section" style="background:var(--bg)"><div style="max-width:600px;margin:0 auto;padding:0 5%">'+sectionTitle('Join the Team','Are You the Top Student in Your Subject?','Atlas only hires the highest performing students in Western Australia. If you achieved an elite ATAR rank, we want to hear from you.')+'<div class="fade-in" id="applyFormWrapper"><div class="form-container"><div class="form-group"><label class="form-label">Full Name</label><input class="form-input" type="text" placeholder="Your name"></div><div class="form-group"><label class="form-label">ATAR Score</label><input class="form-input" type="text" placeholder="e.g. 99.95"></div><div class="form-group"><label class="form-label">Top Subject(s)</label><input class="form-input" type="text" placeholder="e.g. Chemistry, Physics"></div><div class="form-group"><label class="form-label">Email</label><input class="form-input" type="text" placeholder="your email address"></div><div class="form-group"><label class="form-label">Why Do You Want to Tutor?</label><textarea class="form-textarea" rows="4" placeholder="Tell us about your experience and teaching approach..."></textarea></div><button class="btn btn-primary btn-full" onclick="showApplySuccess()">Submit Application</button></div></div></div></section>';
-}
-function showApplySuccess() {
-  document.getElementById('applyFormWrapper').innerHTML = '<div class="success-box"><svg width="56" height="56" viewBox="0 0 56 56"><circle cx="28" cy="28" r="28" fill="#D4AF7A" opacity="0.15"/><path d="M18 28l7 7 13-13" stroke="#D4AF7A" stroke-width="3" fill="none" stroke-linecap="round"/></svg><h3>Application Submitted</h3><p>Thank you for your interest. We\'ll be in touch shortly.</p></div>';
-}
-
-function renderContact() {
-  return '<section class="subpage-section" style="background:var(--white)"><div style="max-width:600px;margin:0 auto;padding:0 5%">'+sectionTitle('Get in Touch','Contact Atlas Tutoring','Have questions about our classes, pricing, or how Atlas works? We\'d love to hear from you.')+'<div class="fade-in" id="contactFormWrapper"><div class="form-container alt-bg"><div class="form-group"><label class="form-label">Name</label><input class="form-input" type="text" placeholder="Your name"></div><div class="form-group"><label class="form-label">Email</label><input class="form-input" type="text" placeholder="your email address"></div><div class="form-group"><label class="form-label">I am a...</label><input class="form-input" type="text" placeholder="Student / Parent / Other"></div><div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" rows="4" placeholder="How can we help?"></textarea></div><button class="btn btn-primary btn-full" onclick="showContactSuccess()">Send Message</button></div></div><div class="fade-in" style="text-align:center;margin-top:48px;transition-delay:0.2s"><p style="font-family:\'DM Sans\',sans-serif;font-size:14px;color:var(--text-muted)">You can also reach us at <span style="color:var(--navy);font-weight:600">'+CONTACT_EMAIL+'</span></p></div></div></section>';
-}
-function showContactSuccess() {
-  document.getElementById('contactFormWrapper').innerHTML = '<div class="success-box" style="background:var(--bg)"><h3>Message Sent</h3><p>We\'ll get back to you within 24 hours.</p></div>';
-}
-
-function render() {
-  var app = document.getElementById('app');
-  var renderers = {'home':renderHome,'subjects':renderSubjects,'tutors':renderTutors,'how-it-works':renderHowItWorks,'pricing':renderPricing,'about':renderAbout,'apply':renderApply,'contact':renderContact};
-  var fn = renderers[currentPage] || renderHome;
-  app.innerHTML = fn();
-  buildNav();
-  updateNavStyle();
-  requestAnimationFrame(function() { observeFadeIns(); });
-}
-
+function render(){var app=document.getElementById('app');var r={'home':renderHome,'subjects':renderSubjects,'tutors':renderTutors,'how-it-works':renderHowItWorks,'schedule':renderSchedule,'pricing':renderPricing,'about':renderAbout,'contact':renderContact};var fn=r[currentPage]||renderHome;app.innerHTML=fn();buildNav();updateNavStyle();requestAnimationFrame(function(){observeFadeIns()})}
 render();
 </script>
 </body>
