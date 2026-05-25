@@ -106,5 +106,6 @@ var hash=window.location.hash.replace('#','');if(hash){var slugs=Object.keys(PAG
 window.addEventListener('hashchange',function(){var h=window.location.hash.replace('#','');if(h==='schedule'||h==='pricing'){currentPage='classes';window.location.hash='classes';window.scrollTo({top:0});render();return}if(h&&h!==currentPage){currentPage=h;window.scrollTo({top:0});render()}});
 render();
 </script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
