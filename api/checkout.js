@@ -13,8 +13,8 @@ module.exports = async (req, res) => {
       },
     ],
     mode: 'payment',
-    success_url: 'https://yoursite.com/success',
-    cancel_url: 'https://yoursite.com',
+    success_url: 'https://atlastutoring.com.au/#success',
+    cancel_url: 'https://atlastutoring.com.au/#pay',
   });
 
   res.redirect(303, session.url);
