@@ -1,0 +1,6 @@
+{
+  "name": "my-website",
+  "dependencies": {
+    "stripe": "^14.0.0"
+  }
+}
