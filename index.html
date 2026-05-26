@@ -426,32 +426,38 @@ function validateAndPay(){
     if(err) err.classList.add('show');
     return;
   }
-  var fields=['student-first','student-last','student-email','student-school','student-year','parent-name','parent-email','parent-phone'];
-  var data={};
-  for(var i=0;i<fields.length;i++){
-    var el=document.getElementById('f-'+fields[i]);
-    if(el) data[fields[i]]=el.value;
-  }
-  data.classes=selectedClasses.map(function(id){
-    var s=getSlot(id);
-    var row=TT_ROWS.find(function(r){return r.cells.some(function(c){return c&&c.id===id;});});
-    return s?(s.day+' '+row.time+' — Yr '+s.yr+' '+s.subject):id;
-  }).join(' | ');
-  data.count=selectedClasses.length;
-  data.total=selectedClasses.length*400;
 
-  var form=document.createElement('form');
-  form.method='POST';
-  form.action='/api/checkout';
-  for(var key in data){
-    var inp=document.createElement('input');
-    inp.type='hidden';
-    inp.name=key;
-    inp.value=data[key];
-    form.appendChild(inp);
-  }
-  document.body.appendChild(form);
-  form.submit();
+  var data={
+    studentFirst:document.getElementById('f-student-first').value,
+    studentLast:document.getElementById('f-student-last').value,
+    studentEmail:document.getElementById('f-student-email').value,
+    school:document.getElementById('f-student-school').value,
+    year:document.getElementById('f-student-year').value,
+    parentName:document.getElementById('f-parent-name').value,
+    parentEmail:document.getElementById('f-parent-email').value,
+    parentPhone:document.getElementById('f-parent-phone').value,
+    classes:selectedClasses.map(function(id){
+      var s=getSlot(id);
+      var row=TT_ROWS.find(function(r){return r.cells.some(function(c){return c&&c.id===id;});});
+      return s?(s.day+' '+row.time+' \u2014 Yr '+s.yr+' '+s.subject+' ('+s.tutor+')'):id;
+    }).join(' | '),
+    total:selectedClasses.length*400
+  };
+
+  var btn=document.querySelector('#step-panel-4 .btn-gold');
+  btn.textContent='Submitting...';
+  btn.disabled=true;
+
+  fetch('https://script.google.com/macros/s/AKfycby0Lw1Z6tbC1ffbjmHqG-kkAGvV4FkCo24glyiHDkxt1bP47wl0WKh0jX7J-ZyIA1FzXA/exec',{
+    method:'POST',
+    body:JSON.stringify(data)
+  })
+  .then(function(){navigate('success');})
+  .catch(function(){
+    btn.textContent='\uD83D\uDD12 Proceed to Payment';
+    btn.disabled=false;
+    alert('Something went wrong. Please try again or email us directly.');
+  });
 }
 
 function buildNav(){var n=document.getElementById('navLinks'),m=document.getElementById('mobileMenu'),f=document.getElementById('footerLinks');n.innerHTML='';m.innerHTML='';f.innerHTML='';var labels=Object.keys(PAGE_LABELS);for(var i=0;i<labels.length;i++){var label=labels[i],slug=PAGE_LABELS[label];var btn=document.createElement('button');btn.className='nav-link'+(currentPage===slug?' active':'');btn.textContent=label;btn.setAttribute('data-slug',slug);btn.onclick=function(){navigate(this.getAttribute('data-slug'))};n.appendChild(btn);var mb=document.createElement('button');mb.className='mobile-menu-link'+(currentPage===slug?' active':'');mb.textContent=label;mb.setAttribute('data-slug',slug);mb.onclick=function(){navigate(this.getAttribute('data-slug'));closeMobileMenu()};m.appendChild(mb);var fl=document.createElement('button');fl.className='footer-link';fl.textContent=label;fl.setAttribute('data-slug',slug);fl.onclick=function(){navigate(this.getAttribute('data-slug'))};f.appendChild(fl)}}
@@ -497,7 +503,7 @@ function renderPay(){
   return'<section class="subpage-section" style="background:var(--bg)" id="enrol-top"><div style="max-width:1100px;margin:0 auto;padding:0 5%">'+sectionTitle('Enrolment','Enrol in a Class','Select your classes, fill in your details, and pay securely via Stripe.')+'<div class="enrol-layout"><div class="enrol-main">'+stepTabs+step1+step2+step3+step4+'</div>'+sidebar+'</div></div></section>';
 }
 
-function renderSuccess(){return'<section class="subpage-section" style="background:var(--bg)"><div style="max-width:560px;margin:0 auto;padding:0 5%;text-align:center"><div style="font-size:56px;margin-bottom:24px">&#127881;</div><h2 style="font-family:\'Cormorant Garamond\',serif;font-size:40px;font-weight:700;color:var(--navy);margin-bottom:16px">You\'re enrolled!</h2><p style="font-family:\'DM Sans\',sans-serif;font-size:17px;color:var(--text-muted);line-height:1.7;margin-bottom:32px">Payment successful. Welcome to Atlas Tutoring \u2014 we\'ll be in touch shortly with your class details and Zoom link.</p><button class="btn btn-gold" onclick="navigate(\'home\')">Back to Home</button></div></section>'}
+function renderSuccess(){return'<section class="subpage-section" style="background:var(--bg)"><div style="max-width:560px;margin:0 auto;padding:0 5%;text-align:center"><div style="font-size:56px;margin-bottom:24px">&#127881;</div><h2 style="font-family:\'Cormorant Garamond\',serif;font-size:40px;font-weight:700;color:var(--navy);margin-bottom:16px">You\'re enrolled!</h2><p style="font-family:\'DM Sans\',sans-serif;font-size:17px;color:var(--text-muted);line-height:1.7;margin-bottom:32px">Welcome to Atlas Tutoring \u2014 we\'ll be in touch shortly with your payment details and class information.</p><button class="btn btn-gold" onclick="navigate(\'home\')">Back to Home</button></div></section>'}
 
 function renderAbout(){var b=[{t:'Exam Strategy',d:'The exact approaches and techniques that earned the top marks in every assessment.'},{t:'Study Methods',d:'How the best students actually study \u2014 not theory, but the real methods they used.'},{t:'Common Mistakes',d:'The pitfalls that cost other students marks, and how to avoid every one of them.'},{t:'The Confidence to Perform',d:'Walk into the exam room knowing you\'ve been taught by someone who already conquered it.'}];var bh='';for(var i=0;i<b.length;i++)bh+='<div class="about-benefit"><div class="about-benefit-bar"></div><h4>'+b[i].t+'</h4><p>'+b[i].d+'</p></div>';return'<section class="subpage-section" style="background:var(--white)"><div style="max-width:760px;margin:0 auto;padding:0 5%">'+sectionTitle('Our Mission','About Atlas Tutoring','')+'<div class="fade-in about-text"><p class="about-lead">The difference between a good ATAR and a great one isn\'t intelligence \u2014 it\'s access. Access to the right strategies, the right techniques, and the right person to learn them from.</p><p>Most tutoring companies hire students who did well. Atlas is different. We only hire the student who did the best \u2014 the one who achieved Subject Exhibition, the #1 rank in their subject in all of Western Australia.</p><p>These tutors sat the exact same exams your child is about to sit. They didn\'t just study the content \u2014 they mastered it at a level no other student in the state could match. And now they\'re passing on everything they know: how to study efficiently, how to structure answers that markers reward, which mistakes to avoid, and how to walk into the exam room with genuine confidence.</p><p>That\'s what Atlas gives your child. Not just a tutor \u2014 a blueprint for how to be the best.</p></div>'+goldDivider()+'<div class="fade-in"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;text-align:center">'+bh+'</div></div></div></section>'}
 
