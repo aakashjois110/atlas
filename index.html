@@ -210,7 +210,7 @@ img{max-width:100%}
 .error-msg.show{display:block}
 
 /* Clickable timetable */
-.tt-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -8px;padding:0 8px}
+.tt-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .tt{width:100%;border-collapse:collapse;font-family:'DM Sans',sans-serif;font-size:13px;min-width:480px}
 .tt th{background:var(--navy);color:#fff;padding:10px 6px;font-weight:600;font-size:11px;letter-spacing:.5px;text-align:center}
 .tt th.tt-day-hd{background:var(--navy-light);font-size:10px;letter-spacing:1px}
@@ -228,6 +228,12 @@ img{max-width:100%}
 .tt-legend-item{display:flex;align-items:center;gap:6px;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--text-muted)}
 .tt-legend-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0}
 @media(max-width:600px){.tt-cell-subj{font-size:11px}.tt th{font-size:9px;padding:8px 4px}.tt .tt-time{font-size:9px;padding:6px 4px}.tt-cell{padding:5px 4px}}
+@media(max-width:700px){
+  .tt thead tr th:nth-child(4),.tt thead tr th:nth-child(5),
+  .tt tbody tr td:nth-child(4),.tt tbody tr td:nth-child(5){display:none}
+  .tt-sun-label{display:block!important}
+}
+.tt-sun-label{display:none;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin:20px 0 8px}
 </style>
 </head>
 <body>
@@ -342,7 +348,7 @@ function refreshSidebar(){
 }
 
 function buildTimetable(clickable){
-  var html='<div class="tt-wrap"><table class="tt">';
+  var html+='<div class="tt-sun-label">Sunday</div><div class="tt-wrap"><table class="tt">';
   html+='<tr><th></th><th colspan="2" class="tt-day-hd">SATURDAY</th><th colspan="2" class="tt-day-hd">SUNDAY</th></tr>';
   for(var r=0;r<TT_ROWS.length;r++){
     var row=TT_ROWS[r];
