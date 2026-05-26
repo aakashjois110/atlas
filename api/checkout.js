@@ -13,6 +13,7 @@ module.exports = async (req, res) => {
       },
     ],
     mode: 'payment',
+    allow_promotion_codes: true,
     success_url: 'https://atlastutoring.com.au/#success',
     cancel_url: 'https://atlastutoring.com.au/#pay',
   });
