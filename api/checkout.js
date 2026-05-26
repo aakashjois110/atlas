@@ -2,9 +2,8 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 module.exports = async (req, res) => {
   const body = req.body || {};
-
   const count = parseInt(body.count) || 1;
-  const total = parseInt(body.total) || 40;
+  const total = parseInt(body.total) || 400;
   const classes = body.classes || 'Not specified';
 
   const session = await stripe.checkout.sessions.create({
@@ -12,7 +11,7 @@ module.exports = async (req, res) => {
       price_data: {
         currency: 'aud',
         product_data: {
-          name: 'Atlas Tutoring — Weekly Classes',
+          name: 'Atlas Tutoring — Term Enrolment',
           description: classes,
         },
         unit_amount: total * 100,
@@ -31,7 +30,7 @@ module.exports = async (req, res) => {
       parent_email: body['parent-email'] || '',
       parent_phone: body['parent-phone'] || '',
       classes_selected: classes,
-      num_classes: String(count),
+      num_subjects: String(count),
     },
     success_url: 'https://atlastutoring.com.au/#success',
     cancel_url: 'https://atlastutoring.com.au/#pay',
