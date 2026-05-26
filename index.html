@@ -448,16 +448,17 @@ function validateAndPay(){
   btn.textContent='Submitting...';
   btn.disabled=true;
 
-  fetch('https://script.google.com/macros/s/AKfycby0Lw1Z6tbC1ffbjmHqG-kkAGvV4FkCo24glyiHDkxt1bP47wl0WKh0jX7J-ZyIA1FzXA/exec',{
-    method:'POST',
-    body:JSON.stringify(data)
-  })
-  .then(function(){navigate('success');})
-  .catch(function(){
-    btn.textContent='\uD83D\uDD12 Proceed to Payment';
-    btn.disabled=false;
-    alert('Something went wrong. Please try again or email us directly.');
-  });
+var form=document.createElement('form');
+  form.method='POST';
+  form.action='https://script.google.com/macros/s/AKfycby0Lw1Z6tbC1ffbjmHqG-kkAGvV4FkCo24glyiHDkxt1bP47wl0WKh0jX7J-ZyIA1FzXA/exec';
+  var inp=document.createElement('input');
+  inp.type='hidden';
+  inp.name='data';
+  inp.value=JSON.stringify(data);
+  form.appendChild(inp);
+  document.body.appendChild(form);
+  navigate('success');
+  form.submit();
 }
 
 function buildNav(){var n=document.getElementById('navLinks'),m=document.getElementById('mobileMenu'),f=document.getElementById('footerLinks');n.innerHTML='';m.innerHTML='';f.innerHTML='';var labels=Object.keys(PAGE_LABELS);for(var i=0;i<labels.length;i++){var label=labels[i],slug=PAGE_LABELS[label];var btn=document.createElement('button');btn.className='nav-link'+(currentPage===slug?' active':'');btn.textContent=label;btn.setAttribute('data-slug',slug);btn.onclick=function(){navigate(this.getAttribute('data-slug'))};n.appendChild(btn);var mb=document.createElement('button');mb.className='mobile-menu-link'+(currentPage===slug?' active':'');mb.textContent=label;mb.setAttribute('data-slug',slug);mb.onclick=function(){navigate(this.getAttribute('data-slug'));closeMobileMenu()};m.appendChild(mb);var fl=document.createElement('button');fl.className='footer-link';fl.textContent=label;fl.setAttribute('data-slug',slug);fl.onclick=function(){navigate(this.getAttribute('data-slug'))};f.appendChild(fl)}}
