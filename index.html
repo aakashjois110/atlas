@@ -391,29 +391,7 @@ function buildTimetable(clickable){
   }
   desktop += '</table></div>';
 
-  // Mobile Saturday table (cols 0,1)
-  var sat = '<div class="tt-day-label">Saturday</div><div class="tt-wrap tt-sat-only"><table class="tt">';
-  sat += '<tr><th></th><th class="tt-day-hd">CLASS 1</th><th class="tt-day-hd">CLASS 2</th></tr>';
-  for(var r=0;r<TT_ROWS.length;r++){
-    var row=TT_ROWS[r];
-    sat += '<tr><td class="tt-time">'+row.time+'</td>';
-    sat += '<td>'+makeCell(row.cells[0], clickable)+'</td>';
-    sat += '<td>'+makeCell(row.cells[1], clickable)+'</td>';
-    sat += '</tr>';
-  }
-  sat += '</table></div>';
 
-  // Mobile Sunday table (cols 2,3)
-  var sun = '<div class="tt-day-label" style="margin-top:20px">Sunday</div><div class="tt-wrap tt-sun-only"><table class="tt">';
-  sun += '<tr><th></th><th class="tt-day-hd">CLASS 1</th><th class="tt-day-hd">CLASS 2</th></tr>';
-  for(var r=0;r<TT_ROWS.length;r++){
-    var row=TT_ROWS[r];
-    sun += '<tr><td class="tt-time">'+row.time+'</td>';
-    sun += '<td>'+makeCell(row.cells[2], clickable)+'</td>';
-    sun += '<td>'+makeCell(row.cells[3], clickable)+'</td>';
-    sun += '</tr>';
-  }
-  sun += '</table></div>';
 
   var legend = clickable
     ? '<div class="tt-legend"><div class="tt-legend-item"><div class="tt-legend-dot" style="background:var(--bg);border:2px solid var(--border)"></div>Available</div><div class="tt-legend-item"><div class="tt-legend-dot" style="background:rgba(212,175,122,.12);border:2px solid var(--gold)"></div>Selected</div></div>'
