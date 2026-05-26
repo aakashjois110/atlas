@@ -227,7 +227,30 @@ img{max-width:100%}
 .tt-legend{display:flex;align-items:center;gap:16px;margin-top:12px;flex-wrap:wrap}
 .tt-legend-item{display:flex;align-items:center;gap:6px;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--text-muted)}
 .tt-legend-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0}
-@media(max-width:600px){.tt-cell-subj{font-size:11px}.tt th{font-size:9px;padding:8px 4px}.tt .tt-time{font-size:9px;padding:6px 4px}.tt-cell{padding:5px 4px}}
+
+/* === MOBILE ENROLMENT & TIMETABLE FIXES === */
+@media(max-width:768px){
+  /* Prevent horizontal overflow on the enrolment page */
+  .subpage-section{overflow-x:hidden}
+  /* Tighten card padding so content fits without clipping */
+  .enrol-section-card{padding:20px 14px;overflow:hidden}
+  /* Step tabs: shrink font/padding so all 4 fit without wrapping or clipping */
+  .enrol-steps{border-radius:8px}
+  .enrol-step-tab{font-size:9px;padding:10px 3px;letter-spacing:0}
+  .enrol-step-num{font-size:15px}
+  /* Timetable: horizontally scrollable, compact cells */
+  .tt{min-width:420px}
+  .tt th{font-size:8px;padding:7px 3px}
+  .tt th.tt-day-hd{font-size:8px}
+  .tt .tt-time{font-size:9px;padding:6px 4px;min-width:52px}
+  .tt-cell{padding:5px 4px}
+  .tt-cell-yr{font-size:8px}
+  .tt-cell-subj{font-size:11px}
+  .tt-cell-tutor{font-size:9px}
+  .tt-empty{font-size:12px;padding:6px}
+  /* Remove extra side padding from enrol layout on mobile */
+  .enrol-layout{padding:0 3%}
+}
 </style>
 </head>
 <body>
