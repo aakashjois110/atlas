@@ -230,38 +230,22 @@ img{max-width:100%}
 
 /* === MOBILE ENROLMENT & TIMETABLE FIXES === */
 @media(max-width:768px){
-  /* Prevent horizontal overflow on the enrolment page */
   .subpage-section{overflow-x:hidden}
-  /* Tighten card padding so content fits without clipping */
-  .enrol-section-card{padding:20px 14px;overflow:hidden}
-  /* Step tabs: shrink font/padding so all 4 fit without wrapping or clipping */
+  .enrol-section-card{padding:16px 10px;overflow:hidden}
   .enrol-steps{border-radius:8px}
-  .enrol-step-tab{font-size:9px;padding:10px 3px;letter-spacing:0}
-  .enrol-step-num{font-size:15px}
-  /* Timetable: horizontally scrollable, compact cells */
-  .tt{min-width:420px}
-  .tt th{font-size:8px;padding:7px 3px}
-  .tt th.tt-day-hd{font-size:8px}
-  .tt .tt-time{font-size:9px;padding:6px 4px;min-width:52px}
-  .tt-cell{padding:5px 4px}
-  .tt-cell-yr{font-size:8px}
-  .tt-cell-subj{font-size:11px}
-  .tt-cell-tutor{font-size:9px}
-  .tt-empty{font-size:12px;padding:6px}
-  /* Remove extra side padding from enrol layout on mobile */
-  .enrol-layout{padding:0 3%}
+  .enrol-step-tab{font-size:8px;padding:8px 2px;letter-spacing:0;min-width:0}
+  .enrol-step-num{font-size:13px}
+  .enrol-layout{padding:0 2%}
+  .tt{min-width:0;width:100%}
+  .tt th{font-size:7px;padding:6px 2px;letter-spacing:0}
+  .tt th.tt-day-hd{font-size:7px}
+  .tt .tt-time{font-size:8px;padding:4px 3px;min-width:42px;white-space:nowrap}
+  .tt-cell{padding:4px 3px}
+  .tt-cell-yr{font-size:7px}
+  .tt-cell-subj{font-size:10px}
+  .tt-cell-tutor{font-size:8px}
+  .tt-empty{font-size:10px;padding:4px}
 }
-  @media(max-width:768px){
-  .tt-sat-only .tt-sun-col{display:none}
-  .tt-sun-only .tt-sat-col{display:none}
-  .tt-day-label{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
-}
-@media(min-width:769px){
-  .tt-sat-only,.tt-sun-only,.tt-day-label{display:none}
-  .tt-wrap-desktop{display:block}
-}
-@media(max-width:768px){
-  .tt-wrap-desktop{display:none
 </style>
 </head>
 <body>
