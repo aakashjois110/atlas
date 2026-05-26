@@ -54,7 +54,6 @@ img{max-width:100%}
 .btn-outline-dark{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}
 .btn-outline-dark:hover{background:var(--bg)}
 .btn-full{width:100%}
-.btn-sm{padding:8px 20px;font-size:13px}
 .section{padding:100px 5%}
 .section-inner{max-width:1120px;margin:0 auto}
 .section-narrow{max-width:800px;margin:0 auto}
@@ -171,68 +170,63 @@ img{max-width:100%}
 .coming-soon-form button:hover{background:var(--navy-light)}
 @media(max-width:600px){.coming-soon-card{padding:36px 24px}.coming-soon-title{font-size:26px}.coming-soon-form{flex-direction:column}.coming-soon-form button{width:100%}}
 
-/* Enrolment Page */
-.enrol-layout{display:grid;grid-template-columns:1fr 340px;gap:32px;align-items:start;max-width:1100px;margin:0 auto;padding:0 5%}
+/* Enrolment */
+.enrol-layout{display:grid;grid-template-columns:1fr 320px;gap:32px;align-items:start;max-width:1100px;margin:0 auto;padding:0 5%}
 @media(max-width:900px){.enrol-layout{grid-template-columns:1fr}}
-.enrol-main{}
 .enrol-sidebar{position:sticky;top:100px}
 .enrol-sidebar-card{background:var(--white);border-radius:16px;border:1px solid var(--border);overflow:hidden}
-.enrol-sidebar-header{background:linear-gradient(135deg,var(--navy),var(--navy-dark));padding:24px;color:#fff}
+.enrol-sidebar-header{background:linear-gradient(135deg,var(--navy),var(--navy-dark));padding:24px}
 .enrol-sidebar-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:4px}
 .enrol-sidebar-sub{font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(255,255,255,.6)}
 .enrol-sidebar-body{padding:24px}
-.enrol-sidebar-classes{min-height:60px;margin-bottom:20px}
 .enrol-no-classes{font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text-muted);font-style:italic}
-.enrol-class-tag{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--bg);border-radius:8px;margin-bottom:8px;gap:8px}
-.enrol-class-tag-name{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:var(--navy);flex:1}
-.enrol-class-tag-remove{background:none;border:none;cursor:pointer;color:var(--text-muted);font-size:16px;padding:0 4px;line-height:1;transition:color .2s}
+.enrol-class-tag{display:flex;align-items:flex-start;justify-content:space-between;padding:10px 12px;background:var(--bg);border-radius:8px;margin-bottom:8px;gap:8px}
+.enrol-class-tag-name{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:var(--navy);flex:1;line-height:1.4}
+.enrol-class-tag-remove{background:none;border:none;cursor:pointer;color:var(--text-muted);font-size:16px;padding:0 4px;line-height:1;transition:color .2s;flex-shrink:0}
 .enrol-class-tag-remove:hover{color:#DC2626}
 .enrol-divider{height:1px;background:var(--border);margin:16px 0}
-.enrol-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.enrol-total-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}
 .enrol-total-label{font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text-muted)}
 .enrol-total-value{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--navy)}
 .enrol-total-note{font-family:'DM Sans',sans-serif;font-size:12px;color:var(--text-muted);margin-bottom:20px}
-
-/* Steps */
 .enrol-steps{display:flex;gap:0;margin-bottom:32px;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
 .enrol-step-tab{flex:1;padding:14px 8px;text-align:center;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:.5px;color:var(--text-muted);background:var(--white);border:none;cursor:default;border-right:1px solid var(--border);transition:all .3s}
 .enrol-step-tab:last-child{border-right:none}
 .enrol-step-tab.active{background:var(--navy);color:#fff}
 .enrol-step-tab.done{background:rgba(212,175,122,.12);color:var(--gold)}
 .enrol-step-num{display:block;font-size:18px;font-family:'Cormorant Garamond',serif;font-weight:700;margin-bottom:2px}
-
-/* Step panels */
 .enrol-panel{display:none}
 .enrol-panel.active{display:block}
-
-/* Timetable filter + slots */
-.filter-btns{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
-.filter-btn{padding:8px 18px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;border-radius:6px;cursor:pointer;transition:all .2s;border:1.5px solid var(--navy);background:transparent;color:var(--navy)}
-.filter-btn.active{background:var(--navy);color:#fff}
-.filter-btn:hover{background:var(--navy);color:#fff}
-
-.class-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:8px}
-.class-slot{border:2px solid var(--border);border-radius:10px;padding:16px;cursor:pointer;transition:all .2s;background:var(--white);text-align:left}
-.class-slot:hover{border-color:var(--gold);box-shadow:0 4px 16px rgba(212,175,122,.15)}
-.class-slot.selected{border-color:var(--gold);background:rgba(212,175,122,.08)}
-.class-slot-subject{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:700;color:var(--navy);margin-bottom:4px}
-.class-slot-detail{font-family:'DM Sans',sans-serif;font-size:12px;color:var(--text-muted);line-height:1.5}
-.class-slot-yr{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1px;background:var(--navy);color:#fff;border-radius:4px;padding:2px 7px;margin-bottom:6px}
-.class-slot.selected .class-slot-yr{background:var(--gold);color:var(--navy)}
-.class-slot-check{float:right;width:20px;height:20px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all .2s;margin-top:2px}
-.class-slot.selected .class-slot-check{background:var(--gold);border-color:var(--gold)}
-
-/* Step nav buttons */
-.enrol-nav{display:flex;justify-content:space-between;align-items:center;margin-top:28px}
 .enrol-section-card{background:var(--white);border-radius:16px;border:1px solid var(--border);padding:32px;margin-bottom:24px}
-.enrol-section-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:20px}
+.enrol-section-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.enrol-section-sub{font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+.enrol-nav{display:flex;justify-content:space-between;align-items:center;margin-top:28px}
 .form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media(max-width:600px){.form-row-2{grid-template-columns:1fr}}
 .terms-box{background:var(--bg);border-radius:8px;padding:20px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text-muted);line-height:1.7;max-height:180px;overflow-y:auto;margin-bottom:20px;border:1px solid var(--border)}
 .terms-check-row{display:flex;align-items:flex-start;gap:12px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text)}
 .terms-check-row input{width:18px;height:18px;accent-color:var(--navy);margin-top:2px;flex-shrink:0;cursor:pointer}
-.error-msg{font-family:'DM Sans',sans-serif;font-size:13px;color:#DC2626;margin-top:8px;display:none}
+.error-msg{font-family:'DM Sans',sans-serif;font-size:13px;color:#DC2626;margin-top:12px;display:none}
 .error-msg.show{display:block}
+
+/* Clickable timetable */
+.tt-wrap{overflow-x:auto}
+.tt{width:100%;border-collapse:collapse;font-family:'DM Sans',sans-serif;font-size:13px;min-width:540px}
+.tt th{background:var(--navy);color:#fff;padding:12px 16px;font-weight:600;font-size:12px;letter-spacing:1px;text-align:center}
+.tt th.tt-day-hd{background:var(--navy-light);font-size:11px;letter-spacing:2px}
+.tt td{padding:6px;border:1px solid var(--border);vertical-align:middle}
+.tt .tt-time{font-weight:600;color:var(--navy);white-space:nowrap;padding:10px 14px;background:var(--bg);text-align:left;font-size:12px}
+.tt-cell{border-radius:8px;padding:10px 12px;cursor:pointer;transition:all .2s;border:2px solid transparent;background:var(--bg);display:block;width:100%;text-align:left}
+.tt-cell:hover{border-color:var(--gold);background:rgba(212,175,122,.06)}
+.tt-cell.selected{border-color:var(--gold);background:rgba(212,175,122,.12)}
+.tt-cell-yr{font-size:10px;font-weight:700;letter-spacing:1px;color:var(--gold);margin-bottom:3px}
+.tt-cell.selected .tt-cell-yr{color:var(--navy)}
+.tt-cell-subj{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:700;color:var(--navy);line-height:1.2}
+.tt-cell-tutor{font-size:11px;color:var(--text-muted);margin-top:2px}
+.tt-empty{color:#ccc;text-align:center;font-size:18px;padding:10px}
+.tt-legend{display:flex;align-items:center;gap:20px;margin-top:12px;flex-wrap:wrap}
+.tt-legend-item{display:flex;align-items:center;gap:6px;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--text-muted)}
+.tt-legend-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0}
 </style>
 </head>
 <body>
@@ -245,19 +239,33 @@ img{max-width:100%}
 var CONTACT_EMAIL='contact.atlastutoring'+String.fromCharCode(64)+'gmail.com';
 var PAGE_LABELS={'Home':'home','Subjects':'subjects','Tutors':'tutors','How It Works':'how-it-works','Classes':'classes','About':'about','Register':'register','Contact':'contact'};
 
-var CLASS_SLOTS=[
-  {id:'spec-11',subject:'Maths Specialist',yr:'11',day:'Saturday',time:'10–11am',tutor:'Ethan K.'},
-  {id:'spec-12',subject:'Maths Specialist',yr:'12',day:'Saturday',time:'11am–12pm',tutor:'Ethan K.'},
-  {id:'chem-12',subject:'Chemistry',yr:'12',day:'Saturday',time:'10–11am',tutor:'Aidan L.'},
-  {id:'chem-11',subject:'Chemistry',yr:'11',day:'Saturday',time:'11am–12pm',tutor:'Aidan L.'},
-  {id:'econ-11',subject:'Economics',yr:'11',day:'Saturday',time:'1–2pm',tutor:'Aakash J.'},
-  {id:'econ-12',subject:'Economics',yr:'12',day:'Saturday',time:'2–3pm',tutor:'Aakash J.'},
-  {id:'eng-11',subject:'English',yr:'11',day:'Saturday',time:'1–2pm',tutor:'Parie B.'},
-  {id:'eng-12',subject:'English',yr:'12',day:'Saturday',time:'2–3pm',tutor:'Parie B.'},
-  {id:'meth-11',subject:'Maths Methods',yr:'11',day:'Sunday',time:'10–11am',tutor:'Aidan L.'},
-  {id:'meth-12',subject:'Maths Methods',yr:'12',day:'Sunday',time:'11am–12pm',tutor:'Aidan L.'},
-  {id:'phys-12',subject:'Physics',yr:'12',day:'Sunday',time:'10–11am',tutor:'Cameron B.'},
-  {id:'phys-11',subject:'Physics',yr:'11',day:'Sunday',time:'11am–12pm',tutor:'Cameron B.'}
+// Timetable data — rows = time slots, cols = [Sat col1, Sat col2, Sun col1, Sun col2]
+// Format: {id, subject, yr, tutor} or null
+var TT_ROWS=[
+  {time:'10–11am', cells:[
+    {id:'spec-11',subject:'Maths Specialist',yr:'11',tutor:'Ethan K.',day:'Sat'},
+    {id:'chem-12',subject:'Chemistry',yr:'12',tutor:'Aidan L.',day:'Sat'},
+    {id:'meth-11',subject:'Maths Methods',yr:'11',tutor:'Aidan L.',day:'Sun'},
+    {id:'phys-12',subject:'Physics',yr:'12',tutor:'Cameron B.',day:'Sun'}
+  ]},
+  {time:'11am–12pm', cells:[
+    {id:'chem-11',subject:'Chemistry',yr:'11',tutor:'Aidan L.',day:'Sat'},
+    {id:'spec-12',subject:'Maths Specialist',yr:'12',tutor:'Ethan K.',day:'Sat'},
+    {id:'phys-11',subject:'Physics',yr:'11',tutor:'Cameron B.',day:'Sun'},
+    {id:'meth-12',subject:'Maths Methods',yr:'12',tutor:'Aidan L.',day:'Sun'}
+  ]},
+  {time:'1–2pm', cells:[
+    {id:'econ-11',subject:'Economics',yr:'11',tutor:'Aakash J.',day:'Sat'},
+    {id:'eng-12',subject:'English',yr:'12',tutor:'Parie B.',day:'Sat'},
+    null,
+    null
+  ]},
+  {time:'2–3pm', cells:[
+    {id:'eng-11',subject:'English',yr:'11',tutor:'Parie B.',day:'Sat'},
+    {id:'econ-12',subject:'Economics',yr:'12',tutor:'Aakash J.',day:'Sat'},
+    null,
+    null
+  ]}
 ];
 
 var SUBJECTS=[
@@ -278,31 +286,36 @@ var TUTORS=[
 ];
 
 var currentPage='home';
-var enrolStep=1;
 var selectedClasses=[];
-var yearFilter='all';
 
 document.getElementById('footerContact').innerHTML=CONTACT_EMAIL+'<br>Perth, Western Australia';
 
-/* ── Enrolment helpers ── */
+function getSlot(id){
+  for(var r=0;r<TT_ROWS.length;r++){
+    for(var c=0;c<TT_ROWS[r].cells.length;c++){
+      var cell=TT_ROWS[r].cells[c];
+      if(cell&&cell.id===id) return cell;
+    }
+  }
+  return null;
+}
+
 function toggleClass(id){
   var idx=selectedClasses.indexOf(id);
   if(idx===-1) selectedClasses.push(id);
   else selectedClasses.splice(idx,1);
-  refreshClassSlots();
-  refreshSidebar();
-}
-
-function refreshClassSlots(){
-  var slots=document.querySelectorAll('.class-slot');
-  for(var i=0;i<slots.length;i++){
-    var el=slots[i];
-    var id=el.getAttribute('data-id');
-    if(selectedClasses.indexOf(id)!==-1) el.classList.add('selected');
-    else el.classList.remove('selected');
-    var chk=el.querySelector('.class-slot-check');
-    if(chk) chk.innerHTML=selectedClasses.indexOf(id)!==-1?'<svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2 2 4-4" stroke="#0F1F3D" stroke-width="2" fill="none" stroke-linecap="round"/></svg>':'';
+  // update timetable cells
+  var cells=document.querySelectorAll('.tt-cell[data-id]');
+  for(var i=0;i<cells.length;i++){
+    var el=cells[i];
+    if(el.getAttribute('data-id')===id){
+      if(selectedClasses.indexOf(id)!==-1) el.classList.add('selected');
+      else el.classList.remove('selected');
+    }
   }
+  refreshSidebar();
+  var err=document.getElementById('classes-error');
+  if(err&&selectedClasses.length>0) err.classList.remove('show');
 }
 
 function refreshSidebar(){
@@ -318,57 +331,61 @@ function refreshSidebar(){
   }
   var html='';
   for(var i=0;i<selectedClasses.length;i++){
-    var id=selectedClasses[i];
-    var slot=getSlot(id);
-    if(slot) html+='<div class="enrol-class-tag"><span class="enrol-class-tag-name">Yr '+slot.yr+' '+slot.subject+'<br><span style="font-weight:400;font-size:11px;color:var(--text-muted)">'+slot.day+' '+slot.time+'</span></span><button class="enrol-class-tag-remove" onclick="toggleClass(\''+id+'\')">&#x2715;</button></div>';
+    var slot=getSlot(selectedClasses[i]);
+    if(slot) html+='<div class="enrol-class-tag"><span class="enrol-class-tag-name">Yr '+slot.yr+' '+slot.subject+'<br><span style="font-weight:400;font-size:11px;color:var(--text-muted)">'+slot.day+' &bull; '+TT_ROWS.find(function(r){return r.cells.some(function(c){return c&&c.id===slot.id;});}).time+'</span></span><button class="enrol-class-tag-remove" onclick="toggleClass(\''+slot.id+'\')">&#x2715;</button></div>';
   }
   container.innerHTML=html;
-  var total=selectedClasses.length*40;
-  if(totalEl) totalEl.textContent='$'+total;
-  if(noteEl) noteEl.textContent='$40 per class per session';
+  var n=selectedClasses.length;
+  if(totalEl) totalEl.textContent='$'+(n*400);
+  if(noteEl) noteEl.textContent='$400/term per subject (10 weeks \u00D7 $40/session)';
 }
 
-function getSlot(id){
-  for(var i=0;i<CLASS_SLOTS.length;i++) if(CLASS_SLOTS[i].id===id) return CLASS_SLOTS[i];
-  return null;
-}
-
-function buildClassGrid(filter){
-  var filtered=CLASS_SLOTS.filter(function(s){return filter==='all'||s.yr===filter;});
-  if(filtered.length===0) return '<p style="color:var(--text-muted);font-family:\'DM Sans\',sans-serif;font-size:14px;padding:16px 0">No classes for this year level.</p>';
-  var html='<div class="class-grid">';
-  for(var i=0;i<filtered.length;i++){
-    var s=filtered[i];
-    var sel=selectedClasses.indexOf(s.id)!==-1;
-    html+='<div class="class-slot'+(sel?' selected':'')+'" data-id="'+s.id+'" onclick="toggleClass(\''+s.id+'\')">';
-    html+='<div style="display:flex;justify-content:space-between;align-items:start">';
-    html+='<span class="class-slot-yr">Year '+s.yr+'</span>';
-    html+='<div class="class-slot-check">'+(sel?'<svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2 2 4-4" stroke="#0F1F3D" stroke-width="2" fill="none" stroke-linecap="round"/></svg>':'')+'</div>';
-    html+='</div>';
-    html+='<div class="class-slot-subject">'+s.subject+'</div>';
-    html+='<div class="class-slot-detail">'+s.day+' &bull; '+s.time+'<br>'+s.tutor+'</div>';
-    html+='</div>';
+function buildTimetable(clickable){
+  var html='<div class="tt-wrap"><table class="tt">';
+  html+='<tr><th></th><th colspan="2" class="tt-day-hd">SATURDAY</th><th colspan="2" class="tt-day-hd">SUNDAY</th></tr>';
+  for(var r=0;r<TT_ROWS.length;r++){
+    var row=TT_ROWS[r];
+    html+='<tr><td class="tt-time">'+row.time+'</td>';
+    for(var c=0;c<4;c++){
+      var cell=row.cells[c];
+      html+='<td>';
+      if(cell){
+        var sel=selectedClasses.indexOf(cell.id)!==-1;
+        if(clickable){
+          html+='<button class="tt-cell'+(sel?' selected':'')+'" data-id="'+cell.id+'" onclick="toggleClass(\''+cell.id+'\')">';
+          html+='<div class="tt-cell-yr">YEAR '+cell.yr+'</div>';
+          html+='<div class="tt-cell-subj">'+cell.subject+'</div>';
+          html+='<div class="tt-cell-tutor">'+cell.tutor+'</div>';
+          html+='</button>';
+        } else {
+          html+='<div class="tt-cell" style="cursor:default">';
+          html+='<div class="tt-cell-yr">YEAR '+cell.yr+'</div>';
+          html+='<div class="tt-cell-subj">'+cell.subject+'</div>';
+          html+='<div class="tt-cell-tutor">'+cell.tutor+'</div>';
+          html+='</div>';
+        }
+      } else {
+        html+='<div class="tt-empty">—</div>';
+      }
+      html+='</td>';
+    }
+    html+='</tr>';
   }
-  return html+'</div>';
-}
-
-function setYearFilter(yr,btn){
-  yearFilter=yr;
-  var grid=document.getElementById('class-grid-container');
-  if(grid) grid.innerHTML=buildClassGrid(yr);
-  refreshClassSlots();
-  var btns=btn.parentNode.querySelectorAll('.filter-btn');
-  for(var i=0;i<btns.length;i++) btns[i].classList.remove('active');
-  btn.classList.add('active');
+  html+='</table></div>';
+  if(clickable){
+    html+='<div class="tt-legend"><div class="tt-legend-item"><div class="tt-legend-dot" style="background:var(--bg);border:2px solid var(--border)"></div>Available</div><div class="tt-legend-item"><div class="tt-legend-dot" style="background:rgba(212,175,122,.12);border:2px solid var(--gold)"></div>Selected</div></div>';
+  } else {
+    html+='<p style="font-family:\'DM Sans\',sans-serif;font-size:13px;color:var(--text-muted);margin-top:14px;font-style:italic">All times AWST. Classes held online via live video.</p>';
+  }
+  return html;
 }
 
 function goToStep(n){
   if(n===2&&selectedClasses.length===0){
     var err=document.getElementById('classes-error');
-    if(err){err.classList.add('show');}
+    if(err) err.classList.add('show');
     return;
   }
-  enrolStep=n;
   var panels=document.querySelectorAll('.enrol-panel');
   for(var i=0;i<panels.length;i++) panels[i].classList.remove('active');
   var active=document.getElementById('step-panel-'+n);
@@ -390,18 +407,20 @@ function validateAndPay(){
     if(err) err.classList.add('show');
     return;
   }
-  // gather form data
   var fields=['student-first','student-last','student-email','student-school','student-year','parent-name','parent-email','parent-phone'];
   var data={};
   for(var i=0;i<fields.length;i++){
     var el=document.getElementById('f-'+fields[i]);
     if(el) data[fields[i]]=el.value;
   }
-  data.classes=selectedClasses.map(function(id){var s=getSlot(id);return s?'Yr '+s.yr+' '+s.subject+' ('+s.day+' '+s.time+')':id;}).join(' | ');
-  data.total=selectedClasses.length*40;
+  data.classes=selectedClasses.map(function(id){
+    var s=getSlot(id);
+    var row=TT_ROWS.find(function(r){return r.cells.some(function(c){return c&&c.id===id;});});
+    return s?(s.day+' '+row.time+' — Yr '+s.yr+' '+s.subject):id;
+  }).join(' | ');
   data.count=selectedClasses.length;
+  data.total=selectedClasses.length*400;
 
-  // submit to /api/checkout via hidden form POST
   var form=document.createElement('form');
   form.method='POST';
   form.action='/api/checkout';
@@ -416,7 +435,6 @@ function validateAndPay(){
   form.submit();
 }
 
-/* ── Nav ── */
 function buildNav(){var n=document.getElementById('navLinks'),m=document.getElementById('mobileMenu'),f=document.getElementById('footerLinks');n.innerHTML='';m.innerHTML='';f.innerHTML='';var labels=Object.keys(PAGE_LABELS);for(var i=0;i<labels.length;i++){var label=labels[i],slug=PAGE_LABELS[label];var btn=document.createElement('button');btn.className='nav-link'+(currentPage===slug?' active':'');btn.textContent=label;btn.setAttribute('data-slug',slug);btn.onclick=function(){navigate(this.getAttribute('data-slug'))};n.appendChild(btn);var mb=document.createElement('button');mb.className='mobile-menu-link'+(currentPage===slug?' active':'');mb.textContent=label;mb.setAttribute('data-slug',slug);mb.onclick=function(){navigate(this.getAttribute('data-slug'));closeMobileMenu()};m.appendChild(mb);var fl=document.createElement('button');fl.className='footer-link';fl.textContent=label;fl.setAttribute('data-slug',slug);fl.onclick=function(){navigate(this.getAttribute('data-slug'))};f.appendChild(fl)}}
 function toggleMobileMenu(){var m=document.getElementById('mobileMenu'),icon=document.getElementById('hamburgerIcon');m.classList.toggle('open');icon.setAttribute('d',m.classList.contains('open')?'M6 6l12 12M6 18L18 6':'M4 7h16M4 12h16M4 17h16')}
 function closeMobileMenu(){document.getElementById('mobileMenu').classList.remove('open');document.getElementById('hamburgerIcon').setAttribute('d','M4 7h16M4 12h16M4 17h16')}
@@ -429,7 +447,6 @@ function sectionTitle(l,t,s){return'<div class="section-title fade-in">'+(l?'<di
 function tutorCardSmall(t,d){return'<div class="tutor-card fade-in" style="transition-delay:'+d+'s" onclick="navigate(\'tutors\')"><div class="tutor-card-header"><div class="tutor-avatar" style="background:linear-gradient(135deg,'+t.color+','+t.color+'aa)">'+t.initials+'</div><div><div class="tutor-name">'+t.name+'</div><div class="tutor-subject">'+t.subject+'</div></div></div><div class="tutor-stats">'+(t.atar?'<div class="tutor-stat-box"><div class="tutor-stat-label">ATAR</div><div class="tutor-stat-value">'+t.atar+'</div></div>':'')+'<div class="tutor-stat-box"><div class="tutor-stat-label">RANK</div><div class="tutor-stat-value">'+t.rank+'</div></div></div><p class="tutor-bio">'+t.bio+'</p></div>'}
 function checkSvg(){return'<svg class="check-icon" width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#D4AF7A" opacity="0.15"/><path d="M5.5 9.5l2 2 5-5" stroke="#D4AF7A" stroke-width="2" fill="none" stroke-linecap="round"/></svg>'}
 
-/* ── Pages ── */
 function renderHome(){var gV='',gH='';for(var i=0;i<20;i++)gV+='<div class="hero-grid-v" style="left:'+(i%5)*25+'%;top:'+Math.floor(i/5)*25+'%"></div>';for(var i=0;i<16;i++)gH+='<div class="hero-grid-h" style="top:'+(i%4)*25+'%"></div>';var stats=[{n:'99.95',l:'Median Tutor ATAR'},{n:'#1',l:'State Ranked Tutors'},{n:'6',l:'ATAR Subjects'},{n:'100%',l:'WA Focused'}];var sH='';for(var i=0;i<stats.length;i++)sH+='<div class="fade-in" style="transition-delay:'+i*.1+'s"><div class="stat-number">'+stats[i].n+'</div><div class="stat-label">'+stats[i].l+'</div></div>';var tc='';for(var i=0;i<3;i++)tc+=tutorCardSmall(TUTORS[i],i*.12);var sd=[{s:'01',t:'Choose Your Subject',d:'Browse our ATAR subjects and select the areas where you want to achieve top marks.'},{s:'02',t:'Join a Small Group Class',d:'Enter a focused online class taught live by WA\'s #1 ranked student in that subject.'},{s:'03',t:'Master the Course',d:'Learn directly from someone who mastered the course at the highest level.'}];var sh='';for(var i=0;i<sd.length;i++)sh+='<div class="fade-in" style="transition-delay:'+i*.12+'s"><div class="steps-card"><div class="steps-card-number">'+sd[i].s+'</div><div class="steps-card-label">STEP '+sd[i].s+'</div><h3 class="steps-card-title">'+sd[i].t+'</h3><p class="steps-card-desc">'+sd[i].d+'</p></div></div>';return'<section class="hero"><div class="hero-grid">'+gV+gH+'</div><div class="hero-watermark"><svg width="400" height="400" viewBox="0 0 100 100" fill="none"><polygon points="50,5 88,92 12,92" fill="#fff"/><polygon points="50,32 72,85 28,85" fill="#D4AF7A"/></svg></div><div class="hero-content"><div class="hero-label">Western Australia\'s Premier Tutoring</div><h1 class="hero-title">Learn from WA\'s<br><span>#1 Students</span></h1><p class="hero-subtitle">Atlas Tutoring connects students with the top-ranked graduate in each subject in Western Australia, delivering elite online tutoring designed for top academic performance.</p><div class="hero-buttons"><button class="btn btn-gold" onclick="navigate(\'subjects\')">View Subjects</button><button class="btn btn-outline" onclick="navigate(\'tutors\')">Meet the Tutors</button></div></div><div class="hero-scroll"><svg width="20" height="32" viewBox="0 0 20 32" fill="none"><rect x="1" y="1" width="18" height="30" rx="9" stroke="rgba(255,255,255,0.3)" stroke-width="2"/><circle cx="10" cy="10" r="3" fill="#D4AF7A"><animate attributeName="cy" values="10;20;10" dur="2s" repeatCount="indefinite"/></circle></svg></div></section><section class="stats"><div class="stats-grid">'+sH+'</div></section><section class="section" style="background:var(--bg)"><div class="section-inner">'+sectionTitle('Our Tutors','Tutors Who Achieved the Top Rank','Each Atlas tutor is the top ATAR performer in their subject \u2014 recently graduated and ready to share the exact strategies that earned them the highest marks in WA.')+'<div class="grid-3">'+tc+'</div><div class="fade-in" style="text-align:center;margin-top:48px"><button class="btn btn-outline-dark" onclick="navigate(\'tutors\')">View All Tutors \u2192</button></div></div></section>'+goldDivider()+'<section class="section" style="background:var(--white)"><div style="max-width:960px;margin:0 auto">'+sectionTitle('The Atlas Model','How It Works','A simple, powerful approach to elite tutoring.')+'<div class="grid-3" style="grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:40px">'+sh+'</div></div></section><section class="cta-section"><div class="fade-in"><h2 class="cta-title">Ready to Learn from the Best?</h2><p class="cta-subtitle">Join the students who are learning from WA\'s highest achievers.</p><div class="cta-buttons"><button class="btn btn-gold" onclick="navigate(\'subjects\')">Explore Subjects</button><button class="btn btn-outline" onclick="navigate(\'contact\')">Get in Touch</button></div></div></section>'}
 
 function renderSubjects(){var c='';for(var i=0;i<SUBJECTS.length;i++){var s=SUBJECTS[i];c+='<div class="subject-card fade-in" style="transition-delay:'+i*.06+'s"><div class="subject-icon">'+s.icon+'</div><h3 class="subject-name">'+s.name+'</h3><div class="subject-info">Tutor: <strong>'+s.tutor+'</strong></div><div class="subject-info">'+(s.atar?'ATAR '+s.atar+' \u00B7 ':'')+s.rank+'</div></div>'}return'<section class="subpage-section" style="background:var(--bg)"><div class="section-inner" style="padding:0 5%">'+sectionTitle('ATAR Subjects','Choose Your Subject','Each subject is taught exclusively by the highest-ranked student in Western Australia.')+'<div class="grid-4">'+c+'</div></div></section>'}
@@ -439,38 +456,35 @@ function renderTutors(){var c='';for(var i=0;i<TUTORS.length;i++){var t=TUTORS[i
 function renderHowItWorks(){var steps=[{s:'01',t:'Choose Your Subject',d:'Browse our range of ATAR subjects. Each one is taught by the student who achieved the highest score in Western Australia.',dt:'We currently offer 6 core ATAR subjects, with more being added each term.'},{s:'02',t:'Join a Small-Group Online Class',d:'Your child enters a focused online class where they can ask questions and interact in real time.',dt:'All classes are delivered live via Zoom with interactive whiteboards, shared resources, and recorded replays.'},{s:'03',t:'Learn Exam Strategies from the Best',d:'Your tutor doesn\'t just know the content \u2014 they\'ve mastered it at the highest level. Learn the exact techniques, study methods, and exam strategies that earned them the top rank.',dt:'Sessions focus on conceptual clarity, worked examples, past paper strategy, and common mistakes to avoid.'}];var sh='';for(var i=0;i<steps.length;i++){var s=steps[i];sh+='<div class="step-row fade-in" style="transition-delay:'+i*.15+'s"><div class="step-number">'+s.s+'</div><div><h3 class="step-title">'+s.t+'</h3><p class="step-desc">'+s.d+'</p><p class="step-detail">'+s.dt+'</p></div></div>'}var diffs=['Elite Tutors Only','Exam-Focused Learning','Live &amp; Interactive'];var dh='';for(var i=0;i<diffs.length;i++)dh+='<div class="diff-pill"><div class="diff-dot"></div><div class="diff-label">'+diffs[i]+'</div></div>';return'<section class="subpage-section" style="background:var(--white)"><div class="section-narrow" style="padding:0 5%">'+sectionTitle('The Process','How Atlas Tutoring Works','A straightforward path to academic excellence.')+sh+goldDivider()+'<div class="fade-in" style="text-align:center"><h3 style="font-family:\'Cormorant Garamond\',serif;font-size:28px;font-weight:700;color:var(--navy);margin-bottom:12px">What Makes Atlas Different</h3><div class="diff-grid">'+dh+'</div></div></div></section>'}
 
 function renderClasses(){
-  var blurContent='<div style="margin-bottom:40px"><h3 style="font-family:\'Cormorant Garamond\',serif;font-size:24px;font-weight:700;color:var(--navy);margin-bottom:8px;text-align:center">Weekly Class Timetable</h3><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px">'+CLASS_SLOTS.slice(0,6).map(function(s){return'<div style="border:1px solid var(--border);border-radius:8px;padding:12px;background:var(--white)"><div style="font-size:11px;font-weight:700;color:var(--gold)">Year '+s.yr+'</div><div style="font-family:\'Cormorant Garamond\',serif;font-size:16px;font-weight:700;color:var(--navy)">'+s.subject+'</div><div style="font-size:12px;color:var(--text-muted)">'+s.day+' &bull; '+s.time+'</div></div>';}).join('')+'</div></div><div style="text-align:center;padding:40px;background:var(--white);border-radius:16px;border:1px solid var(--border)"><div style="font-family:\'Cormorant Garamond\',serif;font-size:48px;font-weight:700;color:var(--navy)">$40<span style="font-size:18px;color:var(--text-muted)">/session</span></div><p style="font-family:\'DM Sans\',sans-serif;font-size:14px;color:var(--text-muted);margin-top:8px">Small group classes with WA\'s #1 ranked tutors</p></div>';
+  var blurTT=buildTimetable(false);
   var overlay='<div class="coming-soon-overlay"><div class="coming-soon-card"><div class="coming-soon-badge">Coming Soon</div><h3 class="coming-soon-title">Classes Launching Soon</h3><p class="coming-soon-text">Our weekly schedule and enrolment is being finalised. Drop your email and we\'ll let you know the moment classes open.</p><form class="coming-soon-form" action="https://formspree.io/f/xbdpbqeg" method="POST"><input type="hidden" name="_subject" value="Classes Notify-Me Signup"><input type="hidden" name="form_type" value="Coming Soon Notification"><input type="email" name="email" placeholder="your@email.com" required><button type="submit">Notify Me</button></form></div></div>';
-  return'<section class="subpage-section" style="background:var(--bg)"><div style="max-width:900px;margin:0 auto;padding:0 5%">'+sectionTitle('Classes & Pricing','Schedule, Pricing & Enrolment','Everything you need to know about how, when, and what it costs to learn from WA\'s top-ranked students.')+'<div class="coming-soon-wrap fade-in"><div class="coming-soon-content">'+blurContent+'</div>'+overlay+'</div></div></section>';
+  return'<section class="subpage-section" style="background:var(--bg)"><div style="max-width:900px;margin:0 auto;padding:0 5%">'+sectionTitle('Classes & Pricing','Schedule, Pricing & Enrolment','Everything you need to know about how, when, and what it costs.')+'<div class="coming-soon-wrap fade-in"><div class="coming-soon-content">'+blurTT+'<div style="text-align:center;margin-top:40px;padding:32px;background:var(--white);border-radius:16px;border:1px solid var(--border)"><div style="font-family:\'Cormorant Garamond\',serif;font-size:48px;font-weight:700;color:var(--navy)">$40<span style="font-size:20px;font-weight:400;color:var(--text-muted)">/session</span></div><p style="font-family:\'DM Sans\',sans-serif;font-size:14px;color:var(--text-muted);margin-top:8px">$400 per subject per term &bull; Small group classes</p></div></div>'+overlay+'</div></div></section>';
 }
 
 function renderPay(){
-  enrolStep=1;
   selectedClasses=[];
   var stepTabs='<div class="enrol-steps"><button class="enrol-step-tab active" data-step="1"><span class="enrol-step-num">1</span>Classes</button><button class="enrol-step-tab" data-step="2"><span class="enrol-step-num">2</span>Student</button><button class="enrol-step-tab" data-step="3"><span class="enrol-step-num">3</span>Parent</button><button class="enrol-step-tab" data-step="4"><span class="enrol-step-num">4</span>Terms & Pay</button></div>';
 
-  var step1='<div class="enrol-panel active" id="step-panel-1"><div class="enrol-section-card"><h2 class="enrol-section-title">Select Your Classes</h2><p style="font-family:\'DM Sans\',sans-serif;font-size:14px;color:var(--text-muted);margin-bottom:20px">Select one or more classes below. You can enrol in multiple subjects.</p><div class="filter-btns"><button class="filter-btn active" onclick="setYearFilter(\'all\',this)">All Years</button><button class="filter-btn" onclick="setYearFilter(\'11\',this)">Year 11</button><button class="filter-btn" onclick="setYearFilter(\'12\',this)">Year 12</button></div><div id="class-grid-container">'+buildClassGrid('all')+'</div><p class="error-msg" id="classes-error">Please select at least one class to continue.</p></div><div class="enrol-nav"><span></span><button class="btn btn-primary" onclick="goToStep(2)">Next: Student Details &rarr;</button></div></div>';
+  var step1='<div class="enrol-panel active" id="step-panel-1"><div class="enrol-section-card"><h2 class="enrol-section-title">Select Your Classes</h2><p class="enrol-section-sub">Click a class on the timetable to select it. You can select multiple. All classes are held weekly — $40/session, $400/term per subject.</p>'+buildTimetable(true)+'<p class="error-msg" id="classes-error">Please select at least one class to continue.</p></div><div class="enrol-nav"><span></span><button class="btn btn-primary" onclick="goToStep(2)">Next: Student Details &rarr;</button></div></div>';
 
-  var step2='<div class="enrol-panel" id="step-panel-2"><div class="enrol-section-card"><h2 class="enrol-section-title">Student Details</h2><div class="form-row-2"><div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" id="f-student-first" placeholder="First name" required></div><div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" id="f-student-last" placeholder="Last name" required></div></div><div class="form-group"><label class="form-label">Student Email</label><input class="form-input" type="email" id="f-student-email" placeholder="student@email.com" required></div><div class="form-row-2"><div class="form-group"><label class="form-label">School</label><input class="form-input" type="text" id="f-student-school" placeholder="School name"></div><div class="form-group"><label class="form-label">Year Level</label><select class="form-input" id="f-student-year"><option value="" disabled selected>Select</option><option value="Year 11">Year 11</option><option value="Year 12">Year 12</option></select></div></div></div><div class="enrol-nav"><button class="btn btn-outline-dark" onclick="goToStep(1)">&larr; Back</button><button class="btn btn-primary" onclick="goToStep(3)">Next: Parent Details &rarr;</button></div></div>';
+  var step2='<div class="enrol-panel" id="step-panel-2"><div class="enrol-section-card"><h2 class="enrol-section-title">Student Details</h2><div class="form-row-2"><div class="form-group"><label class="form-label">First Name</label><input class="form-input" type="text" id="f-student-first" placeholder="First name"></div><div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" id="f-student-last" placeholder="Last name"></div></div><div class="form-group"><label class="form-label">Student Email</label><input class="form-input" type="email" id="f-student-email" placeholder="student@email.com"></div><div class="form-row-2"><div class="form-group"><label class="form-label">School</label><input class="form-input" type="text" id="f-student-school" placeholder="School name"></div><div class="form-group"><label class="form-label">Year Level</label><select class="form-input" id="f-student-year"><option value="" disabled selected>Select</option><option>Year 11</option><option>Year 12</option></select></div></div></div><div class="enrol-nav"><button class="btn btn-outline-dark" onclick="goToStep(1)">&larr; Back</button><button class="btn btn-primary" onclick="goToStep(3)">Next: Parent Details &rarr;</button></div></div>';
 
-  var step3='<div class="enrol-panel" id="step-panel-3"><div class="enrol-section-card"><h2 class="enrol-section-title">Parent / Guardian Details</h2><div class="form-group"><label class="form-label">Full Name</label><input class="form-input" type="text" id="f-parent-name" placeholder="Parent or guardian full name" required></div><div class="form-row-2"><div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" id="f-parent-email" placeholder="parent@email.com" required></div><div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" id="f-parent-phone" placeholder="04XX XXX XXX"></div></div></div><div class="enrol-nav"><button class="btn btn-outline-dark" onclick="goToStep(2)">&larr; Back</button><button class="btn btn-primary" onclick="goToStep(4)">Next: Terms &amp; Pay &rarr;</button></div></div>';
+  var step3='<div class="enrol-panel" id="step-panel-3"><div class="enrol-section-card"><h2 class="enrol-section-title">Parent / Guardian Details</h2><div class="form-group"><label class="form-label">Full Name</label><input class="form-input" type="text" id="f-parent-name" placeholder="Parent or guardian full name"></div><div class="form-row-2"><div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" id="f-parent-email" placeholder="parent@email.com"></div><div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" id="f-parent-phone" placeholder="04XX XXX XXX"></div></div></div><div class="enrol-nav"><button class="btn btn-outline-dark" onclick="goToStep(2)">&larr; Back</button><button class="btn btn-primary" onclick="goToStep(4)">Next: Terms &amp; Pay &rarr;</button></div></div>';
 
-  var step4='<div class="enrol-panel" id="step-panel-4"><div class="enrol-section-card"><h2 class="enrol-section-title">Terms &amp; Conditions</h2><div class="terms-box"><strong>Atlas Tutoring — Enrolment Terms</strong><br><br>1. Classes are held weekly on weekends via live video.<br>2. Payment is per session at $40 per class.<br>3. Recordings are provided for missed sessions where possible.<br>4. Atlas Tutoring reserves the right to reschedule classes with reasonable notice.<br>5. Refunds are not available after a session has been delivered.<br>6. Student details will be used solely for class administration and communication.<br>7. By enrolling you confirm all details provided are accurate.</div><div class="terms-check-row"><input type="checkbox" id="terms-agree"><label for="terms-agree" style="cursor:pointer">I have read and agree to the Atlas Tutoring enrolment terms and conditions.</label></div><p class="error-msg" id="terms-error" style="margin-top:12px">Please agree to the terms to continue.</p></div><div class="enrol-nav"><button class="btn btn-outline-dark" onclick="goToStep(3)">&larr; Back</button><button class="btn btn-gold" onclick="validateAndPay()" style="font-size:16px;padding:16px 32px">&#128274; Proceed to Payment</button></div></div>';
+  var step4='<div class="enrol-panel" id="step-panel-4"><div class="enrol-section-card"><h2 class="enrol-section-title">Terms &amp; Conditions</h2><div class="terms-box"><strong>Atlas Tutoring — Enrolment Terms</strong><br><br>1. Classes are held weekly on weekends via live video.<br>2. Payment is per term at $400 per subject (10 sessions at $40 each).<br>3. Recordings are provided for missed sessions where possible.<br>4. Atlas Tutoring reserves the right to reschedule classes with reasonable notice.<br>5. Refunds are not available after a session has been delivered.<br>6. Student details will be used solely for class administration and communication.<br>7. By enrolling you confirm all details provided are accurate.</div><div class="terms-check-row"><input type="checkbox" id="terms-agree"><label for="terms-agree" style="cursor:pointer">I have read and agree to the Atlas Tutoring enrolment terms and conditions.</label></div><p class="error-msg" id="terms-error">Please agree to the terms to continue.</p></div><div class="enrol-nav"><button class="btn btn-outline-dark" onclick="goToStep(3)">&larr; Back</button><button class="btn btn-gold" onclick="validateAndPay()" style="font-size:16px;padding:16px 32px">&#128274; Proceed to Payment</button></div></div>';
 
-  var sidebar='<div class="enrol-sidebar"><div class="enrol-sidebar-card"><div class="enrol-sidebar-header"><div class="enrol-sidebar-title">Your Enrolment</div><div class="enrol-sidebar-sub">Summary</div></div><div class="enrol-sidebar-body"><div class="enrol-sidebar-classes" id="sidebar-classes"><p class="enrol-no-classes">No classes selected yet.</p></div><div class="enrol-divider"></div><div class="enrol-total-row"><span class="enrol-total-label">Total per session</span><span class="enrol-total-value" id="sidebar-total">$0</span></div><p class="enrol-total-note" id="sidebar-note">Select at least one class to continue.</p><div style="background:rgba(212,175,122,.08);border-radius:8px;padding:12px;font-family:\'DM Sans\',sans-serif;font-size:12px;color:var(--text-muted);line-height:1.6"><strong style="color:var(--navy)">$40</strong> per class &bull; Pay via Stripe<br>Coupon codes accepted at checkout</div></div></div></div>';
+  var sidebar='<div class="enrol-sidebar"><div class="enrol-sidebar-card"><div class="enrol-sidebar-header"><div class="enrol-sidebar-title">Your Enrolment</div><div class="enrol-sidebar-sub">Summary</div></div><div class="enrol-sidebar-body"><div id="sidebar-classes"><p class="enrol-no-classes">No classes selected yet.</p></div><div class="enrol-divider"></div><div class="enrol-total-row"><span class="enrol-total-label">Total this term</span><span class="enrol-total-value" id="sidebar-total">$0</span></div><p class="enrol-total-note" id="sidebar-note">Select at least one class to continue.</p><div style="background:rgba(212,175,122,.08);border-radius:8px;padding:12px;font-family:\'DM Sans\',sans-serif;font-size:12px;color:var(--text-muted);line-height:1.6;margin-top:4px"><strong style="color:var(--navy)">$40/session &bull; $400/term</strong> per subject<br>Coupon codes accepted at checkout</div></div></div></div>';
 
   return'<section class="subpage-section" style="background:var(--bg)" id="enrol-top"><div style="max-width:1100px;margin:0 auto;padding:0 5%">'+sectionTitle('Enrolment','Enrol in a Class','Select your classes, fill in your details, and pay securely via Stripe.')+'<div class="enrol-layout"><div class="enrol-main">'+stepTabs+step1+step2+step3+step4+'</div>'+sidebar+'</div></div></section>';
 }
 
-function renderSuccess(){
-  return'<section class="subpage-section" style="background:var(--bg)"><div style="max-width:560px;margin:0 auto;padding:0 5%;text-align:center"><div style="font-size:56px;margin-bottom:24px">&#127881;</div><h2 style="font-family:\'Cormorant Garamond\',serif;font-size:40px;font-weight:700;color:var(--navy);margin-bottom:16px">You\'re enrolled!</h2><p style="font-family:\'DM Sans\',sans-serif;font-size:17px;color:var(--text-muted);line-height:1.7;margin-bottom:32px">Payment successful. Welcome to Atlas Tutoring \u2014 we\'ll be in touch shortly with your class details and Zoom link.</p><button class="btn btn-gold" onclick="navigate(\'home\')">Back to Home</button></div></section>';
-}
+function renderSuccess(){return'<section class="subpage-section" style="background:var(--bg)"><div style="max-width:560px;margin:0 auto;padding:0 5%;text-align:center"><div style="font-size:56px;margin-bottom:24px">&#127881;</div><h2 style="font-family:\'Cormorant Garamond\',serif;font-size:40px;font-weight:700;color:var(--navy);margin-bottom:16px">You\'re enrolled!</h2><p style="font-family:\'DM Sans\',sans-serif;font-size:17px;color:var(--text-muted);line-height:1.7;margin-bottom:32px">Payment successful. Welcome to Atlas Tutoring \u2014 we\'ll be in touch shortly with your class details and Zoom link.</p><button class="btn btn-gold" onclick="navigate(\'home\')">Back to Home</button></div></section>'}
 
 function renderAbout(){var b=[{t:'Exam Strategy',d:'The exact approaches and techniques that earned the top marks in every assessment.'},{t:'Study Methods',d:'How the best students actually study \u2014 not theory, but the real methods they used.'},{t:'Common Mistakes',d:'The pitfalls that cost other students marks, and how to avoid every one of them.'},{t:'The Confidence to Perform',d:'Walk into the exam room knowing you\'ve been taught by someone who already conquered it.'}];var bh='';for(var i=0;i<b.length;i++)bh+='<div class="about-benefit"><div class="about-benefit-bar"></div><h4>'+b[i].t+'</h4><p>'+b[i].d+'</p></div>';return'<section class="subpage-section" style="background:var(--white)"><div style="max-width:760px;margin:0 auto;padding:0 5%">'+sectionTitle('Our Mission','About Atlas Tutoring','')+'<div class="fade-in about-text"><p class="about-lead">The difference between a good ATAR and a great one isn\'t intelligence \u2014 it\'s access. Access to the right strategies, the right techniques, and the right person to learn them from.</p><p>Most tutoring companies hire students who did well. Atlas is different. We only hire the student who did the best \u2014 the one who achieved Subject Exhibition, the #1 rank in their subject in all of Western Australia.</p><p>These tutors sat the exact same exams your child is about to sit. They didn\'t just study the content \u2014 they mastered it at a level no other student in the state could match. And now they\'re passing on everything they know: how to study efficiently, how to structure answers that markers reward, which mistakes to avoid, and how to walk into the exam room with genuine confidence.</p><p>That\'s what Atlas gives your child. Not just a tutor \u2014 a blueprint for how to be the best.</p></div>'+goldDivider()+'<div class="fade-in"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;text-align:center">'+bh+'</div></div></div></section>'}
 
 function renderRegister(){return'<section class="subpage-section" style="background:var(--bg)"><div style="max-width:640px;margin:0 auto;padding:0 5%">'+sectionTitle('Free Masterclass','Register for the Exam Masterclass','A free online session taught by the #1 ranked student in WA for each subject. Secure your spot below.')+'<div class="fade-in"><form class="form-container" action="https://formspree.io/f/xbdpbqeg" method="POST"><input type="hidden" name="_subject" value="New Masterclass Registration"><div style="font-family:\'DM Sans\',sans-serif;font-size:12px;font-weight:600;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:20px">Student Details</div><div class="form-group"><label class="form-label">Student Full Name</label><input class="form-input" type="text" name="student_name" placeholder="Full name" required></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:16px"><div class="form-group"><label class="form-label">Year Level</label><select class="form-input" name="year_level" required style="cursor:pointer"><option value="" disabled selected>Select</option><option value="Year 11">Year 11</option><option value="Year 12">Year 12</option></select></div><div class="form-group"><label class="form-label">School</label><input class="form-input" type="text" name="school" placeholder="School name" required></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:16px"><div class="form-group"><label class="form-label">Student Email</label><input class="form-input" type="email" name="student_email" placeholder="student email" required></div><div class="form-group"><label class="form-label">Student Phone</label><input class="form-input" type="tel" name="student_phone" placeholder="04XX XXX XXX"></div></div><div style="width:100%;height:1px;background:var(--border);margin:12px 0 24px"></div><div style="font-family:\'DM Sans\',sans-serif;font-size:12px;font-weight:600;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:20px">Parent / Guardian Details</div><div class="form-group"><label class="form-label">Parent / Guardian Name</label><input class="form-input" type="text" name="parent_name" placeholder="Full name" required></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:16px"><div class="form-group"><label class="form-label">Parent Email</label><input class="form-input" type="email" name="parent_email" placeholder="parent email" required></div><div class="form-group"><label class="form-label">Parent Phone</label><input class="form-input" type="tel" name="parent_phone" placeholder="04XX XXX XXX"></div></div><div style="width:100%;height:1px;background:var(--border);margin:12px 0 24px"></div><div style="font-family:\'DM Sans\',sans-serif;font-size:12px;font-weight:600;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:16px">Which masterclass(es)?</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;margin-bottom:24px"><label style="display:flex;align-items:center;gap:10px;font-family:\'DM Sans\',sans-serif;font-size:14px;color:var(--text);cursor:pointer;padding:8px 0"><input type="checkbox" name="subjects" value="Maths Methods" style="width:18px;height:18px;accent-color:var(--gold);cursor:pointer"> Maths Methods</label><label style="display:flex;align-items:center;gap:10px;font-family:\'DM Sans\',sans-serif;font-size:14px;color:var(--text);cursor:pointer;padding:8px 0"><input type="checkbox" name="subjects" value="Maths Specialist" style="width:18px;height:18px;accent-color:var(--gold);cursor:pointer"> Maths Specialist</label><label style="display:flex;align-items:center;gap:10px;font-family:\'DM Sans\',sans-serif;font-size:14px;color:var(--text);cursor:pointer;padding:8px 0"><input type="checkbox" name="subjects" value="Chemistry" style="width:18px;height:18px;accent-color:var(--gold);cursor:pointer"> Chemistry</label><label style="display:flex;align-items:center;gap:10px;font-family:\'DM Sans\',sans-serif;font-size:14px;color:var(--text);cursor:pointer;padding:8px 0"><input type="checkbox" name="subjects" value="Physics" style="width:18px;height:18px;accent-color:var(--gold);cursor:pointer"> Physics</label><label style="display:flex;align-items:center;gap:10px;font-family:\'DM Sans\',sans-serif;font-size:14px;color:var(--text);cursor:pointer;padding:8px 0"><input type="checkbox" name="subjects" value="Economics" style="width:18px;height:18px;accent-color:var(--gold);cursor:pointer"> Economics</label><label style="display:flex;align-items:center;gap:10px;font-family:\'DM Sans\',sans-serif;font-size:14px;color:var(--text);cursor:pointer;padding:8px 0"><input type="checkbox" name="subjects" value="English" style="width:18px;height:18px;accent-color:var(--gold);cursor:pointer"> English</label></div><div style="width:100%;height:1px;background:var(--border);margin:0 0 24px"></div><div class="form-group"><label class="form-label">How did you hear about us?</label><select class="form-input" name="referral" style="cursor:pointer"><option value="" disabled selected>Select</option><option value="Facebook">Facebook</option><option value="Instagram">Instagram</option><option value="Word of Mouth">Word of Mouth</option><option value="School">School</option><option value="Other">Other</option></select></div><button class="btn btn-gold btn-full" type="submit" style="margin-top:8px;font-size:16px;padding:16px 32px">Register for Free Masterclass</button><p style="font-family:\'DM Sans\',sans-serif;font-size:13px;color:var(--text-muted);text-align:center;margin-top:16px">Free. No payment required. Dates and times will be sent to you once confirmed.</p></form></div></div></section>'}
 
-function renderContact(){return'<section class="subpage-section" style="background:var(--white)"><div style="max-width:600px;margin:0 auto;padding:0 5%">'+sectionTitle('Get in Touch','Contact Atlas Tutoring','Have questions about our classes, pricing, or how Atlas works? We\'d love to hear from you.')+'<div class="fade-in" id="contactFormWrapper"><form class="form-container alt-bg" action="https://formspree.io/f/xbdpbqeg" method="POST"><div class="form-group"><label class="form-label">Name</label><input class="form-input" type="text" name="name" placeholder="Your name" required></div><div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" name="email" placeholder="your email address" required></div><div class="form-group"><label class="form-label">I am a...</label><input class="form-input" type="text" name="role" placeholder="Student / Parent / Other"></div><div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" rows="4" name="message" placeholder="How can we help?" required></textarea></div><button class="btn btn-primary btn-full" type="submit">Send Message</button></form></div><div class="fade-in" style="text-align:center;margin-top:48px;transition-delay:0.2s"><p style="font-family:\'DM Sans\',sans-serif;font-size:14px;color:var(--text-muted)">You can also reach us at <span style="color:var(--navy);font-weight:600">'+CONTACT_EMAIL+'</span></p></div></div></section>'}
+function renderContact(){return'<section class="subpage-section" style="background:var(--white)"><div style="max-width:600px;margin:0 auto;padding:0 5%">'+sectionTitle('Get in Touch','Contact Atlas Tutoring','Have questions about our classes, pricing, or how Atlas works? We\'d love to hear from you.')+'<div class="fade-in"><form class="form-container alt-bg" action="https://formspree.io/f/xbdpbqeg" method="POST"><div class="form-group"><label class="form-label">Name</label><input class="form-input" type="text" name="name" placeholder="Your name" required></div><div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" name="email" placeholder="your email address" required></div><div class="form-group"><label class="form-label">I am a...</label><input class="form-input" type="text" name="role" placeholder="Student / Parent / Other"></div><div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" rows="4" name="message" placeholder="How can we help?" required></textarea></div><button class="btn btn-primary btn-full" type="submit">Send Message</button></form></div><div class="fade-in" style="text-align:center;margin-top:48px;transition-delay:0.2s"><p style="font-family:\'DM Sans\',sans-serif;font-size:14px;color:var(--text-muted)">You can also reach us at <span style="color:var(--navy);font-weight:600">'+CONTACT_EMAIL+'</span></p></div></div></section>'}
 
 function render(){
   var app=document.getElementById('app');
@@ -486,7 +500,7 @@ var hash=window.location.hash.replace('#','');
 if(hash){
   var slugs=Object.keys(PAGE_LABELS).map(function(k){return PAGE_LABELS[k]});
   if(hash==='schedule'||hash==='pricing'){currentPage='classes';window.location.hash='classes';}
-  else if(slugs.indexOf(hash)!==-1||hash==='success'||hash==='pay')currentPage=hash;
+  else if(slugs.indexOf(hash)!==-1||hash==='success'||hash==='pay') currentPage=hash;
 }
 window.addEventListener('hashchange',function(){
   var h=window.location.hash.replace('#','');
