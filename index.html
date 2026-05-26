@@ -251,6 +251,17 @@ img{max-width:100%}
   /* Remove extra side padding from enrol layout on mobile */
   .enrol-layout{padding:0 3%}
 }
+  @media(max-width:768px){
+  .tt-sat-only .tt-sun-col{display:none}
+  .tt-sun-only .tt-sat-col{display:none}
+  .tt-day-label{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+}
+@media(min-width:769px){
+  .tt-sat-only,.tt-sun-only,.tt-day-label{display:none}
+  .tt-wrap-desktop{display:block}
+}
+@media(max-width:768px){
+  .tt-wrap-desktop{display:none
 </style>
 </head>
 <body>
@@ -365,45 +376,67 @@ function refreshSidebar(){
 }
 
 function buildTimetable(clickable){
-  var html='<div class="tt-wrap"><table class="tt">';
-  html+='<tr><th></th><th colspan="2" class="tt-day-hd">SATURDAY</th><th colspan="2" class="tt-day-hd">SUNDAY</th></tr>';
+  function makeCell(cell, clickable){
+    if(!cell) return '<div class="tt-empty">—</div>';
+    var sel = selectedClasses.indexOf(cell.id) !== -1;
+    if(clickable){
+      return '<button class="tt-cell'+(sel?' selected':'')+'" data-id="'+cell.id+'" onclick="toggleClass(\''+cell.id+'\')">'+
+        '<div class="tt-cell-yr">YEAR '+cell.yr+'</div>'+
+        '<div class="tt-cell-subj">'+cell.subject+'</div>'+
+        '<div class="tt-cell-tutor">'+cell.tutor+'</div>'+
+        '</button>';
+    } else {
+      return '<div class="tt-cell" style="cursor:default">'+
+        '<div class="tt-cell-yr">YEAR '+cell.yr+'</div>'+
+        '<div class="tt-cell-subj">'+cell.subject+'</div>'+
+        '<div class="tt-cell-tutor">'+cell.tutor+'</div>'+
+        '</div>';
+    }
+  }
+
+  // Desktop: full 4-column table (unchanged)
+  var desktop = '<div class="tt-wrap tt-wrap-desktop"><table class="tt">';
+  desktop += '<tr><th></th><th colspan="2" class="tt-day-hd">SATURDAY</th><th colspan="2" class="tt-day-hd">SUNDAY</th></tr>';
   for(var r=0;r<TT_ROWS.length;r++){
     var row=TT_ROWS[r];
-    html+='<tr><td class="tt-time">'+row.time+'</td>';
+    desktop += '<tr><td class="tt-time">'+row.time+'</td>';
     for(var c=0;c<4;c++){
-      var cell=row.cells[c];
-      html+='<td>';
-      if(cell){
-        var sel=selectedClasses.indexOf(cell.id)!==-1;
-        if(clickable){
-          html+='<button class="tt-cell'+(sel?' selected':'')+'" data-id="'+cell.id+'" onclick="toggleClass(\''+cell.id+'\')">';
-          html+='<div class="tt-cell-yr">YEAR '+cell.yr+'</div>';
-          html+='<div class="tt-cell-subj">'+cell.subject+'</div>';
-          html+='<div class="tt-cell-tutor">'+cell.tutor+'</div>';
-          html+='</button>';
-        } else {
-          html+='<div class="tt-cell" style="cursor:default">';
-          html+='<div class="tt-cell-yr">YEAR '+cell.yr+'</div>';
-          html+='<div class="tt-cell-subj">'+cell.subject+'</div>';
-          html+='<div class="tt-cell-tutor">'+cell.tutor+'</div>';
-          html+='</div>';
-        }
-      } else {
-        html+='<div class="tt-empty">—</div>';
-      }
-      html+='</td>';
+      desktop += '<td>'+makeCell(row.cells[c], clickable)+'</td>';
     }
-    html+='</tr>';
+    desktop += '</tr>';
   }
-  html+='</table></div>';
-  if(clickable){
-    html+='<div class="tt-legend"><div class="tt-legend-item"><div class="tt-legend-dot" style="background:var(--bg);border:2px solid var(--border)"></div>Available</div><div class="tt-legend-item"><div class="tt-legend-dot" style="background:rgba(212,175,122,.12);border:2px solid var(--gold)"></div>Selected</div></div>';
-  } else {
-    html+='<p style="font-family:\'DM Sans\',sans-serif;font-size:13px;color:var(--text-muted);margin-top:14px;font-style:italic">All times AWST. Classes held online via live video.</p>';
-  }
-  return html;
-}
+  desktop += '</table></div>';
 
+  // Mobile Saturday table (cols 0,1)
+  var sat = '<div class="tt-day-label">Saturday</div><div class="tt-wrap tt-sat-only"><table class="tt">';
+  sat += '<tr><th></th><th class="tt-day-hd">CLASS 1</th><th class="tt-day-hd">CLASS 2</th></tr>';
+  for(var r=0;r<TT_ROWS.length;r++){
+    var row=TT_ROWS[r];
+    sat += '<tr><td class="tt-time">'+row.time+'</td>';
+    sat += '<td>'+makeCell(row.cells[0], clickable)+'</td>';
+    sat += '<td>'+makeCell(row.cells[1], clickable)+'</td>';
+    sat += '</tr>';
+  }
+  sat += '</table></div>';
+
+  // Mobile Sunday table (cols 2,3)
+  var sun = '<div class="tt-day-label" style="margin-top:20px">Sunday</div><div class="tt-wrap tt-sun-only"><table class="tt">';
+  sun += '<tr><th></th><th class="tt-day-hd">CLASS 1</th><th class="tt-day-hd">CLASS 2</th></tr>';
+  for(var r=0;r<TT_ROWS.length;r++){
+    var row=TT_ROWS[r];
+    sun += '<tr><td class="tt-time">'+row.time+'</td>';
+    sun += '<td>'+makeCell(row.cells[2], clickable)+'</td>';
+    sun += '<td>'+makeCell(row.cells[3], clickable)+'</td>';
+    sun += '</tr>';
+  }
+  sun += '</table></div>';
+
+  var legend = clickable
+    ? '<div class="tt-legend"><div class="tt-legend-item"><div class="tt-legend-dot" style="background:var(--bg);border:2px solid var(--border)"></div>Available</div><div class="tt-legend-item"><div class="tt-legend-dot" style="background:rgba(212,175,122,.12);border:2px solid var(--gold)"></div>Selected</div></div>'
+    : '<p style="font-family:\'DM Sans\',sans-serif;font-size:13px;color:var(--text-muted);margin-top:14px;font-style:italic">All times AWST. Classes held online via live video.</p>';
+
+  return desktop + sat + sun + legend;
+}
 function goToStep(n){
   if(n===2&&selectedClasses.length===0){
     var err=document.getElementById('classes-error');
