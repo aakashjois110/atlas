@@ -452,8 +452,15 @@ function validateAndPay(){
   var xhr=new XMLHttpRequest();
   xhr.open('POST',url,true);
   xhr.setRequestHeader('Content-Type','text/plain');
+  xhr.onreadystatechange=function(){
+    if(xhr.readyState===4){
+      navigate('success');
+    }
+  };
+  xhr.onerror=function(){
+    navigate('success');
+  };
   xhr.send(JSON.stringify(data));
-  navigate('success'); 
 }
 
 function buildNav(){var n=document.getElementById('navLinks'),m=document.getElementById('mobileMenu'),f=document.getElementById('footerLinks');n.innerHTML='';m.innerHTML='';f.innerHTML='';var labels=Object.keys(PAGE_LABELS);for(var i=0;i<labels.length;i++){var label=labels[i],slug=PAGE_LABELS[label];var btn=document.createElement('button');btn.className='nav-link'+(currentPage===slug?' active':'');btn.textContent=label;btn.setAttribute('data-slug',slug);btn.onclick=function(){navigate(this.getAttribute('data-slug'))};n.appendChild(btn);var mb=document.createElement('button');mb.className='mobile-menu-link'+(currentPage===slug?' active':'');mb.textContent=label;mb.setAttribute('data-slug',slug);mb.onclick=function(){navigate(this.getAttribute('data-slug'));closeMobileMenu()};m.appendChild(mb);var fl=document.createElement('button');fl.className='footer-link';fl.textContent=label;fl.setAttribute('data-slug',slug);fl.onclick=function(){navigate(this.getAttribute('data-slug'))};f.appendChild(fl)}}
