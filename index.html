@@ -247,25 +247,25 @@ var PAGE_LABELS={'Home':'home','Subjects':'subjects','Tutors':'tutors','How It W
 
 var TT_ROWS=[
   {time:'10–11am', cells:[
-    {id:'econ-11',subject:'Economics',yr:'11',tutor:'Aakash J.',day:'Sat'},
+    {id:'eng-11',subject:'English',yr:'11',tutor:'Parie B.',day:'Sat'},
     {id:'chem-12',subject:'Chemistry',yr:'12',tutor:'Aidan L.',day:'Sat'},
     {id:'meth-11',subject:'Maths Methods',yr:'11',tutor:'Aidan L.',day:'Sun'},
-    {id:'phys-12',subject:'Physics',yr:'12',tutor:'Cameron B.',day:'Sun'}
+    {id:'econ-12',subject:'Economics',yr:'12',tutor:'Aakash J.',day:'Sun'}
   ]},
   {time:'11am–12pm', cells:[
     {id:'chem-11',subject:'Chemistry',yr:'11',tutor:'Aidan L.',day:'Sat'},
-    {id:'econ-12',subject:'Economics',yr:'12',tutor:'Aakash J.',day:'Sat'},
-    {id:'phys-11',subject:'Physics',yr:'11',tutor:'Cameron B.',day:'Sun'},
+    {id:'eng-12',subject:'English',yr:'12',tutor:'Parie B.',day:'Sat'},
+    {id:'econ-11',subject:'Economics',yr:'11',tutor:'Aakash J.',day:'Sun'},
     {id:'meth-12',subject:'Maths Methods',yr:'12',tutor:'Aidan L.',day:'Sun'}
   ]},
-  {time:'1–2pm', cells:[
+  {time:'2–3pm', cells:[
     {id:'spec-11',subject:'Maths Specialist',yr:'11',tutor:'Ethan K.',day:'Sat'},
-    {id:'eng-12',subject:'English',yr:'12',tutor:'Parie B.',day:'Sat'},
+    {id:'phys-12',subject:'Physics',yr:'12',tutor:'Cameron B.',day:'Sat'},
     null,
     null
   ]},
-  {time:'2–3pm', cells:[
-    {id:'eng-11',subject:'English',yr:'11',tutor:'Parie B.',day:'Sat'},
+  {time:'3–4pm', cells:[
+    {id:'phys-11',subject:'Physics',yr:'11',tutor:'Cameron B.',day:'Sat'},
     {id:'spec-12',subject:'Maths Specialist',yr:'12',tutor:'Ethan K.',day:'Sat'},
     null,
     null
@@ -321,15 +321,53 @@ function toggleClass(id){
   if(err&&selectedClasses.length>0) err.classList.remove('show');
 }
 
+var COUPONS={'MOD26':0.25,'CCGS26':0.25,'EARLY26':0.25};
+var appliedCoupon=null;
+
+function applyCoupon(){
+  var input=document.getElementById('coupon-input');
+  var msg=document.getElementById('coupon-msg');
+  if(!input) return;
+  var code=input.value.trim().toUpperCase();
+  if(!code){
+    appliedCoupon=null;
+    msg.textContent='';
+    msg.style.color='';
+    refreshSidebar();
+    return;
+  }
+  if(COUPONS[code]){
+    appliedCoupon=code;
+    msg.textContent='\u2713 '+code+' applied — 25% off';
+    msg.style.color='#059669';
+  } else {
+    appliedCoupon=null;
+    msg.textContent='Invalid coupon code';
+    msg.style.color='#DC2626';
+  }
+  refreshSidebar();
+}
+
+function removeCoupon(){
+  appliedCoupon=null;
+  var input=document.getElementById('coupon-input');
+  var msg=document.getElementById('coupon-msg');
+  if(input) input.value='';
+  if(msg){msg.textContent='';msg.style.color='';}
+  refreshSidebar();
+}
+
 function refreshSidebar(){
   var container=document.getElementById('sidebar-classes');
   var totalEl=document.getElementById('sidebar-total');
   var noteEl=document.getElementById('sidebar-note');
+  var discountRow=document.getElementById('discount-row');
   if(!container) return;
   if(selectedClasses.length===0){
     container.innerHTML='<p class="enrol-no-classes">No classes selected yet.</p>';
     if(totalEl) totalEl.textContent='$0';
     if(noteEl) noteEl.textContent='Select at least one class to continue.';
+    if(discountRow) discountRow.style.display='none';
     return;
   }
   var html='';
@@ -339,7 +377,18 @@ function refreshSidebar(){
   }
   container.innerHTML=html;
   var n=selectedClasses.length;
-  if(totalEl) totalEl.textContent='$'+(n*400);
+  var subtotal=n*400;
+  var finalTotal=subtotal;
+  if(appliedCoupon&&COUPONS[appliedCoupon]){
+    finalTotal=subtotal*(1-COUPONS[appliedCoupon]);
+    if(discountRow){
+      discountRow.style.display='flex';
+      discountRow.innerHTML='<span class="enrol-total-label" style="color:#059669">Discount ('+appliedCoupon+')</span><span style="font-family:\'DM Sans\',sans-serif;font-size:15px;font-weight:600;color:#059669">-$'+(subtotal-finalTotal).toFixed(0)+'</span>';
+    }
+  } else {
+    if(discountRow) discountRow.style.display='none';
+  }
+  if(totalEl) totalEl.textContent='$'+finalTotal.toFixed(0);
   if(noteEl) noteEl.textContent='$400/term per subject (10 weeks \u00D7 $40/session)';
 }
 
@@ -462,7 +511,9 @@ function validateAndPay(){
       var row=TT_ROWS.find(function(r){return r.cells.some(function(c){return c&&c.id===id;});});
       return s?(s.day+' '+row.time+' \u2014 Yr '+s.yr+' '+s.subject+' ('+s.tutor+')'):id;
     }).join(' | '),
-    total:selectedClasses.length*400
+    coupon:appliedCoupon||'',
+    subtotal:selectedClasses.length*400,
+    total:appliedCoupon&&COUPONS[appliedCoupon]?Math.round(selectedClasses.length*400*(1-COUPONS[appliedCoupon])):selectedClasses.length*400
   };
 
   var btn=document.querySelector('#step-panel-4 .btn-gold');
@@ -515,7 +566,7 @@ function renderPay(){
 
   var step4='<div class="enrol-panel" id="step-panel-4"><div class="enrol-section-card"><h2 class="enrol-section-title">Terms &amp; Conditions</h2><div class="terms-box"><strong>Atlas Tutoring — Enrolment Terms</strong><br><br>1. Classes are held weekly on weekends via live video.<br>2. Payment is per term at $400 per subject (10 sessions at $40 each).<br>3. Recordings are provided for missed sessions where possible.<br>4. Atlas Tutoring reserves the right to reschedule classes with reasonable notice.<br>5. Refunds are not available after a session has been delivered.<br>6. Student details will be used solely for class administration and communication.<br>7. By enrolling you confirm all details provided are accurate.</div><div class="terms-check-row"><input type="checkbox" id="terms-agree"><label for="terms-agree" style="cursor:pointer">I have read and agree to the Atlas Tutoring enrolment terms and conditions.</label></div><p class="error-msg" id="terms-error">Please agree to the terms to continue.</p></div><div class="enrol-nav"><button class="btn btn-outline-dark" onclick="goToStep(3)">&larr; Back</button><button class="btn btn-gold" onclick="validateAndPay()" style="font-size:16px;padding:16px 32px">&#128274; Proceed to Payment</button></div></div>';
 
-  var sidebar='<div class="enrol-sidebar"><div class="enrol-sidebar-card"><div class="enrol-sidebar-header"><div class="enrol-sidebar-title">Your Enrolment</div><div class="enrol-sidebar-sub">Summary</div></div><div class="enrol-sidebar-body"><div id="sidebar-classes"><p class="enrol-no-classes">No classes selected yet.</p></div><div class="enrol-divider"></div><div class="enrol-total-row"><span class="enrol-total-label">Total this term</span><span class="enrol-total-value" id="sidebar-total">$0</span></div><p class="enrol-total-note" id="sidebar-note">Select at least one class to continue.</p><div style="background:rgba(212,175,122,.08);border-radius:8px;padding:12px;font-family:\'DM Sans\',sans-serif;font-size:12px;color:var(--text-muted);line-height:1.6;margin-top:4px"><strong style="color:var(--navy)">$40/session &bull; $400/term</strong> per subject<br>Coupon codes accepted at checkout</div></div></div></div>';
+  var sidebar='<div class="enrol-sidebar"><div class="enrol-sidebar-card"><div class="enrol-sidebar-header"><div class="enrol-sidebar-title">Your Enrolment</div><div class="enrol-sidebar-sub">Summary</div></div><div class="enrol-sidebar-body"><div id="sidebar-classes"><p class="enrol-no-classes">No classes selected yet.</p></div><div class="enrol-divider"></div><div class="enrol-total-row" id="discount-row" style="display:none;margin-bottom:4px"></div><div class="enrol-total-row"><span class="enrol-total-label">Total this term</span><span class="enrol-total-value" id="sidebar-total">$0</span></div><p class="enrol-total-note" id="sidebar-note">Select at least one class to continue.</p><div style="margin-top:12px"><label style="display:block;font-family:\'DM Sans\',sans-serif;font-size:11px;font-weight:600;letter-spacing:1.5px;color:var(--text-muted);text-transform:uppercase;margin-bottom:6px">Coupon Code</label><div style="display:flex;gap:6px"><input type="text" id="coupon-input" placeholder="Enter code" style="flex:1;padding:8px 10px;border:1px solid var(--border);border-radius:6px;font-family:\'DM Sans\',sans-serif;font-size:13px;text-transform:uppercase;outline:none" onkeyup="if(event.key===\'Enter\')applyCoupon()"><button onclick="applyCoupon()" style="padding:8px 14px;font-family:\'DM Sans\',sans-serif;font-size:12px;font-weight:600;background:var(--navy);color:#fff;border:none;border-radius:6px;cursor:pointer;letter-spacing:.5px">Apply</button></div><p id="coupon-msg" style="font-family:\'DM Sans\',sans-serif;font-size:12px;margin-top:6px;min-height:14px"></p></div><div style="background:rgba(212,175,122,.08);border-radius:8px;padding:12px;font-family:\'DM Sans\',sans-serif;font-size:12px;color:var(--text-muted);line-height:1.6;margin-top:8px"><strong style="color:var(--navy)">$40/session &bull; $400/term</strong> per subject</div></div></div></div>';
 
   return'<section class="subpage-section" style="background:var(--bg)" id="enrol-top"><div style="max-width:1100px;margin:0 auto;padding:0 5%">'+sectionTitle('Enrolment','Enrol in a Class','Select your classes, fill in your details, and finalise your enrolment.')+'<div class="enrol-layout"><div class="enrol-main">'+stepTabs+step1+step2+step3+step4+'</div>'+sidebar+'</div></div></section>';
 }
